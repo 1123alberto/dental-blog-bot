@@ -136,6 +136,12 @@ def publish_blog_post(markdown_content):
         if not os.path.exists(OUTPUT_DIR): os.makedirs(OUTPUT_DIR)
         with open(file_path, "w") as f: f.write(html_card)
 
+        # REDUNDANCY: Also save a copy in the local bot folder
+        local_output = os.path.join(os.path.dirname(__file__), "output")
+        if not os.path.exists(local_output): os.makedirs(local_output)
+        local_file_path = os.path.join(local_output, file_name)
+        with open(local_file_path, "w") as f: f.write(html_card)
+
         # Update Website posts.json
         if os.path.exists(WEBSITE_DATA_PATH):
             with open(WEBSITE_DATA_PATH, "r") as f:
