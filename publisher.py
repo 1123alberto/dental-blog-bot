@@ -1,156 +1,161 @@
 import os
 import re
+import json
 from datetime import datetime
-
 import markdown
 
-OUTPUT_DIR = "/home/angelo/Gemini/dental-blog-bot/output"
+OUTPUT_DIR = "/home/angelo/Gemini/dentplant/article"
+WEBSITE_DATA_PATH = "/home/angelo/Gemini/dentplant/data/posts.json"
 
+def clean_field(text):
+    if not text: return ""
+    text = text.replace("**", "").strip()
+    return text
+
+def parse_bilingual_content(markdown_content):
+    data = {
+        "source": "Dental News",
+        "date": datetime.now().strftime("%B %d, %Y"),
+        "image_url": "",
+        "en": {"title": "", "teaser": "", "content": ""},
+        "el": {"title": "", "teaser": "", "content": ""}
+    }
+
+    # Extract Common Fields
+    source_match = re.search(r"\[SOURCE\]:\s*(.*)", markdown_content, re.IGNORECASE)
+    if source_match: data["source"] = clean_field(source_match.group(1))
+
+    date_match = re.search(r"\[DATE\]:\s*(.*)", markdown_content, re.IGNORECASE)
+    if date_match: data["date"] = clean_field(date_match.group(1))
+
+    image_match = re.search(r"\[IMAGE_URL\]:\s*(https?://\S+)", markdown_content, re.IGNORECASE)
+    if image_match: data["image_url"] = image_match.group(1).strip()
+
+    # Extract English Fields
+    en_title = re.search(r"\[EN_TITLE\]:\s*(.*?)(?=\n\[|$)", markdown_content, re.DOTALL | re.IGNORECASE)
+    if en_title: data["en"]["title"] = clean_field(en_title.group(1))
+
+    en_teaser = re.search(r"\[EN_TEASER\]:\s*(.*?)(?=\n\[|$)", markdown_content, re.DOTALL | re.IGNORECASE)
+    if en_teaser: data["en"]["teaser"] = clean_field(en_teaser.group(1))
+
+    en_content = re.search(r"\[EN_CONTENT\]:\s*(.*?)(?=\n\[|---|$)", markdown_content, re.DOTALL | re.IGNORECASE)
+    if en_content: data["en"]["content"] = markdown.markdown(en_content.group(1).strip())
+
+    # Extract Greek Fields
+    el_title = re.search(r"\[EL_TITLE\]:\s*(.*?)(?=\n\[|$)", markdown_content, re.DOTALL | re.IGNORECASE)
+    if el_title: data["el"]["title"] = clean_field(el_title.group(1))
+
+    el_teaser = re.search(r"\[EL_TEASER\]:\s*(.*?)(?=\n\[|$)", markdown_content, re.DOTALL | re.IGNORECASE)
+    if el_teaser: data["el"]["teaser"] = clean_field(el_teaser.group(1))
+
+    el_content = re.search(r"\[EL_CONTENT\]:\s*(.*?)(?=\n\[|---|$)", markdown_content, re.DOTALL | re.IGNORECASE)
+    if el_content: data["el"]["content"] = markdown.markdown(el_content.group(1).strip())
+
+    return data
 
 def publish_blog_post(markdown_content):
-    # Normalize headers to make parsing robust
-    # 1. Remove optional numbering and bolding from main labels
-    clean_md = re.sub(
-        r"(?:\d\.\s+)?\*\*(Title|Teaser|SelectedImage|FullContent):\*\*",
-        r"\1:",
-        markdown_content,
-    )
-    # 2. Also handle non-bolded versions
-    clean_md = re.sub(
-        r"(?:\d\.\s+)?(Title|Teaser|SelectedImage|FullContent):\s*", r"\1: ", clean_md
-    )
+    data = parse_bilingual_content(markdown_content)
+    
+    # Generate Standalone Filename
+    date_str = datetime.now().strftime("%Y-%m-%d")
+    base_name = f"news-{date_str}"
+    file_name = f"{base_name}.html"
+    file_path = os.path.join(OUTPUT_DIR, file_name)
+    
+    counter = 0
+    while os.path.exists(file_path):
+        counter += 1
+        file_name = f"{base_name}-{counter}.html"
+        file_path = os.path.join(OUTPUT_DIR, file_name)
 
-    title = "Weekly Dental Update"
-    teaser = ""
-    image_url = ""
-    full_content_md = ""
+    # Use selected image or fallback
+    image_html = f'<img src="{data["image_url"]}" alt="Dental News" class="w-full h-full object-cover">' if data["image_url"] else \
+                 '<div class="h-full w-full bg-gradient-to-r from-cyan-500 to-blue-600"></div>'
 
-    # Title
-    title_match = re.search(r"Title:\s*(.*)", clean_md, re.IGNORECASE)
-    if title_match:
-        title = title_match.group(1).split("\n")[0].strip().replace("**", "")
-
-    # Teaser
-    teaser_match = re.search(
-        r"Teaser:\s*(.*?)(?=\n\s*(?:SelectedImage|FullContent|$))",
-        clean_md,
-        re.DOTALL | re.IGNORECASE,
-    )
-    if teaser_match:
-        teaser = teaser_match.group(1).strip().replace("**", "")
-
-    # SelectedImage
-    image_match = re.search(r"SelectedImage:\s*(https?://\S+)", clean_md, re.IGNORECASE)
-    if image_match:
-        image_url = image_match.group(1).strip()
-
-    # FullContent
-    content_match = re.search(
-        r"FullContent:\s*(.*)", clean_md, re.DOTALL | re.IGNORECASE
-    )
-    if content_match:
-        full_content_md = content_match.group(1).strip()
-
-    # Convert full content markdown to HTML
-    full_content_html = markdown.markdown(full_content_md)
-
-    # Use selected image or fallback gradient
-    if image_url:
-        image_html = (
-            f'<img src="{image_url}" alt="{title}" class="w-full h-full object-cover">'
-        )
-    else:
-        image_html = """
-            <div class="h-full w-full bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center relative overflow-hidden">
-                <svg class="w-16 h-16 text-white opacity-20 absolute -right-4 -bottom-4 rotate-12" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-                <div class="bg-white/20 p-4 rounded-2xl backdrop-blur-sm">
-                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                    </svg>
-                </div>
-            </div>"""
-
-    # Create an expandable modern teaser card HTML
+    # Create Bilingual Standalone Page
     html_card = f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dental News</title>
+    <title>{data['el']['title']} | {data['en']['title']}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {{ font-family: 'Inter', sans-serif; background-color: #f3f4f6; display: flex; justify-content: center; align-items: start; min-height: 100vh; margin: 0; padding: 40px 20px; }}
-        .content-transition {{ transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); max-height: 0; opacity: 0; overflow: hidden; }}
-        .expanded .content-transition {{ max-height: 2000px; opacity: 1; margin-top: 1.5rem; }}
-        .prose h3 {{ font-weight: 700; color: #111827; margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.125rem; }}
+        body {{ font-family: 'Inter', sans-serif; background-color: #f3f4f6; }}
+        [lang="en"] .lang-el, [lang="el"] .lang-en {{ display: none; }}
+        .prose h3 {{ font-weight: 700; color: #111827; margin-top: 1.5rem; font-size: 1.25rem; }}
         .prose p {{ margin-bottom: 1rem; color: #4b5563; }}
         .prose ul {{ list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; color: #4b5563; }}
         .prose li {{ margin-bottom: 0.25rem; }}
     </style>
 </head>
-<body>
-    <div id="card" class="max-w-md w-full bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 transition-all duration-500 ease-in-out">
-        <!-- Image Header -->
-        <div class="h-48 overflow-hidden">
-            {image_html}
-        </div>
+<body class="p-4 md:p-10 flex justify-center relative">
+    <!-- Discreet Back Arrow -->
+    <a href="../blog.html" class="fixed top-6 left-6 text-gray-400 hover:text-blue-600 transition-colors z-50 group" title="Back to Blog">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
 
-        <div class="p-8">
-            <span class="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider rounded-full mb-4">Latest News</span>
-            <h2 class="text-2xl font-bold text-gray-900 mb-4 leading-tight">
-                {title}
-            </h2>
-            <p id="teaser" class="text-gray-600 leading-relaxed">
-                {teaser}
-            </p>
-
-            <!-- Expandable Content -->
-            <div id="full-content" class="content-transition prose">
-                {full_content_html}
+    <div class="max-w-3xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div class="h-[400px] w-full">{image_html}</div>
+        <div class="p-8 md:p-12">
+            <div class="flex justify-between items-center mb-6">
+                <span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold uppercase rounded-full">Breakthrough News</span>
+                <button onclick="toggleLang()" class="text-xs font-bold text-gray-400 hover:text-blue-600">EN / ΕΛ</button>
+            </div>
+            
+            <div class="lang-en">
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">{data['en']['title']}</h1>
+                <p class="text-sm text-gray-400 mb-8">{data['source']} • {data['date']}</p>
+                <div class="prose">{data['en']['content']}</div>
             </div>
 
-            <button onclick="toggleExpand()" id="btn" class="mt-8 w-full py-4 px-6 bg-gray-900 hover:bg-black text-white font-bold rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 group">
-                <span id="btn-text">Read More</span>
-                <svg id="btn-icon" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-            </button>
+            <div class="lang-el">
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">{data['el']['title']}</h1>
+                <p class="text-sm text-gray-400 mb-8">{data['source']} • {data['date']}</p>
+                <div class="prose">{data['el']['content']}</div>
+            </div>
         </div>
     </div>
-
     <script>
-        function toggleExpand() {{
-            const card = document.getElementById('card');
-            const btnText = document.getElementById('btn-text');
-            const btnIcon = document.getElementById('btn-icon');
-            const isExpanded = card.classList.toggle('expanded');
-
-            btnText.innerText = isExpanded ? 'Show Less' : 'Read More';
-            btnIcon.style.transform = isExpanded ? 'rotate(90deg)' : 'rotate(0deg)';
-
-            if (isExpanded) {{
-                card.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
-            }}
+        function toggleLang() {{
+            const html = document.documentElement;
+            html.lang = html.lang === 'el' ? 'en' : 'el';
+            localStorage.setItem('lang', html.lang);
         }}
+        // Apply saved language
+        const savedLang = localStorage.getItem('lang') || 'el';
+        document.documentElement.lang = savedLang;
     </script>
 </body>
 </html>"""
 
     try:
-        if not os.path.exists(OUTPUT_DIR):
-            os.makedirs(OUTPUT_DIR)
+        if not os.path.exists(OUTPUT_DIR): os.makedirs(OUTPUT_DIR)
+        with open(file_path, "w") as f: f.write(html_card)
 
-        date_str = datetime.now().strftime("%Y-%m-%d")
-        file_name = f"news-{date_str}.html"
-        file_path = os.path.join(OUTPUT_DIR, file_name)
+        # Update Website posts.json
+        if os.path.exists(WEBSITE_DATA_PATH):
+            with open(WEBSITE_DATA_PATH, "r") as f:
+                posts = json.load(f)
+            
+            new_post = {
+                "id": datetime.now().timestamp(),
+                "date": data["date"],
+                "source": data["source"],
+                "image": data["image_url"],
+                "url": f"article/{file_name}", # Path relative to blog.html
+                "en": data["en"],
+                "el": data["el"]
+            }
+            posts.insert(0, new_post) # Newest first
+            with open(WEBSITE_DATA_PATH, "w") as f:
+                json.dump(posts, f, indent=2, ensure_ascii=False)
 
-        with open(file_path, "w") as f:
-            f.write(html_card)
-
+        print(f"Bilingual post published to: {file_path}")
         return file_path
     except Exception as e:
-        print(f"Error generating teaser card: {e}")
+        print(f"Error publishing: {e}")
         return None

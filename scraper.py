@@ -1,15 +1,26 @@
 import feedparser
+import time
+
+import requests
 from bs4 import BeautifulSoup
 
 FEEDS = [
     "https://www.dentistrytoday.com/feed/",
     "https://bmcoralhealth.biomedcentral.com/articles/most-recent/rss.xml",
     "https://www.dentistryiq.com/rss",
+    "https://www.sciencedaily.com/rss/health_medicine/dentistry.xml",
+    "https://www.dental-tribune.com/news/feed/",
+    "https://www.beckersdental.com/feed/",
 ]
 
 
 def fetch_dental_news():
     articles = []
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    })
+
     for url in FEEDS:
         print(f"Fetching from {url}...")
         feed = feedparser.parse(url)
@@ -26,7 +37,8 @@ def fetch_dental_news():
                         image_url = enc.get("url")
                         break
             # 3. Try parsing HTML fields (summary, description, content) for <img> tag
-            if not image_url:
+            if not image_url or "bacteria-on-tooth-surface.webp" in image_url:
+                image_url = None # Reset if it was the generic one
                 html_fields = [
                     entry.get("summary", ""),
                     entry.get("description", ""),
@@ -45,6 +57,32 @@ def fetch_dental_news():
                         if image_url:
                             break
 
+            # 4. Fallback: Fetch the actual article page and look for meta images
+            if not image_url and entry.link:
+                try:
+                    resp = session.get(entry.link, timeout=5)
+                    if resp.status_code == 200:
+                        soup = BeautifulSoup(resp.text, features="html.parser")
+                        # Look for OpenGraph image
+                        og_img = soup.find("meta", property="og:image")
+                        if og_img and og_img.get("content"):
+                            image_url = og_img.get("content")
+                        # Look for Twitter image
+                        if not image_url:
+                            tw_img = soup.find("meta", name="twitter:image")
+                            if tw_img and tw_img.get("content"):
+                                image_url = tw_img.get("content")
+                        # Look for first large image if still nothing
+                        if not image_url:
+                            # This is a bit risky but can work as a last resort
+                            for img in soup.find_all("img"):
+                                src = img.get("src")
+                                if src and src.startswith("http") and not any(x in src.lower() for x in ["icon", "logo", "avatar", "ads"]):
+                                    image_url = src
+                                    break
+                except Exception as e:
+                    print(f"Error fetching article page for image: {e}")
+
             articles.append(
                 {
                     "title": entry.title,
@@ -53,6 +91,8 @@ def fetch_dental_news():
                         entry.get("summary", entry.get("description", ""))
                     ),
                     "image": image_url,
+                    "source": feed.feed.get("title", "Dental Journal"),
+                    "date": time.strftime("%b %d, %Y", entry.published_parsed) if entry.get("published_parsed") else entry.get("published", "Recently"),
                 }
             )
     return articles
