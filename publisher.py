@@ -6,9 +6,9 @@ import markdown
 
 # Environment-aware paths
 # Defaults to local structure, but can be overridden in GitHub Actions
-BASE_DIR = os.getenv("WEBSITE_PATH", os.path.expanduser("~/Gemini/dentplant"))
-OUTPUT_DIR = os.path.join(BASE_DIR, "article")
-WEBSITE_DATA_PATH = os.path.join(BASE_DIR, "data", "posts.json")
+BASE_DIR = os.getenv("WEBSITE_PATH", os.path.expanduser("~/Gemini/dentpant-new"))
+OUTPUT_DIR = os.environ.get("OUTPUT_DIR", os.path.join(BASE_DIR, "article"))
+WEBSITE_DATA_PATH = os.environ.get("WEBSITE_DATA_PATH", os.path.join(BASE_DIR, "data", "posts.json"))
 
 def clean_field(text):
     if not text: return ""
