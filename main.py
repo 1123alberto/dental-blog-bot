@@ -27,7 +27,7 @@ def main():
     print("[2] Generating blog post with AI...")
     blog_markdown = generate_blog_post(news_data, practice_name="Dentplant")
 
-    if blog_markdown.startswith("Error:"):
+    if blog_markdown.startswith("Error"):
         print(blog_markdown)
         return
 
