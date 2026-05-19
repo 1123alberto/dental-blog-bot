@@ -346,12 +346,19 @@ If no high-quality relevant image is available, return an empty IMAGE_URL rather
 """
 
 
-def generate_blog_post(news_data, practice_name="Our Dental Practice"):
+def generate_blog_post(news_data, practice_name="Our Dental Practice", recent_posts=None):
     api_key = os.getenv("GOOGLE_API_KEY")
     if not api_key:
         return "Error: GOOGLE_API_KEY not found in .env"
 
     client = genai.Client(api_key=api_key)
+
+    history_context = ""
+    if recent_posts:
+        history_context = "\n**Recently Published Articles (Do NOT duplicate these topics, core concepts, or themes):**\n"
+        for post in recent_posts:
+            history_context += f"- {post}\n"
+        history_context += "\nBefore selecting an article, check the list of recently published articles above. Ensure you select a topic that is significantly different from these to maintain editorial diversity.\n"
 
     prompt = f"""
 {SYSTEM_PROMPT}
@@ -359,7 +366,7 @@ def generate_blog_post(news_data, practice_name="Our Dental Practice"):
 **Input:**
 I will provide the weekly data below. Please generate this week's blog post based on these instructions.
 The practice name is: {practice_name}
-
+{history_context}
 <weekly_journal_data>
 {news_data}
 </weekly_journal_data>

@@ -6,10 +6,12 @@ from bs4 import BeautifulSoup
 
 FEEDS = [
     "https://www.dentistrytoday.com/feed/",
-    "https://bmcoralhealth.biomedcentral.com/articles/most-recent/rss.xml",
-    "https://www.dentistryiq.com/rss",
     "https://www.dental-tribune.com/news/feed/",
     "https://www.beckersdental.com/feed/",
+    "https://newdentistblog.ada.org/feed",
+    "https://www.dentalhealth.org/Handlers/Rss.ashx?ID=2074",
+    "https://onlinelibrary.wiley.com/feed/1600051x/most-recent",
+    "https://onlinelibrary.wiley.com/feed/16000501/most-recent",
 ]
 
 
