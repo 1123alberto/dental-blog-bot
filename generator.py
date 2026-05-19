@@ -286,9 +286,9 @@ IMAGE PRIORITY ORDER:
    * Scientific imagery
    * Authentic healthcare environments
 
-3. Avoid:
+3. Avoid (unless absolutely necessary as a worst-case fallback to avoid publishing without an image):
 
-   * AI-generated artwork
+   * AI-generated artwork (unless relative to the story and used as a last resort)
    * Cartoon-style illustrations
    * Unrealistic smiling stock models
    * Generic tooth icons
@@ -308,9 +308,8 @@ IMAGE PRIORITY ORDER:
 
 6. If the article image appears AI-generated, synthetic, overly polished, or unrelated to the topic:
 
-   * Reject it
-   * Select another image
-   * Or leave IMAGE_URL blank rather than using a poor-quality image
+   * Try to select another higher-quality authentic image first.
+   * If no other image exists, you may use it as a fallback if it is relative to the story, rather than leaving IMAGE_URL blank.
 
 7. Before selecting an image:
 
@@ -332,17 +331,16 @@ Examples:
 
    * exaggerated cosmetic smiles,
    * unrealistic anatomy,
-   * visibly AI-generated faces or teeth,
+   * visibly AI-generated faces or teeth (unless used as a worst-case last-resort fallback),
    * distorted hands or instruments,
    * fantasy-style rendering,
    * or heavily manipulated visuals.
 
 10. If no suitable authentic image exists:
 
-* Prefer no image over a low-quality or misleading image.
+* As a worst-case scenario, to avoid publishing without an image, you may use an AI-generated or stock image from the feeds that is relative to the story, instead of leaving it blank.
 
-The quality and authenticity of the featured image is equally important as the article text.
-If no high-quality relevant image is available, return an empty IMAGE_URL rather than selecting a weak or repetitive image.
+The quality of the featured image is important, but to ensure all posts look professional and complete, we must avoid publishing articles without images. If no premium authentic image is available, choose a relative-to-the-story AI-generated or stock image from the source feeds as a last-resort fallback instead of returning an empty IMAGE_URL.
 """
 
 
