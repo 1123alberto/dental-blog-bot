@@ -286,9 +286,11 @@ IMAGE PRIORITY ORDER:
    * Scientific imagery
    * Authentic healthcare environments
 
-3. Avoid (unless absolutely necessary as a worst-case fallback to avoid publishing without an image):
 
+3. Avoid (unless absolutely necessary as a worst-case fallback to avoid publishing without an image):
    * AI-generated artwork (unless relative to the story and used as a last resort)
+
+4. Avoid:
    * Cartoon-style illustrations
    * Unrealistic smiling stock models
    * Generic tooth icons
@@ -297,27 +299,27 @@ IMAGE PRIORITY ORDER:
    * Watermarked images
    * Duplicate or recently used images
 
-4. NEVER reuse the same image in consecutive posts unless the article is part of the same ongoing story.
+5. NEVER reuse the same image in consecutive posts unless the article is part of the same ongoing story.
 
-5. If multiple image options exist:
+6. If multiple image options exist:
 
    * Prefer the image most directly connected to the study or clinical topic
    * Prefer images from the original publisher
    * Prefer landscape-oriented professional images
    * Prefer medically realistic imagery over marketing-style visuals
 
-6. If the article image appears AI-generated, synthetic, overly polished, or unrelated to the topic:
+7. If the article image appears AI-generated, synthetic, overly polished, or unrelated to the topic:
 
    * Try to select another higher-quality authentic image first.
    * If no other image exists, you may use it as a fallback if it is relative to the story, rather than leaving IMAGE_URL blank.
 
-7. Before selecting an image:
+8. Before selecting an image:
 
    * Compare it against recently used images
    * Avoid visual repetition
    * Avoid using identical stock imagery across multiple posts
 
-8. The image must visually match the article topic.
+9. The image must visually match the article topic.
 
 Examples:
 
