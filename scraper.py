@@ -8,7 +8,6 @@ FEEDS = [
     "https://www.dentistrytoday.com/feed/",
     "https://bmcoralhealth.biomedcentral.com/articles/most-recent/rss.xml",
     "https://www.dentistryiq.com/rss",
-    "https://www.sciencedaily.com/rss/health_medicine/dentistry.xml",
     "https://www.dental-tribune.com/news/feed/",
     "https://www.beckersdental.com/feed/",
 ]
