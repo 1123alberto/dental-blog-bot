@@ -6,24 +6,14 @@ from scraper import fetch_dental_news
 
 
 def main():
-    print("[1] Fetching latest dental journal news...")
+    print("[1] Fetching latest dental journal news & extracting article text...")
     news_items = fetch_dental_news()
 
     if not news_items:
         print("No news found. Exiting.")
         return
 
-    # Combine news for the AI, including image URLs for selection
-    news_data = ""
-    for i, item in enumerate(news_items):
-        news_data += (
-            f"--- Article {i} ---\n"
-            f"Title: {item['title']}\n"
-            f"Source: {item['source']}\n"
-            f"Date: {item['date']}\n"
-            f"Summary: {item['summary']}\n"
-            f"ImageURL: {item['image']}\n\n"
-        )
+    print(f"Fetched {len(news_items)} total entries from dental feeds.")
 
     # Load publication history to prevent duplicate topics
     recent_titles = []
@@ -44,8 +34,8 @@ def main():
     else:
         print(f"No publication history found at {WEBSITE_DATA_PATH}. Topic avoidance is disabled.")
 
-    print("[2] Generating blog post with AI...")
-    blog_markdown = generate_blog_post(news_data, practice_name="Dentplant", recent_posts=recent_titles)
+    print("[2] Running the 10-stage article generation pipeline...")
+    blog_markdown = generate_blog_post(news_items, practice_name="Dentplant", recent_posts=recent_titles)
 
     if blog_markdown.startswith("Error"):
         print(blog_markdown)
@@ -57,12 +47,12 @@ def main():
     if file_path:
         filename = os.path.basename(file_path)
         print(f"\n" + "="*50)
-        print(f"🚀 SUCCESS!")
-        print(f"📄 Post: {filename}")
-        print(f"📍 Path: {file_path}")
+        print(f"SUCCESS!")
+        print(f"Post: {filename}")
+        print(f"Path: {file_path}")
         print("="*50 + "\n")
     else:
-        print("❌ Failed to publish blog post.")
+        print("Failed to publish blog post.")
 
 
 if __name__ == "__main__":
