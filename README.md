@@ -4,23 +4,40 @@ An automated tool that scrapes dental journals and uses AI to generate patient-f
 
 ## 📂 Project Structure
 
-- `main.py`: The entry point. Run this to start the scraping and generation process.
-- `scraper.py`: Fetches the latest articles from dental feeds.
-- `generator.py`: Uses Gemini AI (`gemini-flash-latest`) to draft the blog post.
-- `publisher.py`: Formats the content into a bilingual HTML template and updates the posts index.
+- `main.py`: The entry point. Orchestrates the 10-stage pipeline.
+- `scraper.py`: Fetches and extracts full text from the latest dental journals and RSS feeds.
+- `generator.py`: The "brain" of the bot. Contains the deduplication, scoring, and writing logic using Gemini AI.
+- `publisher.py`: Handles formatting, local backups, and updating the website's posts database.
 - `.github/workflows/weekly_blog.yml`: GitHub Actions workflow for automated weekly execution.
-- `output/`: Folder where a backup copy of new blog posts is saved locally.
+- `output/`: Folder where a backup copy of every generated blog post is saved.
+
+---
+
+## 🧠 The 10-Stage Pipeline
+
+The bot now follows a sophisticated editorial process to ensure high-quality content:
+
+1.  **Fetching**: Aggregates news from multiple high-authority dental feeds.
+2.  **Extraction**: Pulls full article text and identifies the best available images.
+3.  **Deduplication**: Uses Jaccard similarity to group and filter out redundant stories.
+4.  **Scoring**: AI evaluates articles on clinical relevance, credibility, and educational value.
+5.  **Classification**: Automatically categorizes articles (e.g., Implantology, Periodontology, Digital Dentistry).
+6.  **Image Validation**: Ranks images, prioritizing clinical/authentic visuals over stock/AI fallbacks.
+7.  **History Filtering**: Checks against recently published articles to avoid repetitive topics.
+8.  **Candidate Selection**: Filters down to the Top 3 highest-quality candidates.
+9.  **Editorial Decision**: Gemini acts as "Editor-in-Chief" to select the single best story for the week.
+10. **Bilingual Generation**: Drafts a professional, patient-friendly post in both **English and Greek**.
 
 ---
 
 ## ⚙️ Configuration & Environment Variables
 
-The bot uses the following environment variables (which can be defined in a local `.env` file):
+The bot uses the following environment variables (defined in a `.env` file):
 
 | Environment Variable | Description | Default Value |
 | :--- | :--- | :--- |
 | `GOOGLE_API_KEY` | **[Required]** Your Google Gemini API key. | None |
-| `WEBSITE_PATH` | Path to the website repository root. | `~/Gemini/dentpant-new` |
+| `WEBSITE_PATH` | Path to the website repository root. | `website` (in CI) |
 | `OUTPUT_DIR` | Directory where individual HTML blog posts will be saved. | `WEBSITE_PATH/article` |
 | `WEBSITE_DATA_PATH` | Path to the website's posts database JSON file. | `WEBSITE_PATH/data/posts.json` |
 
@@ -35,22 +52,26 @@ The bot uses the following environment variables (which can be defined in a loca
    ```
 
 2. **Configure Environment**:
-   Copy `.env.example` to `.env` and fill in your Gemini API key:
-   ```env
-   GOOGLE_API_KEY=your_gemini_api_key_here
-   ```
+   Copy `.env.example` to `.env` and fill in your Gemini API key.
 
 3. **Run the Bot**:
    ```bash
    python main.py
    ```
-   *Note: If `WEBSITE_PATH` is configured and points to your local website repository, the post will be directly generated in your website's folder, and its database JSON will be updated.*
+   *Note: The bot will automatically check your local `posts.json` (if configured) to ensure it doesn't repeat recent topics.*
 
 ---
 
 ## 📅 Automatic Scheduling (GitHub Actions)
 
-The bot runs automatically every Monday at 9:00 AM (Greece time) via GitHub Actions. It is configured to run from this repository, pull the website repository (`1123alberto/dentplant-new`), write the newly generated post, and push the updates back.
+The bot runs automatically every **Monday at 9:00 AM (Greece time)**. 
+
+### Automated Workflow:
+1.  Checks out this repository.
+2.  Clones the website repository (`1123alberto/dentplant-new`).
+3.  Runs the 10-stage pipeline to generate a new post.
+4.  Updates the website's database and saves the new article.
+5.  Pushes the changes back to the website repository.
 
 ### Setup Instructions on GitHub:
 
@@ -69,5 +90,6 @@ The bot runs automatically every Monday at 9:00 AM (Greece time) via GitHub Acti
 
 ## ⚠️ Troubleshooting
 
-- **API Errors**: Verify that your `GOOGLE_API_KEY` is correct and has not expired.
+- **API Errors**: Verify that your `GOOGLE_API_KEY` is correct. The bot includes multi-model fallback to improve reliability.
 - **Git Push/Authentication Errors**: Ensure the `WEBSITE_PUSH_PAT` secret is configured correctly with write access to `1123alberto/dentplant-new`.
+- **Empty Publishes**: The pipeline includes error detection to prevent empty files from being pushed if the AI generation fails.
