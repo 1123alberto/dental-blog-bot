@@ -137,31 +137,64 @@ def publish_blog_post(markdown_content):
 
     try:
         if not os.path.exists(OUTPUT_DIR): os.makedirs(OUTPUT_DIR)
-        with open(file_path, "w") as f: f.write(html_card)
+        with open(file_path, "w", encoding="utf-8") as f: f.write(html_card)
 
         # REDUNDANCY: Also save a copy in the local bot folder
         local_output = os.path.join(os.path.dirname(__file__), "output")
         if not os.path.exists(local_output): os.makedirs(local_output)
         local_file_path = os.path.join(local_output, file_name)
-        with open(local_file_path, "w") as f: f.write(html_card)
+        with open(local_file_path, "w", encoding="utf-8") as f: f.write(html_card)
 
-        # Update Website posts.json
+        # Update Website posts.json and local posts_backup.json
+        posts = []
+        has_website_data = False
         if os.path.exists(WEBSITE_DATA_PATH):
-            with open(WEBSITE_DATA_PATH, "r") as f:
-                posts = json.load(f)
-            
-            new_post = {
-                "id": datetime.now().timestamp(),
-                "date": data["date"],
-                "source": data["source"],
-                "image": data["image_url"],
-                "url": f"article/{file_name}", # Path relative to blog.html
-                "en": data["en"],
-                "el": data["el"]
-            }
-            posts.insert(0, new_post) # Newest first
-            with open(WEBSITE_DATA_PATH, "w") as f:
+            try:
+                with open(WEBSITE_DATA_PATH, "r", encoding="utf-8") as f:
+                    posts = json.load(f)
+                has_website_data = True
+            except Exception as e:
+                print(f"Warning: Could not read website posts.json: {e}")
+
+        # If we couldn't load website data, try loading local backup
+        if not has_website_data:
+            local_posts_backup = os.path.join(local_output, "posts_backup.json")
+            if os.path.exists(local_posts_backup):
+                try:
+                    with open(local_posts_backup, "r", encoding="utf-8") as f:
+                        posts = json.load(f)
+                except Exception as e:
+                    print(f"Warning: Could not read local posts_backup.json: {e}")
+
+        # Construct new post entry
+        new_post = {
+            "id": datetime.now().timestamp(),
+            "date": data["date"],
+            "source": data["source"],
+            "image": data["image_url"],
+            "url": f"article/{file_name}", # Path relative to blog.html
+            "en": data["en"],
+            "el": data["el"]
+        }
+        
+        # Insert new post at the beginning
+        posts.insert(0, new_post)
+
+        # Save back to WEBSITE_DATA_PATH if it was loaded from there
+        if has_website_data:
+            try:
+                with open(WEBSITE_DATA_PATH, "w", encoding="utf-8") as f:
+                    json.dump(posts, f, indent=2, ensure_ascii=False)
+            except Exception as e:
+                print(f"Error saving website posts.json: {e}")
+
+        # Always save a copy in the local output folder as posts_backup.json
+        local_posts_backup = os.path.join(local_output, "posts_backup.json")
+        try:
+            with open(local_posts_backup, "w", encoding="utf-8") as f:
                 json.dump(posts, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            print(f"Error saving local posts_backup.json: {e}")
 
         print(f"Bilingual post published to: {file_path}")
         return file_path

@@ -29,7 +29,7 @@ def main():
     recent_titles = []
     if os.path.exists(WEBSITE_DATA_PATH):
         try:
-            with open(WEBSITE_DATA_PATH, "r") as f:
+            with open(WEBSITE_DATA_PATH, "r", encoding="utf-8") as f:
                 posts = json.load(f)
                 # Extract titles of the last 10 published posts
                 for post in posts[:10]:
