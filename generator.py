@@ -349,7 +349,7 @@ The quality of the featured image is important, but to ensure all posts look pro
 
 
 def generate_content_with_fallback(client, prompt, config=None, initial_model="gemini-2.5-flash"):
-    models = [initial_model, "gemini-2.5-flash", "gemini-1.5-flash", "gemini-flash-latest"]
+    models = [initial_model, "gemini-2.5-flash", "gemini-2.0-flash", "gemini-flash-latest"]
     unique_models = []
     for m in models:
         if m not in unique_models:
