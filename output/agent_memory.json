@@ -1,0 +1,94 @@
+{
+  "lessons": [
+    {
+      "category": "copywriting",
+      "error": "Missing required marker: [EL_CONTENT]:",
+      "rule": "Do not repeat error: Missing required marker: [EL_CONTENT]:. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:53.083091"
+    },
+    {
+      "category": "copywriting",
+      "error": "Missing required marker: [EL_TEASER]:",
+      "rule": "Do not repeat error: Missing required marker: [EL_TEASER]:. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:53.082660"
+    },
+    {
+      "category": "copywriting",
+      "error": "Missing required marker: [EL_TITLE]:",
+      "rule": "Do not repeat error: Missing required marker: [EL_TITLE]:. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:53.082214"
+    },
+    {
+      "category": "copywriting",
+      "error": "Missing required marker: [EN_CONTENT]:",
+      "rule": "Do not repeat error: Missing required marker: [EN_CONTENT]:. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:53.081801"
+    },
+    {
+      "category": "copywriting",
+      "error": "Missing required marker: [EN_TEASER]:",
+      "rule": "Do not repeat error: Missing required marker: [EN_TEASER]:. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:53.081375"
+    },
+    {
+      "category": "copywriting",
+      "error": "Missing required marker: [EN_TITLE]:",
+      "rule": "Do not repeat error: Missing required marker: [EN_TITLE]:. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:53.080984"
+    },
+    {
+      "category": "copywriting",
+      "error": "Missing required marker: [IMAGE_URL]:",
+      "rule": "Do not repeat error: Missing required marker: [IMAGE_URL]:. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:53.080597"
+    },
+    {
+      "category": "copywriting",
+      "error": "Missing required marker: [DATE]:",
+      "rule": "Do not repeat error: Missing required marker: [DATE]:. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:53.080192"
+    },
+    {
+      "category": "copywriting",
+      "error": "Missing required marker: [SOURCE]:",
+      "rule": "Do not repeat error: Missing required marker: [SOURCE]:. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:53.079786"
+    },
+    {
+      "category": "copywriting",
+      "error": "Greek content word count is outside 300-500 words limit (current: 600).",
+      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 600).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:53.069965"
+    },
+    {
+      "category": "copywriting",
+      "error": "English content word count is outside 300-500 words limit (current: 520).",
+      "rule": "Do not repeat error: English content word count is outside 300-500 words limit (current: 520).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:53.069299"
+    },
+    {
+      "category": "copywriting",
+      "error": "Greek content word count is outside 300-500 words limit (current: 12).",
+      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 12).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:26.637518"
+    },
+    {
+      "category": "copywriting",
+      "error": "English content word count is outside 300-500 words limit (current: 2).",
+      "rule": "Do not repeat error: English content word count is outside 300-500 words limit (current: 2).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:26.634984"
+    },
+    {
+      "category": "copywriting",
+      "error": "Greek content does not mention the practice name 'Dentplant'.",
+      "rule": "Do not repeat error: Greek content does not mention the practice name 'Dentplant'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:26.633977"
+    },
+    {
+      "category": "copywriting",
+      "error": "English content does not mention the practice name 'Dentplant'.",
+      "rule": "Do not repeat error: English content does not mention the practice name 'Dentplant'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-05-23T01:29:26.623913"
+    }
+  ]
+}

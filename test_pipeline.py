@@ -179,13 +179,25 @@ class TestDentalBlogPipeline(unittest.TestCase):
         mock_selection_resp = MagicMock()
         mock_selection_resp.text = '{"selected_index": 0, "rationale": "High clinical value"}'
         
-        mock_writing_resp = MagicMock()
-        mock_writing_resp.text = "[SOURCE]: Journal of Clinical Periodontology\n[DATE]: May 20, 2026\n--- ENGLISH VERSION ---"
+        # Long English text to pass the 300-word constraint
+        en_content = " ".join(["Dentplant is committed to modern dentistry. Here is some clinical text about implants."] * 30)
+        mock_writing_en_resp = MagicMock()
+        mock_writing_en_resp.text = f"TITLE: Innovative Dental Implants\nTEASER: Engaging lines about dental implants.\nCONTENT:\n{en_content}"
+        
+        # Long Greek text to pass the 300-word constraint
+        el_content = " ".join(["Το Dentplant προσφέρει υπηρεσίες υψηλής ποιότητας. Εδώ είναι ένα κείμενο στα ελληνικά για τα εμφυτεύματα."] * 25)
+        mock_writing_el_resp = MagicMock()
+        mock_writing_el_resp.text = f"TITLE: Καινοτόμα Οδοντικά Εμφυτεύματα\nTEASER: Ενημερωτικές γραμμές για τα εμφυτεύματα.\nCONTENT:\n{el_content}"
+        
+        mock_qa_resp = MagicMock()
+        mock_qa_resp.text = '{"is_valid": true, "errors": []}'
         
         mock_client.models.generate_content.side_effect = [
             mock_scoring_resp,
             mock_selection_resp,
-            mock_writing_resp
+            mock_writing_en_resp,
+            mock_writing_el_resp,
+            mock_qa_resp
         ]
         
         with patch.dict('os.environ', {'GOOGLE_API_KEY': 'mock_key'}):
@@ -196,7 +208,9 @@ class TestDentalBlogPipeline(unittest.TestCase):
             )
             
             self.assertIn("--- ENGLISH VERSION ---", result)
-            self.assertEqual(mock_client.models.generate_content.call_count, 3)
+            self.assertIn("--- GREEK VERSION ---", result)
+            self.assertIn("Dentplant", result)
+            self.assertEqual(mock_client.models.generate_content.call_count, 5)
 
 if __name__ == "__main__":
     unittest.main()
