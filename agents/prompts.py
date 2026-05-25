@@ -46,6 +46,7 @@ Before generating content:
    * Weak scientific evidence
    * Celebrity-focused content
    * Low-value product announcements
+   * **US-Centric Content:** Avoid topics specifically related to US medical insurance (Medicaid/Medicare), US-specific legislature/litigation, or US professional associations (e.g., ADA-specific administrative news) unless the clinical content is universally applicable. Prioritize European or international context.
 
 6. Prioritize topics related to:
 

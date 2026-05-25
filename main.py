@@ -1,5 +1,6 @@
 import os
 import json
+import sys
 from generator import generate_blog_post
 from publisher import publish_blog_post, WEBSITE_DATA_PATH
 from scraper import fetch_dental_news
@@ -38,8 +39,8 @@ def main():
     blog_markdown = generate_blog_post(news_items, practice_name="Dentplant", recent_posts=recent_titles)
 
     if blog_markdown.startswith("Error"):
-        print(blog_markdown)
-        return
+        print(f"CRITICAL ERROR: {blog_markdown}")
+        sys.exit(1)
 
     print(f"[3] Publishing to output folder...")
     file_path = publish_blog_post(blog_markdown)
@@ -53,7 +54,9 @@ def main():
         print("="*50 + "\n")
     else:
         print("Failed to publish blog post.")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
     main()
+

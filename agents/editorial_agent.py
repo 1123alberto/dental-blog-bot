@@ -131,6 +131,7 @@ def heuristic_score_and_classify(articles):
 
         is_promo = any(k in title or k in summary for k in ["acquires", "merger", "market size", "quarterly", "revenue", "agreement with", "partnership"])
         is_low = any(k in title or k in summary for k in ["celebrity", "shocking", "insane", "magic"])
+        is_us = any(k in title or k in summary for k in ["medicaid", "medicare", "epa", "florida", "new york", "california", "congress", "senate", "ada proposes"])
 
         art["category"] = category
         art["scores"] = {
@@ -143,6 +144,7 @@ def heuristic_score_and_classify(articles):
         }
         art["is_promotional"] = is_promo
         art["is_low_quality"] = is_low
+        art["is_us_centric"] = is_us
         art["scoring_reasoning"] = "Heuristically calculated"
 
     return articles
@@ -230,6 +232,8 @@ def get_top_3_candidates(articles):
             penalty += 30
         if art.get("is_low_quality"):
             penalty += 25
+        if art.get("is_us_centric"):
+            penalty += 50
             
         final_score = pos_score + img_score - penalty
         art["final_score"] = final_score
@@ -280,7 +284,7 @@ class EditorialAgent(BaseAgent):
             return None
 
         # 5. Choose the absolute best candidate using Gemini
-        best_candidate = self.choose_best_candidate(top_3, memory)
+        best_candidate = self.choose_best_candidate(top_3, recent_posts, memory)
         return best_candidate
 
     def score_and_classify(self, articles):
@@ -328,8 +332,9 @@ For each article, you must:
    - public_interest
    - practical_patient_relevance
 3. Identify if it contains elements we want to avoid:
-   - is_promotional: true if it is a promotional press release, corporate/financial announcement, or low-value product advertisement.
-   - is_low_quality: true if it is sensationalist, has weak scientific evidence, or is low-value/celebrity news.
+   * is_promotional: true if it is a promotional press release, corporate/financial announcement, or low-value product advertisement.
+   * is_low_quality: true if it is sensationalist, has weak scientific evidence, or is low-value/celebrity news.
+   * is_us_centric: true if the topic is specifically about US insurance (Medicaid/Medicare), US litigation/EPA rulings, or US-specific administration that is not relevant to Europe.
 
 Return the response as a JSON array of objects.
 Example format:
@@ -345,9 +350,11 @@ Example format:
     "practical_patient_relevance": 8,
     "is_promotional": false,
     "is_low_quality": false,
+    "is_us_centric": false,
     "reasoning": "Brief explanation."
   }}
 ]
+
 
 Articles to evaluate:
 {json.dumps(articles_data, indent=2)}
@@ -375,6 +382,7 @@ Articles to evaluate:
                     }
                     art["is_promotional"] = bool(score_info.get("is_promotional", False))
                     art["is_low_quality"] = bool(score_info.get("is_low_quality", False))
+                    art["is_us_centric"] = bool(score_info.get("is_us_centric", False))
                     art["scoring_reasoning"] = score_info.get("reasoning", "")
                 else:
                     art.update(get_fallback_article_scores(art))
@@ -384,9 +392,10 @@ Articles to evaluate:
 
         return articles
 
-    def choose_best_candidate(self, top_3_articles, memory=None):
+    def choose_best_candidate(self, top_3_articles, recent_posts=None, memory=None):
         """
-        Presents the top 3 candidate articles and selects the absolute best, incorporating memory lessons.
+        Presents the top 3 candidate articles and selects the absolute best, incorporating memory lessons
+        and explicitly avoiding topics similar to recent publications.
         """
         if not top_3_articles:
             return None
@@ -411,6 +420,10 @@ Articles to evaluate:
             })
 
         lessons_block = memory.get_lessons_prompt_block() if memory else ""
+        
+        history_block = ""
+        if recent_posts:
+            history_block = "**Recently Published Topics (DO NOT REPEAT):**\n" + "\n".join([f"- {t}" for t in recent_posts])
 
         system_instruction = (
             "You are an expert Dental Editorial Director selecting the single best candidate for publication. "
@@ -423,8 +436,11 @@ Select the absolute BEST candidate for publication on our premium practice blog,
 
 {lessons_block}
 
+{history_block}
+
 Considerations:
 - Clinical relevance, evidence strength, patient interest.
+- **TOPIC DIVERSITY:** Do not select a candidate that is substantially similar to the recently published topics listed above.
 - High-quality image availability (prefer clinical/authentic images over stock or none).
 - Rationale of why this candidate is selected over the other two.
 
@@ -434,7 +450,7 @@ Candidates:
 Output your decision as a JSON object:
 {{
   "selected_index": <0, 1, or 2>,
-  "rationale": "Detail here why this article was selected over the other two candidates."
+  "rationale": "Detail here why this article was selected over the other two candidates, explicitly mentioning how it differs from recent history."
 }}
 """
         try:
