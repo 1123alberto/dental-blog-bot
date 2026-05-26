@@ -81,6 +81,76 @@ def get_iso_date(date_str):
         except Exception:
             return datetime.now().strftime("%Y-%m-%d")
 
+def update_static_blog_html(posts):
+    blog_html_path = os.path.join(BASE_DIR, "blog.html")
+    if not os.path.exists(blog_html_path):
+        print(f"Warning: blog.html not found at {blog_html_path}. Cannot update static cards.")
+        return False
+
+    recent_posts = posts[:12]
+    cards_html = ["\n      <!-- STATIC_BLOG_POSTS_START -->"]
+    for i, post in enumerate(recent_posts, 1):
+        date_str = post.get("date", "")
+        img_src = post.get("image", "")
+        url_path = post.get("url", "")
+        
+        el_title = post.get("el", {}).get("title", "")
+        el_teaser = post.get("el", {}).get("teaser", "")
+        en_title = post.get("en", {}).get("title", "")
+        en_teaser = post.get("en", {}).get("teaser", "")
+        
+        card = f"""
+      <!-- Article {i} -->
+      <article class="blog-card tactile-card bg-white overflow-hidden flex flex-col transition-all duration-300">
+        <div class="relative h-56 overflow-hidden bg-white/20 p-2">
+          <img src="{img_src}" alt="{en_title or 'Blog Image'}" class="w-full h-full object-cover rounded-md shadow-inner transition-transform duration-500 hover:scale-105" loading="lazy">
+        </div>
+        <div class="p-6 flex flex-col flex-grow">
+          <div class="text-[10px] text-teal-800/60 font-semibold mb-2 uppercase tracking-widest">{date_str}</div>
+          <h2 class="text-lg font-serif font-bold text-teal-950 mb-3 line-clamp-2 leading-tight hover:text-teal-600 transition-colors">
+            <a href="{url_path}" class="lang-el">{el_title}</a>
+            <a href="{url_path}" class="lang-en">{en_title}</a>
+          </h2>
+          <p class="text-xs text-soft-text leading-relaxed line-clamp-3 flex-grow lang-el">{el_teaser}</p>
+          <p class="text-xs text-soft-text leading-relaxed line-clamp-3 flex-grow lang-en">{en_teaser}</p>
+          <a href="{url_path}" class="mt-4 inline-flex items-center text-[10px] font-bold text-teal-600 uppercase tracking-widest group hover:text-teal-500 transition-colors lang-el">
+            ΔΙΑΒΑΣΤΕ ΠΕΡΙΣΣΟΤΕΡΑ
+            <svg class="ml-1 w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+          <a href="{url_path}" class="mt-4 inline-flex items-center text-[10px] font-bold text-teal-600 uppercase tracking-widest group hover:text-teal-500 transition-colors lang-en">
+            READ MORE
+            <svg class="ml-1 w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+        </div>
+      </article>"""
+        cards_html.append(card)
+        
+    cards_html.append("      <!-- STATIC_BLOG_POSTS_END -->\n    ")
+    generated_block = "\n".join(cards_html)
+
+    try:
+        with open(blog_html_path, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        pattern = r"<!-- STATIC_BLOG_POSTS_START -->.*?<!-- STATIC_BLOG_POSTS_END -->"
+        if not re.search(pattern, content, re.DOTALL):
+            print("Warning: Could not find STATIC_BLOG_POSTS comments in blog.html. Skipping static updates.")
+            return False
+
+        updated_content = re.sub(pattern, generated_block, content, flags=re.DOTALL)
+        with open(blog_html_path, "w", encoding="utf-8") as f:
+            f.write(updated_content)
+
+        print(f"Successfully updated static cards in {blog_html_path}")
+        return True
+    except Exception as e:
+        print(f"Error updating static blog cards in blog.html: {e}")
+        return False
+
 def publish_blog_post(markdown_content):
     data = parse_bilingual_content(markdown_content)
     
@@ -328,6 +398,9 @@ def publish_blog_post(markdown_content):
                 json.dump(posts, f, indent=2, ensure_ascii=False)
         except Exception as e:
             print(f"Error saving local posts_backup.json: {e}")
+
+        # Update static blog cards in blog.html
+        update_static_blog_html(posts)
 
         print(f"Bilingual post published to: {file_path}")
         return file_path
