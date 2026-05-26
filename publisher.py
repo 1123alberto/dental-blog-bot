@@ -257,11 +257,11 @@ def publish_blog_post(markdown_content):
         function toggleLang() {{
             const html = document.documentElement;
             html.lang = html.lang === 'el' ? 'en' : 'el';
-            localStorage.setItem('lang', html.lang);
+            sessionStorage.setItem('lang', html.lang);
             document.title = titles[html.lang];
         }}
         // Apply saved language
-        const savedLang = localStorage.getItem('lang') || 'el';
+        const savedLang = sessionStorage.getItem('lang') || 'el';
         document.documentElement.lang = savedLang;
         document.title = titles[savedLang];
     </script>
