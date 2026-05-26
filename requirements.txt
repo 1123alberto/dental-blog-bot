@@ -4,3 +4,4 @@ feedparser
 markdown
 requests
 beautifulsoup4
+Pillow

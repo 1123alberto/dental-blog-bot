@@ -56,6 +56,31 @@ def parse_bilingual_content(markdown_content):
 
     return data
 
+def slugify(text):
+    if not text: return ""
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9]+', '_', text)
+    return text.strip('_')
+
+def escape_js_quotes(text):
+    if not text: return ""
+    return text.replace('"', '\\"').replace("'", "\\'")
+
+def escape_html_attr(text):
+    if not text: return ""
+    return text.replace('"', '&quot;')
+
+def get_iso_date(date_str):
+    try:
+        dt = datetime.strptime(date_str, "%B %d, %Y")
+        return dt.strftime("%Y-%m-%d")
+    except Exception:
+        try:
+            dt = datetime.strptime(date_str, "%Y-%m-%d")
+            return dt.strftime("%Y-%m-%d")
+        except Exception:
+            return datetime.now().strftime("%Y-%m-%d")
+
 def publish_blog_post(markdown_content):
     data = parse_bilingual_content(markdown_content)
     
@@ -71,9 +96,70 @@ def publish_blog_post(markdown_content):
         file_name = f"{base_name}-{counter}.html"
         file_path = os.path.join(OUTPUT_DIR, file_name)
 
-    # Use selected image or fallback
-    image_html = f'<img src="{data["image_url"]}" alt="Dental News" class="w-full h-full object-cover">' if data["image_url"] else \
-                 '<div class="h-full w-full bg-gradient-to-r from-cyan-500 to-blue-600"></div>'
+    # Localize and optimize external images
+    json_image_path = ""
+    html_image_path = ""
+    if data["image_url"]:
+        if data["image_url"].startswith(("http://", "https://")):
+            try:
+                import urllib.request
+                from PIL import Image
+                import io
+                
+                title_slug = slugify(data["en"]["title"]) if data["en"]["title"] else "blog_image"
+                if not title_slug:
+                    title_slug = "blog_image"
+                    
+                img_filename = f"{title_slug}.webp"
+                target_img_dir = os.path.join(BASE_DIR, "images", "blog")
+                os.makedirs(target_img_dir, exist_ok=True)
+                
+                target_img_path = os.path.join(target_img_dir, img_filename)
+                img_counter = 0
+                base_img_name = title_slug
+                while os.path.exists(target_img_path):
+                    img_counter += 1
+                    img_filename = f"{base_img_name}_{img_counter}.webp"
+                    target_img_path = os.path.join(target_img_dir, img_filename)
+                    
+                print(f"Downloading external image: {data['image_url']}")
+                req = urllib.request.Request(data["image_url"], headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"})
+                with urllib.request.urlopen(req, timeout=15) as response:
+                    img_data = response.read()
+                    
+                img = Image.open(io.BytesIO(img_data))
+                if img.mode in ("RGBA", "P"):
+                    img = img.convert("RGB")
+                img.save(target_img_path, "WEBP", quality=85)
+                print(f"Successfully localized image: {target_img_path}")
+                
+                json_image_path = f"images/blog/{img_filename}"
+                html_image_path = f"../images/blog/{img_filename}"
+            except Exception as e:
+                print(f"Error localizing image: {e}")
+                json_image_path = data["image_url"]
+                html_image_path = data["image_url"]
+        else:
+            json_image_path = data["image_url"]
+            if json_image_path.startswith("images/"):
+                html_image_path = f"../{json_image_path}"
+            else:
+                html_image_path = json_image_path
+
+    # Construct image html
+    if html_image_path:
+        image_html = f'<img src="{html_image_path}" alt="Dental News" class="w-full h-full object-cover">'
+    else:
+        image_html = '<div class="h-full w-full bg-gradient-to-r from-cyan-500 to-blue-600"></div>'
+
+    # Get ISO date format for JSON-LD
+    iso_date = get_iso_date(data["date"])
+
+    # Prepare escaped fields for HTML and JS script attributes
+    el_title_esc = escape_js_quotes(data['el']['title'])
+    en_title_esc = escape_js_quotes(data['en']['title'])
+    el_teaser_attr = escape_html_attr(data['el']['teaser'])
+    en_teaser_attr = escape_html_attr(data['en']['teaser'])
 
     # Create Bilingual Standalone Page
     html_card = f"""<!DOCTYPE html>
@@ -82,8 +168,21 @@ def publish_blog_post(markdown_content):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{data['el']['title']} | {data['en']['title']}</title>
+    <meta name="description" content="{el_teaser_attr}">
+    <link rel="canonical" href="https://www.dentplant.gr/article/{file_name}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.dentplant.gr/article/{file_name}">
+    <meta property="og:title" content="{data['el']['title']} | {data['en']['title']}">
+    <meta property="og:description" content="{el_teaser_attr}">
+    {f'<meta property="og:image" content="https://www.dentplant.gr/{json_image_path}">' if json_image_path else ""}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.dentplant.gr/article/{file_name}">
+    <meta name="twitter:title" content="{data['el']['title']} | {data['en']['title']}">
+    <meta name="twitter:description" content="{el_teaser_attr}">
+    {f'<meta name="twitter:image" content="https://www.dentplant.gr/{json_image_path}">' if json_image_path else ""}
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/fonts.css">
     <style>
         body {{ font-family: 'Inter', sans-serif; background-color: #f3f4f6; }}
         [lang="en"] .lang-el, [lang="el"] .lang-en {{ display: none; }}
@@ -92,6 +191,34 @@ def publish_blog_post(markdown_content):
         .prose ul {{ list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; color: #4b5563; }}
         .prose li {{ margin-bottom: 0.25rem; }}
     </style>
+
+    <!-- JSON-LD Structured Data for Blog Article -->
+    <script type="application/ld+json">
+    {{
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{el_title_esc} | {en_title_esc}",
+      "description": "{el_teaser_attr}",
+      "image": "{f'https://www.dentplant.gr/{json_image_path}' if json_image_path else 'https://www.dentplant.gr/assets/images/logo.png'}",
+      "datePublished": "{iso_date}",
+      "author": {{
+        "@type": "Organization",
+        "name": "Dentplant"
+      }},
+      "publisher": {{
+        "@type": "Organization",
+        "name": "Dentplant",
+        "logo": {{
+          "@type": "ImageObject",
+          "url": "https://www.dentplant.gr/assets/images/logo.png"
+        }}
+      }},
+      "mainEntityOfPage": {{
+        "@type": "WebPage",
+        "@id": "https://www.dentplant.gr/article/{file_name}"
+      }}
+    }}
+    </script>
 </head>
 <body class="p-4 md:p-10 flex justify-center relative">
     <!-- Discreet Back Arrow -->
@@ -123,14 +250,20 @@ def publish_blog_post(markdown_content):
         </div>
     </div>
     <script>
+        const titles = {{
+            'el': "{el_title_esc} | Dentplant",
+            'en': "{en_title_esc} | Dentplant"
+        }};
         function toggleLang() {{
             const html = document.documentElement;
             html.lang = html.lang === 'el' ? 'en' : 'el';
             localStorage.setItem('lang', html.lang);
+            document.title = titles[html.lang];
         }}
         // Apply saved language
         const savedLang = localStorage.getItem('lang') || 'el';
         document.documentElement.lang = savedLang;
+        document.title = titles[savedLang];
     </script>
 </body>
 </html>"""
@@ -171,7 +304,7 @@ def publish_blog_post(markdown_content):
             "id": datetime.now().timestamp(),
             "date": data["date"],
             "source": data["source"],
-            "image": data["image_url"],
+            "image": json_image_path,
             "url": f"article/{file_name}", # Path relative to blog.html
             "en": data["en"],
             "el": data["el"]
