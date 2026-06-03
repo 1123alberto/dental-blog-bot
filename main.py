@@ -1,6 +1,13 @@
 import os
 import json
 import sys
+
+# Reconfigure stdout and stderr to support UTF-8 and handle encoding errors gracefully
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='backslashreplace')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8', errors='backslashreplace')
+
 from generator import generate_blog_post
 from publisher import publish_blog_post, WEBSITE_DATA_PATH
 from scraper import fetch_dental_news
