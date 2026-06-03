@@ -173,12 +173,24 @@ def create_google_post_assets(data, file_name, json_image_path):
             if json_image_path:
                 f.write(f"Localized: {json_image_path}\n")
 
-        # Copy localized image if available
+        # Copy and convert localized image to JPG if available
         if json_image_path and not json_image_path.startswith(("http://", "https://")):
-            absolute_img_path = os.path.join(BASE_DIR, json_image_path)
+            cleaned_img_path = json_image_path
+            if cleaned_img_path.startswith("../"):
+                cleaned_img_path = cleaned_img_path[3:]
+            absolute_img_path = os.path.join(BASE_DIR, cleaned_img_path)
             if os.path.exists(absolute_img_path):
-                shutil.copy2(absolute_img_path, os.path.join(google_post_dir, "photo.webp"))
-                print(f"Copied Google Post photo asset: {absolute_img_path} -> photo.webp")
+                try:
+                    from PIL import Image
+                    dest_path = os.path.join(google_post_dir, "photo.jpg")
+                    with Image.open(absolute_img_path) as img:
+                        if img.mode in ("RGBA", "LA", "P"):
+                            img = img.convert("RGB")
+                        img.save(dest_path, "JPEG", quality=90)
+                    print(f"Converted and saved Google Post photo asset: {absolute_img_path} -> photo.jpg")
+                except Exception as e:
+                    print(f"Error converting image to JPG: {e}. Falling back to copying original.")
+                    shutil.copy2(absolute_img_path, os.path.join(google_post_dir, "photo.jpg"))
 
         # 4. Generate teasers & hooks
         el_title = data.get("el", {}).get("title", "")

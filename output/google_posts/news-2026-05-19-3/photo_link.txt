@@ -1,2 +1,2 @@
-Original: 
-Localized: images/blog/vaping_oral_health.webp
+Original: ../images/blog/vaping_oral_health.webp
+Localized: ../images/blog/vaping_oral_health.webp

@@ -230,33 +230,51 @@ class TestDentalBlogPipeline(unittest.TestCase):
         }
         test_file_name = "test-news-file.html"
         
-        # Call the asset creator
-        google_post_dir = publisher.create_google_post_assets(test_data, test_file_name, None)
+        # Override BASE_DIR temporarily
+        import tempfile
+        from PIL import Image
+        temp_base_dir = tempfile.mkdtemp()
+        old_base_dir = publisher.BASE_DIR
+        publisher.BASE_DIR = temp_base_dir
         
-        # Verify the directory was created
-        self.assertIsNotNone(google_post_dir)
-        self.assertTrue(os.path.exists(google_post_dir))
-        
-        # Verify the expected files were created
-        self.assertTrue(os.path.exists(os.path.join(google_post_dir, "cta_url.txt")))
-        self.assertTrue(os.path.exists(os.path.join(google_post_dir, "photo_link.txt")))
-        self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_el.txt")))
-        self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_en.txt")))
-        self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_combined.txt")))
-        
-        # Check CTA URL content
-        with open(os.path.join(google_post_dir, "cta_url.txt"), "r", encoding="utf-8") as f:
-            self.assertEqual(f.read().strip(), "https://www.dentplant.gr/article/test-news-file.html")
+        google_post_dir = None
+        try:
+            # Create a test image
+            temp_img_path = os.path.join(temp_base_dir, "test_image.png")
+            img = Image.new("RGBA", (100, 100), color="blue")
+            img.save(temp_img_path)
             
-        # Check EL Post content
-        with open(os.path.join(google_post_dir, "post_content_el.txt"), "r", encoding="utf-8") as f:
-            el_content = f.read()
-            self.assertIn("📢 Greek Title Test", el_content)
-            self.assertIn("Greek Teaser Test", el_content)
-            self.assertIn("οδοντιατρική φροντίδα", el_content)
+            # Call the asset creator with the test image path
+            google_post_dir = publisher.create_google_post_assets(test_data, test_file_name, "test_image.png")
             
-        # Clean up created files
-        shutil.rmtree(google_post_dir)
+            # Verify the directory was created
+            self.assertIsNotNone(google_post_dir)
+            self.assertTrue(os.path.exists(google_post_dir))
+            
+            # Verify the expected files were created (including photo.jpg)
+            self.assertTrue(os.path.exists(os.path.join(google_post_dir, "cta_url.txt")))
+            self.assertTrue(os.path.exists(os.path.join(google_post_dir, "photo_link.txt")))
+            self.assertTrue(os.path.exists(os.path.join(google_post_dir, "photo.jpg")))
+            self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_el.txt")))
+            self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_en.txt")))
+            self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_combined.txt")))
+            
+            # Check CTA URL content
+            with open(os.path.join(google_post_dir, "cta_url.txt"), "r", encoding="utf-8") as f:
+                self.assertEqual(f.read().strip(), "https://www.dentplant.gr/article/test-news-file.html")
+                
+            # Check EL Post content
+            with open(os.path.join(google_post_dir, "post_content_el.txt"), "r", encoding="utf-8") as f:
+                el_content = f.read()
+                self.assertIn("📢 Greek Title Test", el_content)
+                self.assertIn("Greek Teaser Test", el_content)
+                self.assertIn("οδοντιατρική φροντίδα", el_content)
+        finally:
+            # Clean up created files
+            if google_post_dir and os.path.exists(google_post_dir):
+                shutil.rmtree(google_post_dir)
+            publisher.BASE_DIR = old_base_dir
+            shutil.rmtree(temp_base_dir)
 
 if __name__ == "__main__":
     unittest.main()
