@@ -25,7 +25,8 @@ class QAAgent(BaseAgent):
         
         for marker in required_markers:
             if not re.search(marker, markdown_content, re.IGNORECASE):
-                errors.append(f"Missing required marker: {marker.replace('\\', '')}")
+                clean_marker = marker.replace('\\', '')
+                errors.append(f"Missing required marker: {clean_marker}")
 
         if errors:
             # If markers are missing, we cannot parse sections for further analysis
