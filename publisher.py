@@ -151,6 +151,63 @@ def update_static_blog_html(posts):
         print(f"Error updating static blog cards in blog.html: {e}")
         return False
 
+def create_google_post_assets(data, file_name, json_image_path):
+    try:
+        import shutil
+        
+        # 1. Determine paths
+        slug = os.path.splitext(file_name)[0]
+        local_output = os.path.join(os.path.dirname(__file__), "output")
+        google_post_dir = os.path.join(local_output, "google_posts", slug)
+        os.makedirs(google_post_dir, exist_ok=True)
+
+        # 2. Save CTA URL
+        cta_url = f"https://www.dentplant.gr/article/{file_name}"
+        with open(os.path.join(google_post_dir, "cta_url.txt"), "w", encoding="utf-8") as f:
+            f.write(cta_url)
+
+        # 3. Save photo link and copy the image
+        img_url = data.get("image_url", "")
+        with open(os.path.join(google_post_dir, "photo_link.txt"), "w", encoding="utf-8") as f:
+            f.write(f"Original: {img_url}\n")
+            if json_image_path:
+                f.write(f"Localized: {json_image_path}\n")
+
+        # Copy localized image if available
+        if json_image_path and not json_image_path.startswith(("http://", "https://")):
+            absolute_img_path = os.path.join(BASE_DIR, json_image_path)
+            if os.path.exists(absolute_img_path):
+                shutil.copy2(absolute_img_path, os.path.join(google_post_dir, "photo.webp"))
+                print(f"Copied Google Post photo asset: {absolute_img_path} -> photo.webp")
+
+        # 4. Generate teasers & hooks
+        el_title = data.get("el", {}).get("title", "")
+        el_teaser = data.get("el", {}).get("teaser", "")
+        en_title = data.get("en", {}).get("title", "")
+        en_teaser = data.get("en", {}).get("teaser", "")
+
+        # EL Post
+        el_post = f"📢 {el_title}\n\n{el_teaser}\n\n🔍 Διαβάστε ολόκληρο το άρθρο στην ιστοσελίδα μας για να μάθετε περισσότερα σχετικά με τις τελευταίες επιστημονικές εξελίξεις στην οδοντιατρική φροντίδα!"
+        with open(os.path.join(google_post_dir, "post_content_el.txt"), "w", encoding="utf-8") as f:
+            f.write(el_post)
+
+        # EN Post
+        en_post = f"📢 {en_title}\n\n{en_teaser}\n\n🔍 Read the full article on our website to learn more about the latest scientific developments in dental care!"
+        with open(os.path.join(google_post_dir, "post_content_en.txt"), "w", encoding="utf-8") as f:
+            f.write(en_post)
+
+        # Combined Post
+        combined_post = f"{el_post}\n\n=====================\n\n{en_post}"
+        with open(os.path.join(google_post_dir, "post_content_combined.txt"), "w", encoding="utf-8") as f:
+            f.write(combined_post)
+
+        print(f"Google Business Profile post assets generated at: {google_post_dir}")
+        return google_post_dir
+    except Exception as e:
+        print(f"Error generating Google Business Profile post assets: {e}")
+        return None
+
+
 def publish_blog_post(markdown_content):
     data = parse_bilingual_content(markdown_content)
     
@@ -401,6 +458,9 @@ def publish_blog_post(markdown_content):
 
         # Update static blog cards in blog.html
         update_static_blog_html(posts)
+
+        # Generate Google Business Profile post assets
+        create_google_post_assets(data, file_name, json_image_path)
 
         print(f"Bilingual post published to: {file_path}")
         return file_path

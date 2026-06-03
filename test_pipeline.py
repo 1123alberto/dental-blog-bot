@@ -212,5 +212,51 @@ class TestDentalBlogPipeline(unittest.TestCase):
             self.assertIn("Dentplant", result)
             self.assertEqual(mock_client.models.generate_content.call_count, 5)
 
+    def test_create_google_post_assets(self):
+        import shutil
+        import os
+        import publisher
+        
+        test_data = {
+            "image_url": "https://example.com/test.jpg",
+            "en": {
+                "title": "English Title Test",
+                "teaser": "English Teaser Test"
+            },
+            "el": {
+                "title": "Greek Title Test",
+                "teaser": "Greek Teaser Test"
+            }
+        }
+        test_file_name = "test-news-file.html"
+        
+        # Call the asset creator
+        google_post_dir = publisher.create_google_post_assets(test_data, test_file_name, None)
+        
+        # Verify the directory was created
+        self.assertIsNotNone(google_post_dir)
+        self.assertTrue(os.path.exists(google_post_dir))
+        
+        # Verify the expected files were created
+        self.assertTrue(os.path.exists(os.path.join(google_post_dir, "cta_url.txt")))
+        self.assertTrue(os.path.exists(os.path.join(google_post_dir, "photo_link.txt")))
+        self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_el.txt")))
+        self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_en.txt")))
+        self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_combined.txt")))
+        
+        # Check CTA URL content
+        with open(os.path.join(google_post_dir, "cta_url.txt"), "r", encoding="utf-8") as f:
+            self.assertEqual(f.read().strip(), "https://www.dentplant.gr/article/test-news-file.html")
+            
+        # Check EL Post content
+        with open(os.path.join(google_post_dir, "post_content_el.txt"), "r", encoding="utf-8") as f:
+            el_content = f.read()
+            self.assertIn("📢 Greek Title Test", el_content)
+            self.assertIn("Greek Teaser Test", el_content)
+            self.assertIn("οδοντιατρική φροντίδα", el_content)
+            
+        # Clean up created files
+        shutil.rmtree(google_post_dir)
+
 if __name__ == "__main__":
     unittest.main()
