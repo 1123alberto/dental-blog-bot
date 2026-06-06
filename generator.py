@@ -5,11 +5,9 @@ import json
 from dotenv import load_dotenv
 from google import genai
 
-from agents import AgentMemory, ScraperAgent, EditorialAgent, CopywriterAgent, QAAgent
+from agents import AgentMemory, ScraperAgent, EditorialAgent, CopywriterAgent, QAAgent, log_group_start, log_group_end
 
 load_dotenv()
-
-from agents.prompts import SYSTEM_PROMPT
 
 
 def generate_content_with_fallback(client, prompt, config=None, initial_model="gemini-2.5-flash"):
@@ -107,8 +105,9 @@ def generate_blog_post(news_data, practice_name="Our Dental Practice", recent_po
     qa_agent = QAAgent(client=client, model_name=model_name)
 
     # 1. Select the best candidate article using the Editorial Agent
-    print(f"[Pipeline] Running Editorial Agent to select best candidate...")
+    log_group_start("[2] Editorial Evaluation & Article Selection")
     best_candidate = editorial_agent.score_and_select(articles, recent_posts or [], memory)
+    log_group_end()
     
     if not best_candidate:
         # Fallback to the first candidate if scoring failed to produce a result
@@ -123,10 +122,12 @@ def generate_blog_post(news_data, practice_name="Our Dental Practice", recent_po
         return f"Error: GOOGLE_API_KEY not found in .env or invalid. Choose BEST candidate heuristically: {best_candidate.get('title')}"
 
     # 3. Draft the initial article using the Copywriter Agent
-    print(f"[Pipeline] Running Copywriter Agent to draft bilingual blog post...")
+    log_group_start("[3] Copywriter Drafting (Bilingual)")
     blog_markdown = copywriter_agent.write_post(best_candidate, practice_name, memory)
+    log_group_end()
 
     # 4. QA Validation Feedback Loop
+    log_group_start("[4] QA Validation Feedback Loop")
     max_qa_attempts = 3
     for attempt in range(max_qa_attempts):
         print(f"[Pipeline] Running QA Agent validation (Attempt {attempt+1}/{max_qa_attempts})...")
@@ -154,6 +155,7 @@ def generate_blog_post(news_data, practice_name="Our Dental Practice", recent_po
                 blog_markdown = copywriter_agent.refine_post(blog_markdown, errors, best_candidate, practice_name)
             else:
                 print("[Pipeline] Max QA attempts reached. Proceeding with best available draft.")
+    log_group_end()
 
     return blog_markdown
 

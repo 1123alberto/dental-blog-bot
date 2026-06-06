@@ -3,6 +3,18 @@ import time
 from google import genai
 from google.genai import types
 
+def log_group_start(title):
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        print(f"::group::{title}", flush=True)
+    else:
+        print(f"\n=== {title} ===", flush=True)
+
+def log_group_end():
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        print("::endgroup::", flush=True)
+    else:
+        print("=" * 40 + "\n", flush=True)
+
 class BaseAgent:
     """
     Base Agent class that shares the Google GenAI Client and common utility methods.

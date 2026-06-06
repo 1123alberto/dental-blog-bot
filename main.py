@@ -9,13 +9,15 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8', errors='backslashreplace')
 
 from generator import generate_blog_post
-from publisher import publish_blog_post, WEBSITE_DATA_PATH
+from publisher import publish_blog_post, WEBSITE_DATA_PATH, load_merged_posts
 from scraper import fetch_dental_news
+from agents import log_group_start, log_group_end
 
 
 def main():
-    print("[1] Fetching latest dental journal news & extracting article text...")
+    log_group_start("[1] Fetching latest dental journal news & extracting article text")
     news_items = fetch_dental_news()
+    log_group_end()
 
     if not news_items:
         print("No news found. Exiting.")
@@ -25,22 +27,18 @@ def main():
 
     # Load publication history to prevent duplicate topics
     recent_titles = []
-    if os.path.exists(WEBSITE_DATA_PATH):
-        try:
-            with open(WEBSITE_DATA_PATH, "r", encoding="utf-8") as f:
-                posts = json.load(f)
-                # Extract titles of the last 10 published posts
-                for post in posts[:10]:
-                    title = post.get("en", {}).get("title")
-                    if title:
-                        recent_titles.append(title)
-            print(f"Loaded {len(recent_titles)} recently published article titles for topic avoidance:")
-            for title in recent_titles:
-                print(f"  - {title}")
-        except Exception as e:
-            print(f"Warning: Could not load publication history from {WEBSITE_DATA_PATH}: {e}")
-    else:
-        print(f"No publication history found at {WEBSITE_DATA_PATH}. Topic avoidance is disabled.")
+    try:
+        posts = load_merged_posts()
+        # Extract titles of the last 10 published posts
+        for post in posts[:10]:
+            title = post.get("en", {}).get("title")
+            if title:
+                recent_titles.append(title)
+        print(f"Loaded {len(recent_titles)} recently published article titles for topic avoidance:")
+        for title in recent_titles:
+            print(f"  - {title}")
+    except Exception as e:
+        print(f"Warning: Could not load publication history: {e}")
 
     print("[2] Running the 10-stage article generation pipeline...")
     blog_markdown = generate_blog_post(news_items, practice_name="Dentplant", recent_posts=recent_titles)
@@ -49,8 +47,9 @@ def main():
         print(f"CRITICAL ERROR: {blog_markdown}")
         sys.exit(1)
 
-    print(f"[3] Publishing to output folder...")
+    log_group_start("[5] Publishing to output folder")
     file_path = publish_blog_post(blog_markdown)
+    log_group_end()
 
     if file_path:
         filename = os.path.basename(file_path)

@@ -1,6 +1,6 @@
 import re
 from agents.base import BaseAgent
-from agents.prompts import SYSTEM_PROMPT
+from agents.prompts import COPYWRITER_SYSTEM_PROMPT
 
 class CopywriterAgent(BaseAgent):
     """
@@ -93,7 +93,7 @@ Ensure your response follows the exact format markers:
         )
 
         prompt = f"""
-{SYSTEM_PROMPT}
+{COPYWRITER_SYSTEM_PROMPT}
 
 {lessons_block}
 
@@ -139,7 +139,7 @@ CONTENT:
         )
 
         prompt = f"""
-{SYSTEM_PROMPT}
+{COPYWRITER_SYSTEM_PROMPT}
 
 {lessons_block}
 

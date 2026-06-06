@@ -1,4 +1,4 @@
-from agents.base import BaseAgent
+from agents.base import BaseAgent, log_group_start, log_group_end
 from agents.memory import AgentMemory
 from agents.scraper_agent import ScraperAgent
 from agents.editorial_agent import EditorialAgent
@@ -12,4 +12,6 @@ __all__ = [
     "EditorialAgent",
     "CopywriterAgent",
     "QAAgent",
+    "log_group_start",
+    "log_group_end",
 ]

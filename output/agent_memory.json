@@ -2,6 +2,24 @@
   "lessons": [
     {
       "category": "copywriting",
+      "error": "The translation of 'shed' (referring to microscopic titanium particles shedding into the surrounding tissue) as 'απόπτωση' ('απόπτωση μικροσκοπικών σωματιδίων') is clinically incorrect. In Greek medical terminology, 'απόπτωση' refers to apoptosis (programmed cell death) or the natural falling out of hair/teeth. For metallic fragments shedding or releasing from an implant, the correct clinical terms are 'απελευθέρωση' (release) or 'έκλυση' (shedding/release).",
+      "rule": "Do not repeat error: The translation of 'shed' (referring to microscopic titanium particles shedding into the surrounding tissue) as 'απόπτωση' ('απόπτωση μικροσκοπικών σωματιδίων') is clinically incorrect. In Greek medical terminology, 'απόπτωση' refers to apoptosis (programmed cell death) or the natural falling out of hair/teeth. For metallic fragments shedding or releasing from an implant, the correct clinical terms are 'απελευθέρωση' (release) or 'έκλυση' (shedding/release).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-06T23:05:59.874041"
+    },
+    {
+      "category": "copywriting",
+      "error": "Greek title exceeds 12 words limit (current: 13 words).",
+      "rule": "Do not repeat error: Greek title exceeds 12 words limit (current: 13 words).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-06T22:49:16.846090"
+    },
+    {
+      "category": "copywriting",
+      "error": "Greek content word count is outside 300-500 words limit (current: 0).",
+      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 0).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-06T22:48:53.273427"
+    },
+    {
+      "category": "copywriting",
       "error": "Missing required marker: [EL_CONTENT]:",
       "rule": "Do not repeat error: Missing required marker: [EL_CONTENT]:. Adhere strictly to the guidelines.",
       "timestamp": "2026-05-23T01:29:53.083091"

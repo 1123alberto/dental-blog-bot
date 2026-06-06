@@ -219,6 +219,55 @@ def create_google_post_assets(data, file_name, json_image_path):
         print(f"Error generating Google Business Profile post assets: {e}")
         return None
 
+def load_merged_posts():
+    """
+    Loads posts from both WEBSITE_DATA_PATH and local posts_backup.json,
+    merges them uniquely by 'url', and sorts them descending by 'id' (newest first).
+    """
+    posts_dict = {}
+    
+    # Try loading from WEBSITE_DATA_PATH
+    if os.path.exists(WEBSITE_DATA_PATH):
+        try:
+            with open(WEBSITE_DATA_PATH, "r", encoding="utf-8") as f:
+                website_posts = json.load(f)
+                if isinstance(website_posts, list):
+                    for post in website_posts:
+                        url = post.get("url")
+                        if url:
+                            posts_dict[url] = post
+        except Exception as e:
+            print(f"Warning: Could not read website posts.json: {e}")
+
+    # Try loading from local posts_backup.json
+    local_output = os.path.join(os.path.dirname(__file__), "output")
+    local_posts_backup = os.path.join(local_output, "posts_backup.json")
+    if os.path.exists(local_posts_backup):
+        try:
+            with open(local_posts_backup, "r", encoding="utf-8") as f:
+                backup_posts = json.load(f)
+                if isinstance(backup_posts, list):
+                    for post in backup_posts:
+                        url = post.get("url")
+                        if url:
+                            if url not in posts_dict:
+                                posts_dict[url] = post
+        except Exception as e:
+            print(f"Warning: Could not read local posts_backup.json: {e}")
+
+    merged_posts = list(posts_dict.values())
+    
+    # Sort descending by ID. If ID is missing or invalid, fall back to 0.0
+    def get_sort_key(post):
+        post_id = post.get("id")
+        try:
+            return float(post_id)
+        except (TypeError, ValueError):
+            return 0.0
+            
+    merged_posts.sort(key=get_sort_key, reverse=True)
+    return merged_posts
+
 
 def publish_blog_post(markdown_content):
     data = parse_bilingual_content(markdown_content)
@@ -417,26 +466,8 @@ def publish_blog_post(markdown_content):
         local_file_path = os.path.join(local_output, file_name)
         with open(local_file_path, "w", encoding="utf-8") as f: f.write(html_card)
 
-        # Update Website posts.json and local posts_backup.json
-        posts = []
-        has_website_data = False
-        if os.path.exists(WEBSITE_DATA_PATH):
-            try:
-                with open(WEBSITE_DATA_PATH, "r", encoding="utf-8") as f:
-                    posts = json.load(f)
-                has_website_data = True
-            except Exception as e:
-                print(f"Warning: Could not read website posts.json: {e}")
-
-        # If we couldn't load website data, try loading local backup
-        if not has_website_data:
-            local_posts_backup = os.path.join(local_output, "posts_backup.json")
-            if os.path.exists(local_posts_backup):
-                try:
-                    with open(local_posts_backup, "r", encoding="utf-8") as f:
-                        posts = json.load(f)
-                except Exception as e:
-                    print(f"Warning: Could not read local posts_backup.json: {e}")
+        # Update Website posts.json and local posts_backup.json via merge logic
+        posts = load_merged_posts()
 
         # Construct new post entry
         new_post = {
@@ -449,11 +480,12 @@ def publish_blog_post(markdown_content):
             "el": data["el"]
         }
         
-        # Insert new post at the beginning
+        # Prevent duplicates by filtering out any existing post with the same URL
+        posts = [p for p in posts if p.get("url") != new_post["url"]]
         posts.insert(0, new_post)
 
-        # Save back to WEBSITE_DATA_PATH if it was loaded from there
-        if has_website_data:
+        # Save back to WEBSITE_DATA_PATH if its directory exists
+        if os.path.exists(os.path.dirname(WEBSITE_DATA_PATH)):
             try:
                 with open(WEBSITE_DATA_PATH, "w", encoding="utf-8") as f:
                     json.dump(posts, f, indent=2, ensure_ascii=False)
