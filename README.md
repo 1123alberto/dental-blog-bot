@@ -4,29 +4,72 @@ An automated tool that scrapes dental journals and uses AI to generate patient-f
 
 ## 📂 Project Structure
 
-- `main.py`: The entry point. Orchestrates the 10-stage pipeline.
-- `scraper.py`: Fetches and extracts full text from the latest dental journals and RSS feeds.
-- `generator.py`: The "brain" of the bot. Contains the deduplication, scoring, and writing logic using Gemini AI.
-- `publisher.py`: Handles formatting, local backups, and updating the website's posts database.
+- `main.py`: The entry point. Orchestrates the pipeline execution.
+- `scraper.py`: Helper functions for parsing RSS feeds, cleaning article content, and scraping article images.
+- `generator.py`: Coordinates the multi-agent system execution and the QA feedback loop.
+- `publisher.py`: Handles formatting, local backups, and database merging to update the production website's posts list.
+- `agents/`: Directory containing the multi-agent system components:
+  - `base.py`: Declares `BaseAgent`, encapsulating Gemini client access, retry logic, and fallback models.
+  - `scraper_agent.py`: `ScraperAgent` manages raw feed discovery and content sanitization.
+  - `editorial_agent.py`: `EditorialAgent` deduplicates incoming news, scores/classifies articles, filters based on recent publication history, and selects the best candidate.
+  - `copywriter_agent.py`: `CopywriterAgent` drafts bilingual posts in English and Greek sequentially, and processes QA feedback for revisions.
+  - `qa_agent.py`: `QAAgent` validates generated content against strict style and word-count guidelines programmatically and performs LLM-assisted checks on Greek clinical terminology.
+  - `memory.py`: `AgentMemory` handles saving and loading past QA errors as persistent lessons.
+  - `prompts.py`: Centralized store for copywriting prompts and guidelines.
 - `.github/workflows/weekly_blog.yml`: GitHub Actions workflow for automated weekly execution.
-- `output/`: Folder where a backup copy of every generated blog post is saved.
+- `output/`: Folder where a backup copy of every generated blog post and the `agent_memory.json` file are saved.
+
+---
+
+## 🤖 Multi-Agent Architecture
+
+The bot is structured as a collaborative multi-agent system designed for maximum resilience, editorial precision, and clinical translation accuracy.
+
+```mermaid
+graph TD
+    ScraperAgent[Scraper Agent] -->|Raw Articles| EditorialAgent[Editorial Agent]
+    RecentHistory[(Recent Posts History)] -->|Avoid duplicate topics| EditorialAgent
+    EditorialAgent -->|Selects Best Candidate| CopywriterAgent[Copywriter Agent]
+    AgentMemory[(Agent Memory json)] <-->|Read/Write lessons learned| CopywriterAgent
+    AgentMemory <-->|Read/Write lessons learned| QAAgent[QA Agent]
+    CopywriterAgent -->|Drafts Bilingual Article| QAAgent
+    QAAgent -->|Check word count, formatting, medical translation| QAFeedback{Passed QA?}
+    QAFeedback -->|No - Log to Memory| CopywriterAgent
+    QAFeedback -->|Yes| Publisher[Publisher]
+```
+
+### 🧠 Agent Roles & Collaboration
+1. **Scraper Agent (`ScraperAgent`)**: Triggers the news ingestion. Fetches dental journals, parses RSS feeds, downloads full articles, extracts images, and sanitizes input data.
+2. **Editorial Agent (`EditorialAgent`)**: Acts as the "Editor-in-Chief". It:
+   - Groups duplicate or highly similar news stories using Jaccard similarity on titles.
+   - Evaluates and scores articles based on clinical relevance, scientific credibility, and educational value.
+   - Classifies articles into specific categories (e.g., *Implantology*, *Periodontology*, *Digital Dentistry*).
+   - Filters out promotional, low-quality, or US-centric (insurance/regulatory) topics.
+   - Penalizes articles similar to recently published topics.
+   - Selects the single best candidate from the top 3 highest-rated items.
+3. **Copywriter Agent (`CopywriterAgent`)**: Sequential bilingual copywriting. It first drafts the English version, then translates/rewrites it into professional medical Greek. This two-stage separation prevents language bleeding and ensures a natural, native flow in both languages.
+4. **Quality Assurance Agent (`QAAgent`)**: Enforces strict publishing standards.
+   - **Programmatic checks**: Ensures presence of all required tags/markers, checks that titles are under 12 words and contain no markdown formatting, confirms word counts are strictly within the 300-500 word limit, and verifies the practice name is included.
+   - **LLM-assisted checks**: Compares the English and Greek versions to ensure Greek medical terms are translated correctly (e.g., *osseointegration* -> *οστεοενσωμάτωση*, *peri-implantitis* -> *περιεμφυτευματίτιδα*, *shedding* -> *έκλυση* or *απελευθέρωση*) and that the phrasing reads naturally.
+5. **Agent Memory (`AgentMemory`)**: Implements persistent learning. If a generated post fails the QA check, the specific errors/rules are saved to `output/agent_memory.json`. In subsequent iterations (or subsequent pipeline runs), these lessons are loaded and injected as rules into the agents' prompts, creating a self-correcting feedback loop that prevents regression.
 
 ---
 
 ## 🧠 The 10-Stage Pipeline
 
-The bot now follows a sophisticated editorial process to ensure high-quality content:
+The bot executes the editorial process using a coordinated multi-agent workflow:
 
-1.  **Fetching**: Aggregates news from multiple high-authority dental feeds.
-2.  **Extraction**: Pulls full article text and identifies the best available images.
-3.  **Deduplication**: Uses Jaccard similarity to group and filter out redundant stories.
-4.  **Scoring**: AI evaluates articles on clinical relevance, credibility, and educational value.
-5.  **Classification**: Automatically categorizes articles (e.g., Implantology, Periodontology, Digital Dentistry).
-6.  **Image Validation**: Ranks images, prioritizing clinical/authentic visuals over stock/AI fallbacks.
-7.  **History Filtering**: Checks against recently published articles to avoid repetitive topics.
-8.  **Candidate Selection**: Filters down to the Top 3 highest-quality candidates.
-9.  **Editorial Decision**: Gemini acts as "Editor-in-Chief" to select the single best story for the week.
-10. **Bilingual Generation**: Drafts a professional, patient-friendly post in both **English and Greek**.
+1.  **Fetching**: `ScraperAgent` parses high-authority feeds.
+2.  **Extraction**: Pulls full article text and scans for relevant media.
+3.  **Deduplication**: `EditorialAgent` groups and filters out redundant stories.
+4.  **Scoring**: Articles are rated on clinical relevance, credibility, and patient value.
+5.  **Classification**: Articles are categorized into dental specialties.
+6.  **Image Validation**: Ranks images, preferring clinical/authentic photography.
+7.  **History Filtering**: Cross-references against the last 10 published posts to avoid topic repetition.
+8.  **Candidate Selection**: Filters down to the Top 3 candidates.
+9.  **Editorial Decision**: `EditorialAgent` selects the best story for the week.
+10. **Bilingual Generation & QA**: `CopywriterAgent` drafts the post, which is validated by `QAAgent` and refined based on `AgentMemory` lessons.
+
 
 ---
 
