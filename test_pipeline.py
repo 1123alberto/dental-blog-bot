@@ -255,20 +255,21 @@ class TestDentalBlogPipeline(unittest.TestCase):
             self.assertTrue(os.path.exists(os.path.join(google_post_dir, "cta_url.txt")))
             self.assertTrue(os.path.exists(os.path.join(google_post_dir, "photo_link.txt")))
             self.assertTrue(os.path.exists(os.path.join(google_post_dir, "photo.jpg")))
-            self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_el.txt")))
-            self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_en.txt")))
+            self.assertFalse(os.path.exists(os.path.join(google_post_dir, "post_content_el.txt")))
+            self.assertFalse(os.path.exists(os.path.join(google_post_dir, "post_content_en.txt")))
             self.assertTrue(os.path.exists(os.path.join(google_post_dir, "post_content_combined.txt")))
             
             # Check CTA URL content
             with open(os.path.join(google_post_dir, "cta_url.txt"), "r", encoding="utf-8") as f:
                 self.assertEqual(f.read().strip(), "https://www.dentplant.gr/article/test-news-file.html")
                 
-            # Check EL Post content
-            with open(os.path.join(google_post_dir, "post_content_el.txt"), "r", encoding="utf-8") as f:
-                el_content = f.read()
-                self.assertIn("📢 Greek Title Test", el_content)
-                self.assertIn("Greek Teaser Test", el_content)
-                self.assertIn("οδοντιατρική φροντίδα", el_content)
+            # Check Combined Post content
+            with open(os.path.join(google_post_dir, "post_content_combined.txt"), "r", encoding="utf-8") as f:
+                combined_content = f.read()
+                self.assertIn("📢 Greek Title Test", combined_content)
+                self.assertIn("Greek Teaser Test", combined_content)
+                self.assertIn("📢 English Title Test", combined_content)
+                self.assertIn("English Teaser Test", combined_content)
         finally:
             # Clean up created files
             if google_post_dir and os.path.exists(google_post_dir):

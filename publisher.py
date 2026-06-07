@@ -151,6 +151,52 @@ def update_static_blog_html(posts):
         print(f"Error updating static blog cards in blog.html: {e}")
         return False
 
+def get_short_description(text, max_len=250):
+    if not text:
+        return ""
+    text = text.strip()
+    if len(text) <= max_len:
+        return text
+    # Split into sentences
+    sentences = re.split(r'(?<=[.!?])\s+', text)
+    if not sentences:
+        return text[:max_len].strip() + "..."
+    
+    result = ""
+    for s in sentences:
+        s = s.strip()
+        if not s:
+            continue
+        if result:
+            potential = result + " " + s
+        else:
+            potential = s
+            
+        if len(potential) <= max_len:
+            result = potential
+        else:
+            if not result:
+                truncated = s[:max_len]
+                last_space = truncated.rfind(' ')
+                if last_space > 0:
+                    truncated = truncated[:last_space]
+                result = truncated.rstrip('.,!?') + "..."
+            break
+    return result
+
+def wrap_text_except_url(text, width=80):
+    import textwrap
+    lines = []
+    for paragraph in text.split('\n'):
+        if not paragraph.strip():
+            lines.append('')
+            continue
+        if 'http://' in paragraph or 'https://' in paragraph:
+            lines.append(paragraph)
+        else:
+            lines.append(textwrap.fill(paragraph, width=width))
+    return '\n'.join(lines)
+
 def create_google_post_assets(data, file_name, json_image_path):
     try:
         import shutil
@@ -198,20 +244,40 @@ def create_google_post_assets(data, file_name, json_image_path):
         en_title = data.get("en", {}).get("title", "")
         en_teaser = data.get("en", {}).get("teaser", "")
 
-        # EL Post
-        el_post = f"📢 {el_title}\n\n{el_teaser}\n\n🔍 Διαβάστε ολόκληρο το άρθρο στην ιστοσελίδα μας για να μάθετε περισσότερα σχετικά με τις τελευταίες επιστημονικές εξελίξεις στην οδοντιατρική φροντίδα!"
-        with open(os.path.join(google_post_dir, "post_content_el.txt"), "w", encoding="utf-8") as f:
-            f.write(el_post)
+        # Get shorter descriptions
+        el_short = get_short_description(el_teaser)
+        en_short = get_short_description(en_teaser)
 
-        # EN Post
-        en_post = f"📢 {en_title}\n\n{en_teaser}\n\n🔍 Read the full article on our website to learn more about the latest scientific developments in dental care!"
-        with open(os.path.join(google_post_dir, "post_content_en.txt"), "w", encoding="utf-8") as f:
-            f.write(en_post)
+        # Build EL Post
+        el_post_lines = [
+            f"📢 {el_title}",
+            "",
+            el_short,
+            "",
+            f"🔍 Διαβάστε ολόκληρο το άρθρο: {cta_url}"
+        ]
+        el_post = wrap_text_except_url("\n".join(el_post_lines))
+
+        # Build EN Post
+        en_post_lines = [
+            f"📢 {en_title}",
+            "",
+            en_short,
+            "",
+            f"🔍 Read the full article: {cta_url}"
+        ]
+        en_post = wrap_text_except_url("\n".join(en_post_lines))
 
         # Combined Post
         combined_post = f"{el_post}\n\n=====================\n\n{en_post}"
         with open(os.path.join(google_post_dir, "post_content_combined.txt"), "w", encoding="utf-8") as f:
             f.write(combined_post)
+
+        # Remove separate files if they exist (cleanup)
+        for old_file in ["post_content_el.txt", "post_content_en.txt"]:
+            old_path = os.path.join(google_post_dir, old_file)
+            if os.path.exists(old_path):
+                os.remove(old_path)
 
         print(f"Google Business Profile post assets generated at: {google_post_dir}")
         return google_post_dir

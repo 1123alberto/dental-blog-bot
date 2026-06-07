@@ -1,2 +1,2 @@
-Original: ../images/blog/plant_based_chewing_gum_targets_oral_microbes_linked_to_head_and_neck_cancer.webp
-Localized: ../images/blog/plant_based_chewing_gum_targets_oral_microbes_linked_to_head_and_neck_cancer.webp
+Original: 
+Localized: images/blog/plant_based_chewing_gum_targets_oral_microbes_linked_to_head_and_neck_cancer.webp
