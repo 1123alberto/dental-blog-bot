@@ -337,7 +337,13 @@ def load_merged_posts():
 
 def publish_blog_post(markdown_content):
     data = parse_bilingual_content(markdown_content)
-    
+    return publish_bilingual_data(data)
+
+def publish_bilingual_data(data):
+    # If image_url is empty, assign fallback default image
+    if not data.get("image_url"):
+        data["image_url"] = "images/tools_wallpaper.webp"
+
     # Generate Standalone Filename
     date_str = datetime.now().strftime("%Y-%m-%d")
     base_name = f"news-{date_str}"
@@ -354,7 +360,44 @@ def publish_blog_post(markdown_content):
     json_image_path = ""
     html_image_path = ""
     if data["image_url"]:
-        if data["image_url"].startswith(("http://", "https://")):
+        if data["image_url"].startswith("data:image/"):
+            try:
+                import base64
+                from PIL import Image
+                import io
+                
+                header, encoded = data["image_url"].split(",", 1)
+                img_data = base64.b64decode(encoded)
+                
+                title_slug = slugify(data["en"]["title"]) if data["en"]["title"] else "blog_image"
+                if not title_slug:
+                    title_slug = "blog_image"
+                    
+                img_filename = f"{title_slug}.webp"
+                target_img_dir = os.path.join(BASE_DIR, "images", "blog")
+                os.makedirs(target_img_dir, exist_ok=True)
+                
+                target_img_path = os.path.join(target_img_dir, img_filename)
+                img_counter = 0
+                base_img_name = title_slug
+                while os.path.exists(target_img_path):
+                    img_counter += 1
+                    img_filename = f"{base_img_name}_{img_counter}.webp"
+                    target_img_path = os.path.join(target_img_dir, img_filename)
+                    
+                img = Image.open(io.BytesIO(img_data))
+                if img.mode in ("RGBA", "P"):
+                    img = img.convert("RGB")
+                img.save(target_img_path, "WEBP", quality=85)
+                print(f"Successfully localized uploaded image: {target_img_path}")
+                
+                json_image_path = f"images/blog/{img_filename}"
+                html_image_path = f"../images/blog/{img_filename}"
+            except Exception as e:
+                print(f"Error localizing uploaded image: {e}")
+                json_image_path = ""
+                html_image_path = ""
+        elif data["image_url"].startswith(("http://", "https://")):
             try:
                 import urllib.request
                 from PIL import Image
@@ -577,3 +620,184 @@ def publish_blog_post(markdown_content):
     except Exception as e:
         print(f"Error publishing: {e}")
         return None
+
+def unpublish_bilingual_data(file_name):
+    """
+    Deletes the published HTML article file, updates posts.json/posts_backup.json 
+    to remove the entry, and regenerates blog.html static cards.
+    """
+    try:
+        # 1. Delete the article file
+        article_file = os.path.join(OUTPUT_DIR, file_name)
+        if os.path.exists(article_file):
+            os.remove(article_file)
+            print(f"Deleted local article file: {article_file}")
+            
+        # 2. Delete the Google Post assets
+        local_output = os.path.join(os.path.dirname(__file__), "output")
+        google_post_dir = os.path.join(local_output, "google_posts", file_name.replace(".html", ""))
+        if os.path.exists(google_post_dir):
+            import shutil
+            shutil.rmtree(google_post_dir)
+            print(f"Deleted Google Post assets: {google_post_dir}")
+            
+        # 3. Load merged posts and filter
+        posts = load_merged_posts()
+        target_url = f"article/{file_name}"
+        filtered_posts = [p for p in posts if p.get("url") != target_url]
+        
+        # 4. Save back to WEBSITE_DATA_PATH
+        if os.path.exists(os.path.dirname(WEBSITE_DATA_PATH)):
+            with open(WEBSITE_DATA_PATH, "w", encoding="utf-8") as f:
+                json.dump(filtered_posts, f, indent=2, ensure_ascii=False)
+                
+        # Save back to local posts_backup.json
+        local_output = os.path.join(os.path.dirname(__file__), "output")
+        local_posts_backup = os.path.join(local_output, "posts_backup.json")
+        if os.path.exists(os.path.dirname(local_posts_backup)):
+            with open(local_posts_backup, "w", encoding="utf-8") as f:
+                json.dump(filtered_posts, f, indent=2, ensure_ascii=False)
+                
+        # 5. Re-render blog.html static cards
+        update_static_blog_html(filtered_posts)
+        print(f"Successfully unpublished and cleaned up local files for: {file_name}")
+        return True
+    except Exception as e:
+        print(f"Error unpublishing: {e}")
+        return False
+
+def render_preview_html_string(data):
+    """
+    Renders the HTML string for a draft preview without writing any files or localizing images.
+    """
+    image_url = data.get("image_url", "")
+    if not image_url:
+        image_url = "images/tools_wallpaper.webp"
+        
+    if image_url:
+        if image_url.startswith("images/"):
+            html_image_path = f"../{image_url}"
+        else:
+            html_image_path = image_url
+    else:
+        html_image_path = ""
+
+    if html_image_path:
+        image_html = f'<img src="{html_image_path}" alt="Dental News" class="w-full h-full object-cover">'
+    else:
+        image_html = '<div class="h-full w-full bg-gradient-to-r from-cyan-500 to-blue-600"></div>'
+
+    iso_date = get_iso_date(data.get("date", ""))
+    el_title_esc = escape_js_quotes(data['el']['title'])
+    en_title_esc = escape_js_quotes(data['en']['title'])
+    el_teaser_attr = escape_html_attr(data['el']['teaser'])
+    en_teaser_attr = escape_html_attr(data['en']['teaser'])
+
+    file_name = "draft.html"
+
+    html_card = f"""<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[PREVIEW] {data['el']['title']} | {data['en']['title']}</title>
+    <meta name="description" content="{el_teaser_attr}">
+    <link rel="canonical" href="https://www.dentplant.gr/article/{file_name}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.dentplant.gr/article/{file_name}">
+    <meta property="og:title" content="{data['el']['title']} | {data['en']['title']}">
+    <meta property="og:description" content="{el_teaser_attr}">
+    {f'<meta property="og:image" content="{html_image_path}">' if html_image_path else ""}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://www.dentplant.gr/article/{file_name}">
+    <meta name="twitter:title" content="{data['el']['title']} | {data['en']['title']}">
+    <meta name="twitter:description" content="{el_teaser_attr}">
+    {f'<meta name="twitter:image" content="{html_image_path}">' if html_image_path else ""}
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/fonts.css">
+    <style>
+        body {{ font-family: 'Inter', sans-serif; background-color: #f3f4f6; }}
+        [lang="en"] .lang-el, [lang="el"] .lang-en {{ display: none; }}
+        .prose h3 {{ font-weight: 700; color: #111827; margin-top: 1.5rem; font-size: 1.25rem; }}
+        .prose p {{ margin-bottom: 1rem; color: #4b5563; }}
+        .prose ul {{ list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; color: #4b5563; }}
+        .prose li {{ margin-bottom: 0.25rem; }}
+    </style>
+
+    <!-- JSON-LD Structured Data for Blog Article -->
+    <script type="application/ld+json">
+    {{
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{el_title_esc} | {en_title_esc}",
+      "description": "{el_teaser_attr}",
+      "image": "{html_image_path or 'https://www.dentplant.gr/assets/images/logo.png'}",
+      "datePublished": "{iso_date}",
+      "author": {{
+        "@type": "Organization",
+        "name": "Dentplant"
+      }},
+      "publisher": {{
+        "@type": "Organization",
+        "name": "Dentplant",
+        "logo": {{
+          "@type": "ImageObject",
+          "url": "https://www.dentplant.gr/assets/images/logo.png"
+        }}
+      }},
+      "mainEntityOfPage": {{
+        "@type": "WebPage",
+        "@id": "https://www.dentplant.gr/article/{file_name}"
+      }}
+    }}
+    </script>
+</head>
+<body class="p-4 md:p-10 flex justify-center relative">
+    <!-- Discreet Back Arrow -->
+    <a href="../blog.html" class="fixed top-6 left-6 text-gray-400 hover:text-blue-600 transition-colors z-50 group" title="Back to Blog">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <div class="max-w-3xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div class="h-[400px] w-full">{image_html}</div>
+        <div class="p-8 md:p-12">
+            <div class="flex justify-between items-center mb-6">
+                <span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold uppercase rounded-full">Breakthrough News [PREVIEW]</span>
+                <button onclick="toggleLang()" class="text-xs font-bold text-gray-400 hover:text-blue-600">EN / ΕΛ</button>
+            </div>
+            
+            <div class="lang-en">
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">{data['en']['title']}</h1>
+                <p class="text-sm text-gray-400 mb-8">{data['source']} • {data['date']}</p>
+                <div class="prose">{data['en']['content']}</div>
+            </div>
+
+            <div class="lang-el">
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">{data['el']['title']}</h1>
+                <p class="text-sm text-gray-400 mb-8">{data['source']} • {data['date']}</p>
+                <div class="prose">{data['el']['content']}</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const titles = {{
+            'el': "[PREVIEW] {el_title_esc} | Dentplant",
+            'en': "[PREVIEW] {en_title_esc} | Dentplant"
+        }};
+        function toggleLang() {{
+            const html = document.documentElement;
+            html.lang = html.lang === 'el' ? 'en' : 'el';
+            sessionStorage.setItem('lang', html.lang);
+            document.title = titles[html.lang];
+        }}
+        // Apply saved language
+        const savedLang = sessionStorage.getItem('lang') || 'el';
+        document.documentElement.lang = savedLang;
+        document.title = titles[savedLang];
+    </script>
+</body>
+</html>"""
+    return html_card

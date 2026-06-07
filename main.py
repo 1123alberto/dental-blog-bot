@@ -15,6 +15,12 @@ from agents import log_group_start, log_group_end
 
 
 def main():
+    if "--dashboard" in sys.argv:
+        print("Starting interactive dashboard on http://127.0.0.1:8000...")
+        import uvicorn
+        uvicorn.run("server:app", host="127.0.0.1", port=8000, reload=False)
+        return
+
     log_group_start("[1] Fetching latest dental journal news & extracting article text")
     news_items = fetch_dental_news()
     log_group_end()

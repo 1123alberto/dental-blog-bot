@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dentplant AI Blog Console</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #05070f;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,10%,1) 0, transparent 50%),
+                linear-gradient(rgba(18, 24, 54, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(18, 24, 54, 0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+        }
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .font-code {
+            font-family: 'Fira Code', monospace;
+        }
+        .cyber-border {
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.03);
+        }
+        .cyber-border:hover {
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+        .cyber-glow-btn {
+            background: linear-gradient(135deg, #00f0ff 0%, #0072ff 100%);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+            transition: all 0.3s ease;
+        }
+        .cyber-glow-btn:hover:not(:disabled) {
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+            transform: translateY(-1px);
+        }
+        .cyber-glow-btn:disabled {
+            background: #1e293b;
+            box-shadow: none;
+            cursor: not-allowed;
+            color: #64748b;
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.3);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 240, 255, 0.2);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 240, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="h-full text-slate-100 flex flex-col overflow-hidden">
+
+    <!-- Cyber Header -->
+    <header class="h-16 border-b border-cyan-500/20 bg-slate-950/80 backdrop-blur flex items-center justify-between px-6 shrink-0 z-10">
+        <div class="flex items-center space-x-3">
+            <div class="h-8 w-8 rounded bg-gradient-to-tr from-cyan-400 to-blue-600 flex items-center justify-center font-orbitron font-bold text-slate-950 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
+                D
+            </div>
+            <div>
+                <h1 class="text-lg font-orbitron font-bold tracking-wider bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                    DENTPLANT AI
+                </h1>
+                <p class="text-[9px] text-cyan-500/60 uppercase tracking-widest font-orbitron">Bilingual Post Orchestrator</p>
+            </div>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+            <span id="connection-status" class="flex items-center space-x-2 text-xs bg-slate-900 border border-emerald-500/30 text-emerald-400 px-3 py-1 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.1)]">
+                <span class="h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>SYSTEM ONLINE</span>
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Grid Workspace -->
+    <main class="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
+
+        <!-- Left Division: Explorer & Scraper Control -->
+        <section class="flex flex-col bg-slate-950/60 backdrop-blur rounded-2xl border border-slate-800/80 overflow-hidden">
+            <div class="p-4 border-b border-slate-800 flex justify-between items-center shrink-0">
+                <div class="flex items-center space-x-2">
+                    <span class="text-cyan-400 text-sm font-orbitron">01 //</span>
+                    <h2 class="text-sm font-orbitron uppercase tracking-wide">Scraper & Candidates</h2>
+                </div>
+                <button id="btn-scrape" onclick="triggerScrape()" class="px-4 py-2 text-xs font-orbitron font-bold uppercase rounded-lg text-slate-950 cyber-glow-btn">
+                    Scrape & Evaluate
+                </button>
+            </div>
+            
+            <!-- Candidates List View -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-4" id="candidates-container">
+                <div class="text-center py-12 text-slate-500">
+                    <svg class="mx-auto h-8 w-8 opacity-40 mb-3 text-cyan-400 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                    <p class="text-xs font-orbitron uppercase tracking-wider">No Candidates Loaded</p>
+                    <p class="text-[10px] mt-1">Initiate a Scrape run to discover articles.</p>
+                </div>
+            </div>
+
+            <!-- Generate & Preview Buttons (Sticky at Bottom of Pane 1) -->
+            <div class="p-4 border-t border-slate-800 shrink-0 bg-slate-950/80 flex space-x-3">
+                <button id="btn-draft" disabled onclick="triggerDraft()" class="flex-grow py-3 text-xs font-orbitron font-bold uppercase rounded-xl text-slate-950 cyber-glow-btn">
+                    Draft Selected Article
+                </button>
+                <button id="btn-preview" disabled onclick="openPreview()" class="px-4 py-3 text-xs font-orbitron font-bold uppercase rounded-xl text-cyan-400 bg-cyan-950/20 border border-cyan-500/30 hover:bg-cyan-500/10 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                    Preview Draft
+                </button>
+            </div>
+        </section>
+
+        <!-- Middle Division: Real-Time Console Monitor -->
+        <section class="flex flex-col bg-slate-950/60 backdrop-blur rounded-2xl border border-slate-800/80 overflow-hidden">
+            <div class="p-4 border-b border-slate-800 flex justify-between items-center shrink-0">
+                <div class="flex items-center space-x-2">
+                    <span class="text-cyan-400 text-sm font-orbitron">02 //</span>
+                    <h2 class="text-sm font-orbitron uppercase tracking-wide">Agent Core Stream</h2>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="clearConsole()" class="text-[10px] uppercase font-orbitron tracking-wider text-slate-500 hover:text-slate-300">
+                        Clear Logs
+                    </button>
+                </div>
+            </div>
+            
+            <!-- scrolling terminal log window -->
+            <div class="flex-1 bg-slate-950 p-4 font-code text-xs overflow-y-auto space-y-2 select-text" id="console-terminal">
+                <div class="text-cyan-500/40">// Establishing websocket stream...</div>
+                <div class="text-emerald-500">// Connected. Awaiting pipeline execution logs...</div>
+            </div>
+        </section>
+
+        <!-- Right Division: Live Article Previewer & Publisher -->
+        <section class="flex flex-col bg-slate-950/60 backdrop-blur rounded-2xl border border-slate-800/80 overflow-hidden">
+            <div class="p-4 border-b border-slate-800 flex justify-between items-center shrink-0">
+                <div class="flex items-center space-x-2">
+                    <span class="text-cyan-400 text-sm font-orbitron">03 //</span>
+                    <h2 class="text-sm font-orbitron uppercase tracking-wide">Bilingual Editor & Preview</h2>
+                </div>
+                
+                <!-- Translation Switch Tabs -->
+                <div class="flex space-x-1 bg-slate-900 p-1 rounded-lg border border-slate-800">
+                    <button id="tab-el" onclick="setLangTab('el')" class="px-2.5 py-1 text-[10px] font-orbitron font-bold rounded-md bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+                        ΕΛ
+                    </button>
+                    <button id="tab-en" onclick="setLangTab('en')" class="px-2.5 py-1 text-[10px] font-orbitron font-bold rounded-md text-slate-400 hover:text-slate-200">
+                        EN
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Article Editor Form -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-4" id="editor-container">
+                <div class="text-center py-12 text-slate-500" id="editor-empty-state">
+                    <svg class="mx-auto h-8 w-8 opacity-40 mb-3 text-cyan-400 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                    <p class="text-xs font-orbitron uppercase tracking-wider">No Draft Loaded</p>
+                    <p class="text-[10px] mt-1">Select a candidate and run the Copywriting Draft agent.</p>
+                </div>
+
+                <!-- Editor fields (hidden by default) -->
+                <div id="editor-fields" class="hidden space-y-4">
+                    <!-- General Metadata (Bilingual-Neutral) -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[9px] uppercase font-orbitron text-slate-500 tracking-wider mb-1">Source Journal</label>
+                            <input type="text" id="input-source" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-cyan-500/50">
+                        </div>
+                        <div>
+                            <label class="block text-[9px] uppercase font-orbitron text-slate-500 tracking-wider mb-1">Date</label>
+                            <input type="text" id="input-date" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-cyan-500/50">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-[9px] uppercase font-orbitron text-slate-500 tracking-wider mb-1">Image Asset</label>
+                        <div class="flex space-x-2">
+                            <input type="text" id="input-image" placeholder="Image URL or upload local image file" class="flex-1 bg-slate-900 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-cyan-500/50">
+                            <button onclick="document.getElementById('input-image-file').click()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-orbitron font-bold uppercase rounded-lg border border-slate-750 text-slate-300 shrink-0">
+                                Choose File
+                            </button>
+                            <input type="file" id="input-image-file" class="hidden" accept="image/*" onchange="handleImageUpload(event)">
+                        </div>
+                    </div>
+
+                    <!-- Greek Fields Section -->
+                    <div id="fields-el" class="space-y-4">
+                        <div>
+                            <label class="block text-[9px] uppercase font-orbitron text-slate-500 tracking-wider mb-1">Title (EL)</label>
+                            <input type="text" id="input-title-el" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs font-bold text-slate-200 focus:outline-none focus:border-cyan-500/50">
+                        </div>
+                        <div>
+                            <label class="block text-[9px] uppercase font-orbitron text-slate-500 tracking-wider mb-1">Teaser / Hook (EL)</label>
+                            <textarea id="input-teaser-el" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-300 focus:outline-none focus:border-cyan-500/50 resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-[9px] uppercase font-orbitron text-slate-500 tracking-wider mb-1">Full Article Content (EL - HTML)</label>
+                            <textarea id="input-content-el" rows="12" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-300 font-code focus:outline-none focus:border-cyan-500/50"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- English Fields Section -->
+                    <div id="fields-en" class="hidden space-y-4">
+                        <div>
+                            <label class="block text-[9px] uppercase font-orbitron text-slate-500 tracking-wider mb-1">Title (EN)</label>
+                            <input type="text" id="input-title-en" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs font-bold text-slate-200 focus:outline-none focus:border-cyan-500/50">
+                        </div>
+                        <div>
+                            <label class="block text-[9px] uppercase font-orbitron text-slate-500 tracking-wider mb-1">Teaser / Hook (EN)</label>
+                            <textarea id="input-teaser-en" rows="3" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-300 focus:outline-none focus:border-cyan-500/50 resize-none"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-[9px] uppercase font-orbitron text-slate-500 tracking-wider mb-1">Full Article Content (EN - HTML)</label>
+                            <textarea id="input-content-en" rows="12" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-slate-300 font-code focus:outline-none focus:border-cyan-500/50"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Publish / Reject Buttons -->
+            <div class="p-4 border-t border-slate-800 shrink-0 bg-slate-950/80 grid grid-cols-2 gap-3">
+                <button id="btn-reject" disabled onclick="triggerReject()" class="w-full py-3 text-xs font-orbitron font-bold uppercase rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 transition-all">
+                    Reject Draft
+                </button>
+                <button id="btn-publish" disabled onclick="triggerPublish()" class="w-full py-3 text-xs font-orbitron font-bold uppercase rounded-xl text-slate-950 cyber-glow-btn">
+                    Save & Publish Locally
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JS Scripts for SSE communication and UI mechanics -->
+    <script>
+        let currentCandidates = [];
+        let selectedCandidateIndex = null;
+        let activeLang = 'el';
+        let currentDraft = null;
+        async function openPreview() {
+            if (!currentDraft) return;
+
+            const btn = document.getElementById("btn-preview");
+            const oldText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = "Rendering...";
+
+            const payload = {
+                source: document.getElementById("input-source").value.trim(),
+                date: document.getElementById("input-date").value.trim(),
+                image_url: document.getElementById("input-image").value.trim(),
+                el: {
+                    title: document.getElementById("input-title-el").value.trim(),
+                    teaser: document.getElementById("input-teaser-el").value.trim(),
+                    content: document.getElementById("input-content-el").value.trim(),
+                },
+                en: {
+                    title: document.getElementById("input-title-en").value.trim(),
+                    teaser: document.getElementById("input-teaser-en").value.trim(),
+                    content: document.getElementById("input-content-en").value.trim(),
+                }
+            };
+
+            try {
+                const response = await fetch("/api/preview_draft", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || "Failed to compile preview on server.");
+                }
+
+                // Open the temporary preview route in a new tab
+                window.open('/preview/article/draft.html', '_blank');
+            } catch (err) {
+                console.error(err);
+                alert(`Error compiling preview:\n${err.message}`);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = oldText;
+            }
+        }
+
+        // Connect to Server-Sent Events stream immediately
+        function connectSSE() {
+            const term = document.getElementById("console-terminal");
+            const eventSource = new EventSource("/api/events");
+
+            eventSource.onmessage = function(event) {
+                try {
+                    const data = JSON.parse(event.data);
+                    if (data.log) {
+                        const line = document.createElement("div");
+                        line.className = "py-0.5 leading-relaxed text-slate-300";
+                        
+                        // Apply syntax colors
+                        if (data.log.includes("SUCCESS") || data.log.includes("OK")) {
+                            line.classList.add("text-emerald-400");
+                        } else if (data.log.includes("WARNING") || data.log.includes("Warning") || data.log.includes("FAILED")) {
+                            line.classList.add("text-amber-400");
+                        } else if (data.log.includes("ERROR") || data.log.includes("CRITICAL")) {
+                            line.classList.add("text-rose-400");
+                        } else if (data.log.startsWith("===") || data.log.startsWith("[")) {
+                            line.classList.add("text-cyan-400", "font-bold");
+                        }
+                        
+                        line.textContent = data.log.trimEnd();
+                        term.appendChild(line);
+                        term.scrollTop = term.scrollHeight;
+                    }
+                } catch (e) {
+                    console.error("SSE parse error", e);
+                }
+            };
+
+            eventSource.onerror = function() {
+                const line = document.createElement("div");
+                line.className = "text-rose-500 font-bold py-1";
+                line.textContent = "[Error] Log stream disconnected. Retrying...";
+                term.appendChild(line);
+            };
+        }
+
+        connectSSE();
+
+        function clearConsole() {
+            const term = document.getElementById("console-terminal");
+            term.innerHTML = `<div class="text-slate-500/40">// Console cleared. Awaiting logs...</div>`;
+        }
+
+        // Trigger Pipeline Scraper
+        async function triggerScrape() {
+            const btn = document.getElementById("btn-scrape");
+            const container = document.getElementById("candidates-container");
+            btn.disabled = true;
+            btn.textContent = "Scraping...";
+            selectedCandidateIndex = null;
+            document.getElementById("btn-draft").disabled = true;
+
+            container.innerHTML = `
+                <div class="text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-2 border-cyan-400 border-t-transparent mb-3"></div>
+                    <p class="text-xs font-orbitron uppercase tracking-wider text-cyan-400">Scraping Dental Feeds</p>
+                    <p class="text-[10px] text-slate-500 mt-1">Running classification and history filter agents...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch("/api/scrape", { method: "POST" });
+                const data = await response.json();
+                
+                currentCandidates = data.candidates || [];
+                renderCandidates();
+            } catch (err) {
+                console.error(err);
+                container.innerHTML = `
+                    <div class="text-center py-12 text-rose-400">
+                        <p class="text-xs font-orbitron uppercase">Scrape Run Failed</p>
+                        <p class="text-[10px] mt-1">${err.message}</p>
+                    </div>
+                `;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "Scrape & Evaluate";
+            }
+        }
+
+        // Render Candidates in Left Pane
+        function renderCandidates() {
+            const container = document.getElementById("candidates-container");
+            if (currentCandidates.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-slate-500">
+                        <p class="text-xs font-orbitron uppercase">No candidates found</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = "";
+            currentCandidates.forEach((cand, idx) => {
+                const card = document.createElement("div");
+                card.id = `candidate-card-${idx}`;
+                card.onclick = () => selectCandidate(idx);
+                
+                // Card border color classes based on safety flags
+                let borderClass = "border-slate-800 bg-slate-900/40 hover:bg-slate-900/80";
+                let badgeHtml = "";
+                
+                if (cand.is_inappropriate) {
+                    borderClass = "border-rose-900/50 bg-rose-950/10 hover:bg-rose-950/20";
+                    badgeHtml = `<span class="px-2 py-0.5 bg-rose-500/10 border border-rose-500/30 text-rose-400 text-[8px] font-bold rounded-full font-orbitron uppercase">⚠️ Inappropriate Failure Topic</span>`;
+                } else if (cand.is_promotional) {
+                    borderClass = "border-amber-900/50 bg-amber-950/10 hover:bg-amber-950/20";
+                    badgeHtml = `<span class="px-2 py-0.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[8px] font-bold rounded-full font-orbitron uppercase">📢 Promotional Alert</span>`;
+                } else if (cand.is_us_centric) {
+                    badgeHtml = `<span class="px-2 py-0.5 bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-[8px] font-bold rounded-full font-orbitron uppercase">🇺🇸 US Insurance/Policy</span>`;
+                }
+
+                const score = cand.final_score !== undefined ? cand.final_score : 0;
+                
+                card.className = `p-4 rounded-xl border transition-all cursor-pointer ${borderClass} relative group`;
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="px-2 py-0.5 bg-slate-800 text-[9px] font-semibold text-slate-400 rounded-md font-orbitron tracking-wider">
+                            ${cand.category || "General"}
+                        </span>
+                        <div class="flex items-center space-x-1">
+                            <span class="text-[10px] text-slate-500 font-orbitron">SCORE:</span>
+                            <span class="text-xs font-orbitron font-bold ${score >= 60 ? 'text-emerald-400' : 'text-slate-300'}">${score}</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xs font-bold leading-snug text-slate-100 group-hover:text-cyan-400 transition-colors mb-2">${cand.title}</h3>
+                    
+                    <p class="text-[10px] text-slate-500 line-clamp-2 leading-relaxed mb-3">${cand.summary || ""}</p>
+                    
+                    <div class="flex flex-wrap gap-1.5 mt-2">
+                        ${badgeHtml}
+                        <span class="text-[9px] text-slate-600 font-orbitron tracking-wider block">SOURCE: ${cand.source || "Feed"}</span>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // Handle Candidate Card Select
+        function selectCandidate(idx) {
+            // Deselect old
+            if (selectedCandidateIndex !== null) {
+                const oldCard = document.getElementById(`candidate-card-${selectedCandidateIndex}`);
+                if (oldCard) {
+                    oldCard.classList.remove("border-cyan-400", "shadow-[0_0_15px_rgba(0,240,255,0.15)]");
+                }
+            }
+
+            selectedCandidateIndex = idx;
+            const card = document.getElementById(`candidate-card-${idx}`);
+            if (card) {
+                card.classList.add("border-cyan-400", "shadow-[0_0_15px_rgba(0,240,255,0.15)]");
+            }
+
+            document.getElementById("btn-draft").disabled = false;
+        }
+
+        // Handle local image file selection
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("input-image").value = e.target.result;
+                
+                // Print a visual notification in the terminal log
+                const term = document.getElementById("console-terminal");
+                const line = document.createElement("div");
+                line.className = "py-0.5 leading-relaxed text-cyan-400 font-semibold";
+                line.textContent = `[UI] Image successfully loaded locally: ${file.name} (Base64 WebP candidate)`;
+                term.appendChild(line);
+                term.scrollTop = term.scrollHeight;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Handle Reject action
+        async function triggerReject() {
+            if (!confirm("Are you sure you want to reject and discard this draft?")) return;
+            
+            const btnReject = document.getElementById("btn-reject");
+            btnReject.disabled = true;
+            btnReject.textContent = "Rejecting...";
+
+            try {
+                // If it was already published locally, trigger backend cleanup
+                const response = await fetch("/api/reject", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ file_name: lastPublishedFilename })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || "Failed to notify backend.");
+                }
+
+                currentDraft = null;
+                selectedCandidateIndex = null;
+                lastPublishedFilename = null;
+                
+                // Render Candidates clean state
+                renderCandidates();
+                
+                // Clear inputs
+                document.getElementById("input-source").value = "";
+                document.getElementById("input-date").value = "";
+                document.getElementById("input-image").value = "";
+                document.getElementById("input-title-el").value = "";
+                document.getElementById("input-teaser-el").value = "";
+                document.getElementById("input-content-el").value = "";
+                document.getElementById("input-title-en").value = "";
+                document.getElementById("input-teaser-en").value = "";
+                document.getElementById("input-content-en").value = "";
+                
+                // Clear file input
+                document.getElementById("input-image-file").value = "";
+                
+                // Hide fields, show empty state
+                document.getElementById("editor-fields").classList.add("hidden");
+                document.getElementById("editor-empty-state").classList.remove("hidden");
+                
+                // Disable actions
+                document.getElementById("btn-publish").disabled = true;
+                document.getElementById("btn-reject").disabled = true;
+                document.getElementById("btn-draft").disabled = true;
+                document.getElementById("btn-preview").disabled = true;
+                
+                const term = document.getElementById("console-terminal");
+                const line = document.createElement("div");
+                line.className = "py-0.5 leading-relaxed text-rose-400 font-semibold";
+                line.textContent = `[UI] Current draft rejected. Any locally published files have been cleaned up and deleted.`;
+                term.appendChild(line);
+                term.scrollTop = term.scrollHeight;
+            } catch (err) {
+                console.error(err);
+                alert(`Error rejecting draft:\n${err.message}`);
+            } finally {
+                btnReject.disabled = false;
+                btnReject.textContent = "Reject Draft";
+            }
+        }
+
+        // Trigger Copywriter Draft Generation
+        async function triggerDraft() {
+            if (selectedCandidateIndex === null) return;
+            const btn = document.getElementById("btn-draft");
+            const emptyState = document.getElementById("editor-empty-state");
+            const fields = document.getElementById("editor-fields");
+            
+            btn.disabled = true;
+            btn.textContent = "Drafting...";
+
+            emptyState.innerHTML = `
+                <div class="text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-2 border-cyan-400 border-t-transparent mb-3"></div>
+                    <p class="text-xs font-orbitron uppercase tracking-wider text-cyan-400">Copywriter Drafting Active</p>
+                    <p class="text-[10px] text-slate-500 mt-1">Generating bilingual translations & running QA verification...</p>
+                </div>
+            `;
+            emptyState.classList.remove("hidden");
+            fields.classList.add("hidden");
+            document.getElementById("btn-publish").disabled = true;
+            document.getElementById("btn-reject").disabled = true;
+
+            try {
+                const response = await fetch("/api/draft", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ index: selectedCandidateIndex })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || "Failed to generate draft.");
+                }
+
+                currentDraft = await response.json();
+                populateEditor();
+            } catch (err) {
+                console.error(err);
+                emptyState.innerHTML = `
+                    <div class="text-center py-12 text-rose-400">
+                        <p class="text-xs font-orbitron uppercase">Drafting Failed</p>
+                        <p class="text-[10px] mt-1">${err.message}</p>
+                    </div>
+                `;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "Draft Selected Article";
+            }
+        }
+
+        // Populate editor forms with draft
+        function populateEditor() {
+            if (!currentDraft) return;
+
+            document.getElementById("editor-empty-state").classList.add("hidden");
+            document.getElementById("editor-fields").classList.remove("hidden");
+
+            document.getElementById("input-source").value = currentDraft.source || "";
+            document.getElementById("input-date").value = currentDraft.date || "";
+            document.getElementById("input-image").value = currentDraft.image_url || "";
+
+            // Greek Fields
+            document.getElementById("input-title-el").value = currentDraft.el.title || "";
+            document.getElementById("input-teaser-el").value = currentDraft.el.teaser || "";
+            document.getElementById("input-content-el").value = currentDraft.el.content || "";
+
+            // English Fields
+            document.getElementById("input-title-en").value = currentDraft.en.title || "";
+            document.getElementById("input-teaser-en").value = currentDraft.en.teaser || "";
+            document.getElementById("input-content-en").value = currentDraft.en.content || "";
+
+            // Enable Buttons
+            document.getElementById("btn-publish").disabled = false;
+            document.getElementById("btn-reject").disabled = false;
+            document.getElementById("btn-preview").disabled = false;
+        }
+
+        // Toggle Language Tab
+        function setLangTab(lang) {
+            activeLang = lang;
+            const btnEl = document.getElementById("tab-el");
+            const btnEn = document.getElementById("tab-en");
+            const fieldsEl = document.getElementById("fields-el");
+            const fieldsEn = document.getElementById("fields-en");
+
+            if (lang === 'el') {
+                btnEl.className = "px-2.5 py-1 text-[10px] font-orbitron font-bold rounded-md bg-cyan-500/20 text-cyan-400 border border-cyan-500/30";
+                btnEn.className = "px-2.5 py-1 text-[10px] font-orbitron font-bold rounded-md text-slate-400 hover:text-slate-200";
+                fieldsEl.classList.remove("hidden");
+                fieldsEn.classList.add("hidden");
+            } else {
+                btnEn.className = "px-2.5 py-1 text-[10px] font-orbitron font-bold rounded-md bg-cyan-500/20 text-cyan-400 border border-cyan-500/30";
+                btnEl.className = "px-2.5 py-1 text-[10px] font-orbitron font-bold rounded-md text-slate-400 hover:text-slate-200";
+                fieldsEn.classList.remove("hidden");
+                fieldsEl.classList.add("hidden");
+            }
+        }
+
+        // Trigger Publish Locally
+        async function triggerPublish() {
+            if (!currentDraft) return;
+
+            const btn = document.getElementById("btn-publish");
+            btn.disabled = true;
+            btn.textContent = "Publishing Locally...";
+
+            const payload = {
+                source: document.getElementById("input-source").value.trim(),
+                date: document.getElementById("input-date").value.trim(),
+                image_url: document.getElementById("input-image").value.trim(),
+                el: {
+                    title: document.getElementById("input-title-el").value.trim(),
+                    teaser: document.getElementById("input-teaser-el").value.trim(),
+                    content: document.getElementById("input-content-el").value.trim(),
+                },
+                en: {
+                    title: document.getElementById("input-title-en").value.trim(),
+                    teaser: document.getElementById("input-teaser-en").value.trim(),
+                    content: document.getElementById("input-content-en").value.trim(),
+                }
+            };
+
+            try {
+                const response = await fetch("/api/publish", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.detail || "Failed to publish locally.");
+                }
+
+                const result = await response.json();
+                
+                lastPublishedFilename = result.file_name;
+                document.getElementById("btn-preview").disabled = false;
+                
+                alert(`SUCCESS!\n\nArticle published locally:\nFile: ${result.file_name}\n\nYou can test it in your browser before manually staging and committing!`);
+            } catch (err) {
+                console.error(err);
+                alert(`Error Publishing:\n${err.message}`);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "Save & Publish Locally";
+            }
+        }
+    </script>
+</body>
+</html>

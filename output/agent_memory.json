@@ -2,111 +2,153 @@
   "lessons": [
     {
       "category": "copywriting",
-      "error": "The translation of 'shed' (referring to microscopic titanium particles shedding into the surrounding tissue) as 'απόπτωση' ('απόπτωση μικροσκοπικών σωματιδίων') is clinically incorrect. In Greek medical terminology, 'απόπτωση' refers to apoptosis (programmed cell death) or the natural falling out of hair/teeth. For metallic fragments shedding or releasing from an implant, the correct clinical terms are 'απελευθέρωση' (release) or 'έκλυση' (shedding/release).",
-      "rule": "Do not repeat error: The translation of 'shed' (referring to microscopic titanium particles shedding into the surrounding tissue) as 'απόπτωση' ('απόπτωση μικροσκοπικών σωματιδίων') is clinically incorrect. In Greek medical terminology, 'απόπτωση' refers to apoptosis (programmed cell death) or the natural falling out of hair/teeth. For metallic fragments shedding or releasing from an implant, the correct clinical terms are 'απελευθέρωση' (release) or 'έκλυση' (shedding/release).. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-06T23:05:59.874041"
+      "error": "Section 5, Sentence 3: 'Scientific awareness' is omitted from 'continuous education and scientific awareness', further diminishing the emphasis on scientific rigor. 'In administrative roles' is also omitted after AI.",
+      "rule": "Do not repeat error: Section 5, Sentence 3: 'Scientific awareness' is omitted from 'continuous education and scientific awareness', further diminishing the emphasis on scientific rigor. 'In administrative roles' is also omitted after AI.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.153403"
     },
     {
       "category": "copywriting",
-      "error": "Greek title exceeds 12 words limit (current: 13 words).",
-      "rule": "Do not repeat error: Greek title exceeds 12 words limit (current: 13 words).. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-06T22:49:16.846090"
+      "error": "Section 5, Sentence 2: The welcoming phrase 'from the moment you walk through our doors' is omitted, reducing the empathetic tone.",
+      "rule": "Do not repeat error: Section 5, Sentence 2: The welcoming phrase 'from the moment you walk through our doors' is omitted, reducing the empathetic tone.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.151675"
     },
     {
       "category": "copywriting",
-      "error": "Greek content word count is outside 300-500 words limit (current: 0).",
-      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 0).. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-06T22:48:53.273427"
+      "error": "Section 5, Sentence 1: The crucial term 'evidence-based' (as in 'evidence-based clinical care') is omitted from 'κορυφαία κλινική φροντίδα', significantly weakening the medical credibility. Also, 'all areas of dentistry' is narrowed to 'τεχνολογικές εξελίξεις'.",
+      "rule": "Do not repeat error: Section 5, Sentence 1: The crucial term 'evidence-based' (as in 'evidence-based clinical care') is omitted from 'κορυφαία κλινική φροντίδα', significantly weakening the medical credibility. Also, 'all areas of dentistry' is narrowed to 'τεχνολογικές εξελίξεις'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.149597"
     },
     {
       "category": "copywriting",
-      "error": "Missing required marker: [EL_CONTENT]:",
-      "rule": "Do not repeat error: Missing required marker: [EL_CONTENT]:. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:53.083091"
+      "error": "Section 4, Sentence 3: 'Internal systems' is omitted from 'patient interactions and internal systems'.",
+      "rule": "Do not repeat error: Section 4, Sentence 3: 'Internal systems' is omitted from 'patient interactions and internal systems'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.148085"
     },
     {
       "category": "copywriting",
-      "error": "Missing required marker: [EL_TEASER]:",
-      "rule": "Do not repeat error: Missing required marker: [EL_TEASER]:. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:53.082660"
+      "error": "Section 4, Sentence 2: 'Well-being' is omitted from 'oral health and well-being', and 'administrative' is omitted before 'duties'.",
+      "rule": "Do not repeat error: Section 4, Sentence 2: 'Well-being' is omitted from 'oral health and well-being', and 'administrative' is omitted before 'duties'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.146553"
     },
     {
       "category": "copywriting",
-      "error": "Missing required marker: [EL_TITLE]:",
-      "rule": "Do not repeat error: Missing required marker: [EL_TITLE]:. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:53.082214"
+      "error": "Section 4, Sentence 1: The important nuance about 'its widespread impact is yet to fully unfold' is completely omitted, altering the cautious forward-looking tone of the English.",
+      "rule": "Do not repeat error: Section 4, Sentence 1: The important nuance about 'its widespread impact is yet to fully unfold' is completely omitted, altering the cautious forward-looking tone of the English.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.144748"
     },
     {
       "category": "copywriting",
-      "error": "Missing required marker: [EN_CONTENT]:",
-      "rule": "Do not repeat error: Missing required marker: [EN_CONTENT]:. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:53.081801"
+      "error": "Section 3, Sentence 2: The empathetic actions 'answering your questions and making you feel comfortable' are generalized to 'στις δικές σας ανάγκες', reducing the personal and comforting aspect.",
+      "rule": "Do not repeat error: Section 3, Sentence 2: The empathetic actions 'answering your questions and making you feel comfortable' are generalized to 'στις δικές σας ανάγκες', reducing the personal and comforting aspect.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.143051"
     },
     {
       "category": "copywriting",
-      "error": "Missing required marker: [EN_TEASER]:",
-      "rule": "Do not repeat error: Missing required marker: [EN_TEASER]:. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:53.081375"
+      "error": "Section 3, Sentence 1: 'More focused care' is translated simply as 'καλύτερης φροντίδας', losing the specificity of 'focused'.",
+      "rule": "Do not repeat error: Section 3, Sentence 1: 'More focused care' is translated simply as 'καλύτερης φροντίδας', losing the specificity of 'focused'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.141422"
     },
     {
       "category": "copywriting",
-      "error": "Missing required marker: [EN_TITLE]:",
-      "rule": "Do not repeat error: Missing required marker: [EN_TITLE]:. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:53.080984"
+      "error": "Section 2, Sentence 4: The description 'a warmer, more attentive experience for everyone' is shortened to 'μια πιο ζεστή και εξατομικευμένη εξυπηρέτηση', omitting 'more attentive' and 'for everyone'.",
+      "rule": "Do not repeat error: Section 2, Sentence 4: The description 'a warmer, more attentive experience for everyone' is shortened to 'μια πιο ζεστή και εξατομικευμένη εξυπηρέτηση', omitting 'more attentive' and 'for everyone'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.139337"
     },
     {
       "category": "copywriting",
-      "error": "Missing required marker: [IMAGE_URL]:",
-      "rule": "Do not repeat error: Missing required marker: [IMAGE_URL]:. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:53.080597"
+      "error": "Section 2, Sentence 3: The strategic goal 'The goal is to streamline the initial contact points for patients' is entirely missing.",
+      "rule": "Do not repeat error: Section 2, Sentence 3: The strategic goal 'The goal is to streamline the initial contact points for patients' is entirely missing.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.134445"
     },
     {
       "category": "copywriting",
-      "error": "Missing required marker: [DATE]:",
-      "rule": "Do not repeat error: Missing required marker: [DATE]:. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:53.080192"
+      "error": "Section 2, Sentence 1: The concept of 'an evolving approach' is completely omitted from the Greek translation.",
+      "rule": "Do not repeat error: Section 2, Sentence 1: The concept of 'an evolving approach' is completely omitted from the Greek translation.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.130339"
     },
     {
       "category": "copywriting",
-      "error": "Missing required marker: [SOURCE]:",
-      "rule": "Do not repeat error: Missing required marker: [SOURCE]:. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:53.079786"
+      "error": "Section 1, Sentence 1: The phrase 'across various sectors, and dentistry is no exception' is significantly simplified in Greek to 'προχωρά σταθερά στην οδοντιατρική', losing the broader context of AI integration.",
+      "rule": "Do not repeat error: Section 1, Sentence 1: The phrase 'across various sectors, and dentistry is no exception' is significantly simplified in Greek to 'προχωρά σταθερά στην οδοντιατρική', losing the broader context of AI integration.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.119823"
     },
     {
       "category": "copywriting",
-      "error": "Greek content word count is outside 300-500 words limit (current: 600).",
-      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 600).. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:53.069965"
+      "error": "The translation consistently simplifies or omits key phrases and concepts from the English original, impacting the depth, nuance, and sometimes the empathetic or medically credible tone.",
+      "rule": "Do not repeat error: The translation consistently simplifies or omits key phrases and concepts from the English original, impacting the depth, nuance, and sometimes the empathetic or medically credible tone.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:23:04.114925"
     },
     {
       "category": "copywriting",
-      "error": "English content word count is outside 300-500 words limit (current: 520).",
-      "rule": "Do not repeat error: English content word count is outside 300-500 words limit (current: 520).. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:53.069299"
-    },
-    {
-      "category": "copywriting",
-      "error": "Greek content word count is outside 300-500 words limit (current: 12).",
-      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 12).. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:26.637518"
-    },
-    {
-      "category": "copywriting",
-      "error": "English content word count is outside 300-500 words limit (current: 2).",
-      "rule": "Do not repeat error: English content word count is outside 300-500 words limit (current: 2).. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:26.634984"
+      "error": "Greek content word count is outside 300-500 words limit (current: 512).",
+      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 512).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T00:22:07.891747"
     },
     {
       "category": "copywriting",
       "error": "Greek content does not mention the practice name 'Dentplant'.",
       "rule": "Do not repeat error: Greek content does not mention the practice name 'Dentplant'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:26.633977"
+      "timestamp": "2026-06-08T00:21:35.295148"
     },
     {
       "category": "copywriting",
-      "error": "English content does not mention the practice name 'Dentplant'.",
-      "rule": "Do not repeat error: English content does not mention the practice name 'Dentplant'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-05-23T01:29:26.623913"
+      "error": "The phrase 'να σας περιθάλπουμε πιο ολιστικά' (to treat you more holistically) and 'εφαρμόζουμε περίθαλψη' (practicing care) use the word 'περιθάλπω' / 'περίθαλψη', which sounds outdated or associated with charitable/emergency aid rather than modern dental practice. It is better to use 'να σας προσφέρουμε μια πιο ολιστική φροντίδα' and 'να παρέχουμε οδοντιατρική φροντίδα βασισμένη σε ενδείξεις'.",
+      "rule": "Do not repeat error: The phrase 'να σας περιθάλπουμε πιο ολιστικά' (to treat you more holistically) and 'εφαρμόζουμε περίθαλψη' (practicing care) use the word 'περιθάλπω' / 'περίθαλψη', which sounds outdated or associated with charitable/emergency aid rather than modern dental practice. It is better to use 'να σας προσφέρουμε μια πιο ολιστική φροντίδα' and 'να παρέχουμε οδοντιατρική φροντίδα βασισμένη σε ενδείξεις'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-07T23:53:11.666835"
+    },
+    {
+      "category": "copywriting",
+      "error": "The term 'infectious condition' is translated as 'μολυσματική κατάσταση'. In Greek medical/dental terminology, periodontal disease is referred to as a 'λοιμώδης κατάσταση' (infectious/inflammatory disease), whereas 'μολυσματική' implies a highly contagious or transmissible infection.",
+      "rule": "Do not repeat error: The term 'infectious condition' is translated as 'μολυσματική κατάσταση'. In Greek medical/dental terminology, periodontal disease is referred to as a 'λοιμώδης κατάσταση' (infectious/inflammatory disease), whereas 'μολυσματική' implies a highly contagious or transmissible infection.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-07T23:53:11.656435"
+    },
+    {
+      "category": "copywriting",
+      "error": "The translation of 'gum disease' as 'ουλίτιδα' (gingivitis) in the first bullet point of the limitations is clinically inaccurate. Since the context discusses bone loss and periodontitis, 'gum disease' should be translated as 'νόσος των ούλων' or 'περιοδοντική νόσος', as gingivitis does not involve bone loss.",
+      "rule": "Do not repeat error: The translation of 'gum disease' as 'ουλίτιδα' (gingivitis) in the first bullet point of the limitations is clinically inaccurate. Since the context discusses bone loss and periodontitis, 'gum disease' should be translated as 'νόσος των ούλων' or 'περιοδοντική νόσος', as gingivitis does not involve bone loss.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-07T23:53:11.650350"
+    },
+    {
+      "category": "copywriting",
+      "error": "In the third section, 'self-adhesive resin cements' is translated as 'αυτοκόλλητες ρητινώδεις κονίες'. In Greek professional dentistry, 'self-adhesive' is clinically translated as 'αυτοσυγκολλούμενες'. The term 'αυτοκόλλητες' is too colloquial and sounds like consumer-grade stickers; 'αυτοσυγκολλούμενες ρητινώδεις κονίες' is the correct clinical term.",
+      "rule": "Do not repeat error: In the third section, 'self-adhesive resin cements' is translated as 'αυτοκόλλητες ρητινώδεις κονίες'. In Greek professional dentistry, 'self-adhesive' is clinically translated as 'αυτοσυγκολλούμενες'. The term 'αυτοκόλλητες' is too colloquial and sounds like consumer-grade stickers; 'αυτοσυγκολλούμενες ρητινώδεις κονίες' is the correct clinical term.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-07T23:19:03.110730"
+    },
+    {
+      "category": "copywriting",
+      "error": "In the second paragraph, 'universal resin cements' is translated as 'κονίες γενικής χρήσης'. To maintain clinical accuracy and consistency, it should be translated as 'ρητινώδεις κονίες γενικής χρήσης' (or 'γενικής εφαρμογής') to explicitly include the resin ('ρητινώδεις') component.",
+      "rule": "Do not repeat error: In the second paragraph, 'universal resin cements' is translated as 'κονίες γενικής χρήσης'. To maintain clinical accuracy and consistency, it should be translated as 'ρητινώδεις κονίες γενικής χρήσης' (or 'γενικής εφαρμογής') to explicitly include the resin ('ρητινώδεις') component.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-07T23:19:03.108512"
+    },
+    {
+      "category": "copywriting",
+      "error": "There is a stylistic redundancy in the final paragraph: the text starts with 'Στην κλινική Dentplant...' and repeats '...η κλινική μας ομάδα στη Dentplant...' in the second sentence. The second instance of 'στη Dentplant' is unnecessary and should be removed.",
+      "rule": "Do not repeat error: There is a stylistic redundancy in the final paragraph: the text starts with 'Στην κλινική Dentplant...' and repeats '...η κλινική μας ομάδα στη Dentplant...' in the second sentence. The second instance of 'στη Dentplant' is unnecessary and should be removed.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-07T23:07:10.807006"
+    },
+    {
+      "category": "copywriting",
+      "error": "In the final paragraph, 'emerging research' is translated as 'σύγχρονη έρευνα' (modern/contemporary research). A more precise clinical translation is 'αναδυόμενη έρευνα' or 'νέα επιστημονικά δεδομένα'.",
+      "rule": "Do not repeat error: In the final paragraph, 'emerging research' is translated as 'σύγχρονη έρευνα' (modern/contemporary research). A more precise clinical translation is 'αναδυόμενη έρευνα' or 'νέα επιστημονικά δεδομένα'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-07T23:07:10.802459"
+    },
+    {
+      "category": "copywriting",
+      "error": "In the heading 'Maintain Tailored Hygiene', the term 'Tailored' is translated as 'Προσαρμοσμένη'. In Greek medical and dental contexts, 'tailored' should be translated as 'Εξατομικευμένη' ('Εξατομικευμένη στοματική υγιεινή').",
+      "rule": "Do not repeat error: In the heading 'Maintain Tailored Hygiene', the term 'Tailored' is translated as 'Προσαρμοσμένη'. In Greek medical and dental contexts, 'tailored' should be translated as 'Εξατομικευμένη' ('Εξατομικευμένη στοματική υγιεινή').. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-07T23:07:10.791492"
+    },
+    {
+      "category": "copywriting",
+      "error": "In 'The Shared Inflammatory Pathway', the term 'modulating' is translated as 'μειώνοντας' (reducing) instead of the clinically accurate 'ρυθμίζοντας' or 'τροποποιώντας'.",
+      "rule": "Do not repeat error: In 'The Shared Inflammatory Pathway', the term 'modulating' is translated as 'μειώνοντας' (reducing) instead of the clinically accurate 'ρυθμίζοντας' or 'τροποποιώντας'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-07T23:07:10.789259"
+    },
+    {
+      "category": "copywriting",
+      "error": "The terms 'gum disease' and 'periodontitis' were mistakenly swapped in the 'Interpreting the Clinical Findings' section. 'NSAIDs are not a cure... for gum disease' was translated using 'περιοδοντίτιδα', while 'Periodontitis remains an infectious disease...' was translated as 'Η νόσος των ούλων'. They should be mapped correctly ('νόσος των ούλων' for gum disease, and 'περιοδοντίτιδα' for periodontitis) to maintain clinical specificity.",
+      "rule": "Do not repeat error: The terms 'gum disease' and 'periodontitis' were mistakenly swapped in the 'Interpreting the Clinical Findings' section. 'NSAIDs are not a cure... for gum disease' was translated using 'περιοδοντίτιδα', while 'Periodontitis remains an infectious disease...' was translated as 'Η νόσος των ούλων'. They should be mapped correctly ('νόσος των ούλων' for gum disease, and 'περιοδοντίτιδα' for periodontitis) to maintain clinical specificity.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-07T23:06:41.837097"
     }
   ]
 }
