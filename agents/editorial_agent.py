@@ -88,6 +88,8 @@ def get_fallback_article_scores(art):
         },
         "is_promotional": False,
         "is_low_quality": False,
+        "is_us_centric": False,
+        "is_inappropriate": False,
         "scoring_reasoning": "Fallback score"
     }
 
@@ -132,6 +134,7 @@ def heuristic_score_and_classify(articles):
         is_promo = any(k in title or k in summary for k in ["acquires", "merger", "market size", "quarterly", "revenue", "agreement with", "partnership"])
         is_low = any(k in title or k in summary for k in ["celebrity", "shocking", "insane", "magic"])
         is_us = any(k in title or k in summary for k in ["medicaid", "medicare", "epa", "florida", "new york", "california", "congress", "senate", "ada proposes"])
+        is_inappropriate = any(k in title or k in summary for k in ["implant failure", "failure of implant", "implant infection", "implant loss", "failed implant", "loosening of implant", "failure rate", "titanium particles"])
 
         art["category"] = category
         art["scores"] = {
@@ -145,6 +148,7 @@ def heuristic_score_and_classify(articles):
         art["is_promotional"] = is_promo
         art["is_low_quality"] = is_low
         art["is_us_centric"] = is_us
+        art["is_inappropriate"] = is_inappropriate
         art["scoring_reasoning"] = "Heuristically calculated"
 
     return articles
@@ -234,6 +238,8 @@ def get_top_3_candidates(articles):
             penalty += 25
         if art.get("is_us_centric"):
             penalty += 50
+        if art.get("is_inappropriate"):
+            penalty += 100
             
         final_score = pos_score + img_score - penalty
         art["final_score"] = final_score
@@ -335,6 +341,7 @@ For each article, you must:
    * is_promotional: true if it is a promotional press release, corporate/financial announcement, or low-value product advertisement.
    * is_low_quality: true if it is sensationalist, has weak scientific evidence, or is low-value/celebrity news.
    * is_us_centric: true if the topic is specifically about US insurance (Medicaid/Medicare), US litigation/EPA rulings, or US-specific administration that is not relevant to Europe.
+   * is_inappropriate: true if the article describes methods, mechanisms, or scenarios in which dental implants, treatments, or surgeries fail (e.g., implant failures, severe infections causing implant loss, complications), or contains alarmist/discouraging content for patients seeking dental treatments.
 
 Return the response as a JSON array of objects.
 Example format:
@@ -351,6 +358,7 @@ Example format:
     "is_promotional": false,
     "is_low_quality": false,
     "is_us_centric": false,
+    "is_inappropriate": false,
     "reasoning": "Brief explanation."
   }}
 ]
@@ -383,6 +391,7 @@ Articles to evaluate:
                     art["is_promotional"] = bool(score_info.get("is_promotional", False))
                     art["is_low_quality"] = bool(score_info.get("is_low_quality", False))
                     art["is_us_centric"] = bool(score_info.get("is_us_centric", False))
+                    art["is_inappropriate"] = bool(score_info.get("is_inappropriate", False))
                     art["scoring_reasoning"] = score_info.get("reasoning", "")
                 else:
                     art.update(get_fallback_article_scores(art))
@@ -440,6 +449,7 @@ Select the absolute BEST candidate for publication on our premium practice blog,
 
 Considerations:
 - Clinical relevance, evidence strength, patient interest.
+- Do not select any candidate that describes implant/treatment failure or negative clinical outcomes that would discourage patient confidence in dental treatments.
 - **TOPIC DIVERSITY:** Do not select a candidate that is substantially similar to the recently published topics listed above.
 - High-quality image availability (prefer clinical/authentic images over stock or none).
 - Rationale of why this candidate is selected over the other two.
