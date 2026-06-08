@@ -2,6 +2,18 @@
   "lessons": [
     {
       "category": "copywriting",
+      "error": "The term 'clinically proven' in the bullet point 'A Supportive Tool' was translated as 'κλινικά εγκεκριμένα' (clinically approved). The correct medical translation is 'κλινικά αποδεδειγμένα' (clinically proven), which is also consistent with the translation of 'clinically proven adjunct' ('κλινικά αποδεδειγμένο συμπλήρωμα') used earlier in the text.",
+      "rule": "Do not repeat error: The term 'clinically proven' in the bullet point 'A Supportive Tool' was translated as 'κλινικά εγκεκριμένα' (clinically approved). The correct medical translation is 'κλινικά αποδεδειγμένα' (clinically proven), which is also consistent with the translation of 'clinically proven adjunct' ('κλινικά αποδεδειγμένο συμπλήρωμα') used earlier in the text.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T11:51:49.151773"
+    },
+    {
+      "category": "copywriting",
+      "error": "The phrase 'evolving development' was translated as 'εξελισσόμενη εξέλιξη'. This is a pleonasm (tautology) in Greek because both words share the same root. It should be revised to 'συνεχή εξέλιξη' (continuous development) or simply 'εξέλιξη' to sound natural and professional.",
+      "rule": "Do not repeat error: The phrase 'evolving development' was translated as 'εξελισσόμενη εξέλιξη'. This is a pleonasm (tautology) in Greek because both words share the same root. It should be revised to 'συνεχή εξέλιξη' (continuous development) or simply 'εξέλιξη' to sound natural and professional.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-08T11:51:49.151163"
+    },
+    {
+      "category": "copywriting",
       "error": "Section 5, Sentence 3: 'Scientific awareness' is omitted from 'continuous education and scientific awareness', further diminishing the emphasis on scientific rigor. 'In administrative roles' is also omitted after AI.",
       "rule": "Do not repeat error: Section 5, Sentence 3: 'Scientific awareness' is omitted from 'continuous education and scientific awareness', further diminishing the emphasis on scientific rigor. 'In administrative roles' is also omitted after AI.. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-08T00:23:04.153403"
@@ -137,18 +149,6 @@
       "error": "In the heading 'Maintain Tailored Hygiene', the term 'Tailored' is translated as 'Προσαρμοσμένη'. In Greek medical and dental contexts, 'tailored' should be translated as 'Εξατομικευμένη' ('Εξατομικευμένη στοματική υγιεινή').",
       "rule": "Do not repeat error: In the heading 'Maintain Tailored Hygiene', the term 'Tailored' is translated as 'Προσαρμοσμένη'. In Greek medical and dental contexts, 'tailored' should be translated as 'Εξατομικευμένη' ('Εξατομικευμένη στοματική υγιεινή').. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-07T23:07:10.791492"
-    },
-    {
-      "category": "copywriting",
-      "error": "In 'The Shared Inflammatory Pathway', the term 'modulating' is translated as 'μειώνοντας' (reducing) instead of the clinically accurate 'ρυθμίζοντας' or 'τροποποιώντας'.",
-      "rule": "Do not repeat error: In 'The Shared Inflammatory Pathway', the term 'modulating' is translated as 'μειώνοντας' (reducing) instead of the clinically accurate 'ρυθμίζοντας' or 'τροποποιώντας'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-07T23:07:10.789259"
-    },
-    {
-      "category": "copywriting",
-      "error": "The terms 'gum disease' and 'periodontitis' were mistakenly swapped in the 'Interpreting the Clinical Findings' section. 'NSAIDs are not a cure... for gum disease' was translated using 'περιοδοντίτιδα', while 'Periodontitis remains an infectious disease...' was translated as 'Η νόσος των ούλων'. They should be mapped correctly ('νόσος των ούλων' for gum disease, and 'περιοδοντίτιδα' for periodontitis) to maintain clinical specificity.",
-      "rule": "Do not repeat error: The terms 'gum disease' and 'periodontitis' were mistakenly swapped in the 'Interpreting the Clinical Findings' section. 'NSAIDs are not a cure... for gum disease' was translated using 'περιοδοντίτιδα', while 'Periodontitis remains an infectious disease...' was translated as 'Η νόσος των ούλων'. They should be mapped correctly ('νόσος των ούλων' for gum disease, and 'περιοδοντίτιδα' for periodontitis) to maintain clinical specificity.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-07T23:06:41.837097"
     }
   ]
 }
