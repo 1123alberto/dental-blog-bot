@@ -2,6 +2,30 @@
   "lessons": [
     {
       "category": "copywriting",
+      "error": "In the second paragraph, the phrase \"αποτελεί ακρογωνιαίο λίχο\" contains a grammatical error. \"λίχο\" should be corrected to \"λίθο\" to reflect the correct accusative case of the masculine noun \"λίθος\" (stone/cornerstone).",
+      "rule": "Do not repeat error: In the second paragraph, the phrase \"αποτελεί ακρογωνιαίο λίχο\" contains a grammatical error. \"λίχο\" should be corrected to \"λίθο\" to reflect the correct accusative case of the masculine noun \"λίθος\" (stone/cornerstone).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-15T13:04:37.501013"
+    },
+    {
+      "category": "copywriting",
+      "error": "Greek content word count is outside 300-500 words limit (current: 12).",
+      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 12).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-15T13:02:51.049108"
+    },
+    {
+      "category": "copywriting",
+      "error": "English content word count is outside 300-500 words limit (current: 12).",
+      "rule": "Do not repeat error: English content word count is outside 300-500 words limit (current: 12).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-15T13:02:51.048514"
+    },
+    {
+      "category": "copywriting",
+      "error": "English content does not mention the practice name 'Dentplant'.",
+      "rule": "Do not repeat error: English content does not mention the practice name 'Dentplant'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-15T13:02:51.047600"
+    },
+    {
+      "category": "copywriting",
       "error": "The term 'clinically proven' in the bullet point 'A Supportive Tool' was translated as 'κλινικά εγκεκριμένα' (clinically approved). The correct medical translation is 'κλινικά αποδεδειγμένα' (clinically proven), which is also consistent with the translation of 'clinically proven adjunct' ('κλινικά αποδεδειγμένο συμπλήρωμα') used earlier in the text.",
       "rule": "Do not repeat error: The term 'clinically proven' in the bullet point 'A Supportive Tool' was translated as 'κλινικά εγκεκριμένα' (clinically approved). The correct medical translation is 'κλινικά αποδεδειγμένα' (clinically proven), which is also consistent with the translation of 'clinically proven adjunct' ('κλινικά αποδεδειγμένο συμπλήρωμα') used earlier in the text.. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-08T11:51:49.151773"
@@ -125,30 +149,6 @@
       "error": "In the third section, 'self-adhesive resin cements' is translated as 'αυτοκόλλητες ρητινώδεις κονίες'. In Greek professional dentistry, 'self-adhesive' is clinically translated as 'αυτοσυγκολλούμενες'. The term 'αυτοκόλλητες' is too colloquial and sounds like consumer-grade stickers; 'αυτοσυγκολλούμενες ρητινώδεις κονίες' is the correct clinical term.",
       "rule": "Do not repeat error: In the third section, 'self-adhesive resin cements' is translated as 'αυτοκόλλητες ρητινώδεις κονίες'. In Greek professional dentistry, 'self-adhesive' is clinically translated as 'αυτοσυγκολλούμενες'. The term 'αυτοκόλλητες' is too colloquial and sounds like consumer-grade stickers; 'αυτοσυγκολλούμενες ρητινώδεις κονίες' is the correct clinical term.. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-07T23:19:03.110730"
-    },
-    {
-      "category": "copywriting",
-      "error": "In the second paragraph, 'universal resin cements' is translated as 'κονίες γενικής χρήσης'. To maintain clinical accuracy and consistency, it should be translated as 'ρητινώδεις κονίες γενικής χρήσης' (or 'γενικής εφαρμογής') to explicitly include the resin ('ρητινώδεις') component.",
-      "rule": "Do not repeat error: In the second paragraph, 'universal resin cements' is translated as 'κονίες γενικής χρήσης'. To maintain clinical accuracy and consistency, it should be translated as 'ρητινώδεις κονίες γενικής χρήσης' (or 'γενικής εφαρμογής') to explicitly include the resin ('ρητινώδεις') component.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-07T23:19:03.108512"
-    },
-    {
-      "category": "copywriting",
-      "error": "There is a stylistic redundancy in the final paragraph: the text starts with 'Στην κλινική Dentplant...' and repeats '...η κλινική μας ομάδα στη Dentplant...' in the second sentence. The second instance of 'στη Dentplant' is unnecessary and should be removed.",
-      "rule": "Do not repeat error: There is a stylistic redundancy in the final paragraph: the text starts with 'Στην κλινική Dentplant...' and repeats '...η κλινική μας ομάδα στη Dentplant...' in the second sentence. The second instance of 'στη Dentplant' is unnecessary and should be removed.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-07T23:07:10.807006"
-    },
-    {
-      "category": "copywriting",
-      "error": "In the final paragraph, 'emerging research' is translated as 'σύγχρονη έρευνα' (modern/contemporary research). A more precise clinical translation is 'αναδυόμενη έρευνα' or 'νέα επιστημονικά δεδομένα'.",
-      "rule": "Do not repeat error: In the final paragraph, 'emerging research' is translated as 'σύγχρονη έρευνα' (modern/contemporary research). A more precise clinical translation is 'αναδυόμενη έρευνα' or 'νέα επιστημονικά δεδομένα'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-07T23:07:10.802459"
-    },
-    {
-      "category": "copywriting",
-      "error": "In the heading 'Maintain Tailored Hygiene', the term 'Tailored' is translated as 'Προσαρμοσμένη'. In Greek medical and dental contexts, 'tailored' should be translated as 'Εξατομικευμένη' ('Εξατομικευμένη στοματική υγιεινή').",
-      "rule": "Do not repeat error: In the heading 'Maintain Tailored Hygiene', the term 'Tailored' is translated as 'Προσαρμοσμένη'. In Greek medical and dental contexts, 'tailored' should be translated as 'Εξατομικευμένη' ('Εξατομικευμένη στοματική υγιεινή').. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-07T23:07:10.791492"
     }
   ]
 }
