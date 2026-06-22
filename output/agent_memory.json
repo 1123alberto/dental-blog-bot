@@ -2,6 +2,24 @@
   "lessons": [
     {
       "category": "copywriting",
+      "error": "The verb 'αναπαραστήσουν' (to represent/portray) is clinically inaccurate for replicating natural tooth characteristics; 'αναπαραγάγουν' (to replicate/reproduce) is the correct term.",
+      "rule": "Do not repeat error: The verb 'αναπαραστήσουν' (to represent/portray) is clinically inaccurate for replicating natural tooth characteristics; 'αναπαραγάγουν' (to replicate/reproduce) is the correct term.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-22T12:48:11.412584"
+    },
+    {
+      "category": "copywriting",
+      "error": "The term 'ασθενή-κεντρική φιλοσοφία' is an awkward, literal translation of 'patient-centered philosophy'. The correct and natural Greek medical term is 'ασθενοκεντρική φιλοσοφία' or 'φιλοσοφία με επίκεντρο τον ασθενή'.",
+      "rule": "Do not repeat error: The term 'ασθενή-κεντρική φιλοσοφία' is an awkward, literal translation of 'patient-centered philosophy'. The correct and natural Greek medical term is 'ασθενοκεντρική φιλοσοφία' or 'φιλοσοφία με επίκεντρο τον ασθενή'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-22T12:48:11.412023"
+    },
+    {
+      "category": "copywriting",
+      "error": "The translation contains grammatical typos for the term 'composite resin' (σύνθετη ρητίνη): 'συνθέτης ρητίνης' should be corrected to 'σύνθετης ρητίνης', and 'με συνθέτη ρητίνη' should be corrected to 'με σύνθετη ρητίνη'.",
+      "rule": "Do not repeat error: The translation contains grammatical typos for the term 'composite resin' (σύνθετη ρητίνη): 'συνθέτης ρητίνης' should be corrected to 'σύνθετης ρητίνης', and 'με συνθέτη ρητίνη' should be corrected to 'με σύνθετη ρητίνη'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-22T12:48:11.411403"
+    },
+    {
+      "category": "copywriting",
       "error": "In the second paragraph, the phrase \"αποτελεί ακρογωνιαίο λίχο\" contains a grammatical error. \"λίχο\" should be corrected to \"λίθο\" to reflect the correct accusative case of the masculine noun \"λίθος\" (stone/cornerstone).",
       "rule": "Do not repeat error: In the second paragraph, the phrase \"αποτελεί ακρογωνιαίο λίχο\" contains a grammatical error. \"λίχο\" should be corrected to \"λίθο\" to reflect the correct accusative case of the masculine noun \"λίθος\" (stone/cornerstone).. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-15T13:04:37.501013"
@@ -131,24 +149,6 @@
       "error": "The phrase 'να σας περιθάλπουμε πιο ολιστικά' (to treat you more holistically) and 'εφαρμόζουμε περίθαλψη' (practicing care) use the word 'περιθάλπω' / 'περίθαλψη', which sounds outdated or associated with charitable/emergency aid rather than modern dental practice. It is better to use 'να σας προσφέρουμε μια πιο ολιστική φροντίδα' and 'να παρέχουμε οδοντιατρική φροντίδα βασισμένη σε ενδείξεις'.",
       "rule": "Do not repeat error: The phrase 'να σας περιθάλπουμε πιο ολιστικά' (to treat you more holistically) and 'εφαρμόζουμε περίθαλψη' (practicing care) use the word 'περιθάλπω' / 'περίθαλψη', which sounds outdated or associated with charitable/emergency aid rather than modern dental practice. It is better to use 'να σας προσφέρουμε μια πιο ολιστική φροντίδα' and 'να παρέχουμε οδοντιατρική φροντίδα βασισμένη σε ενδείξεις'.. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-07T23:53:11.666835"
-    },
-    {
-      "category": "copywriting",
-      "error": "The term 'infectious condition' is translated as 'μολυσματική κατάσταση'. In Greek medical/dental terminology, periodontal disease is referred to as a 'λοιμώδης κατάσταση' (infectious/inflammatory disease), whereas 'μολυσματική' implies a highly contagious or transmissible infection.",
-      "rule": "Do not repeat error: The term 'infectious condition' is translated as 'μολυσματική κατάσταση'. In Greek medical/dental terminology, periodontal disease is referred to as a 'λοιμώδης κατάσταση' (infectious/inflammatory disease), whereas 'μολυσματική' implies a highly contagious or transmissible infection.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-07T23:53:11.656435"
-    },
-    {
-      "category": "copywriting",
-      "error": "The translation of 'gum disease' as 'ουλίτιδα' (gingivitis) in the first bullet point of the limitations is clinically inaccurate. Since the context discusses bone loss and periodontitis, 'gum disease' should be translated as 'νόσος των ούλων' or 'περιοδοντική νόσος', as gingivitis does not involve bone loss.",
-      "rule": "Do not repeat error: The translation of 'gum disease' as 'ουλίτιδα' (gingivitis) in the first bullet point of the limitations is clinically inaccurate. Since the context discusses bone loss and periodontitis, 'gum disease' should be translated as 'νόσος των ούλων' or 'περιοδοντική νόσος', as gingivitis does not involve bone loss.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-07T23:53:11.650350"
-    },
-    {
-      "category": "copywriting",
-      "error": "In the third section, 'self-adhesive resin cements' is translated as 'αυτοκόλλητες ρητινώδεις κονίες'. In Greek professional dentistry, 'self-adhesive' is clinically translated as 'αυτοσυγκολλούμενες'. The term 'αυτοκόλλητες' is too colloquial and sounds like consumer-grade stickers; 'αυτοσυγκολλούμενες ρητινώδεις κονίες' is the correct clinical term.",
-      "rule": "Do not repeat error: In the third section, 'self-adhesive resin cements' is translated as 'αυτοκόλλητες ρητινώδεις κονίες'. In Greek professional dentistry, 'self-adhesive' is clinically translated as 'αυτοσυγκολλούμενες'. The term 'αυτοκόλλητες' is too colloquial and sounds like consumer-grade stickers; 'αυτοσυγκολλούμενες ρητινώδεις κονίες' is the correct clinical term.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-07T23:19:03.110730"
     }
   ]
 }
