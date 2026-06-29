@@ -2,6 +2,84 @@
   "lessons": [
     {
       "category": "copywriting",
+      "error": "Greek content word count is outside 300-500 words limit (current: 536).",
+      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 536).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T12:00:06.745726"
+    },
+    {
+      "category": "copywriting",
+      "error": "In the concluding paragraph, the phrases \"informed guidance\" and \"to maintain not just your smile, but your overall well-being\" are either omitted or heavily simplified, diminishing the comprehensive and empathetic tone of the original English text.",
+      "rule": "Do not repeat error: In the concluding paragraph, the phrases \"informed guidance\" and \"to maintain not just your smile, but your overall well-being\" are either omitted or heavily simplified, diminishing the comprehensive and empathetic tone of the original English text.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:59:16.313235"
+    },
+    {
+      "category": "copywriting",
+      "error": "The phrase \"dietary components\" is translated simply as \"τη διατροφή\", which is less precise than \"διατροφικά συστατικά\".",
+      "rule": "Do not repeat error: The phrase \"dietary components\" is translated simply as \"τη διατροφή\", which is less precise than \"διατροφικά συστατικά\".. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:59:16.312760"
+    },
+    {
+      "category": "copywriting",
+      "error": "In the list of effective strategies for preventing and treating periodontitis, the important recommendation for \"professional cleanings\" (επαγγελματικοί καθαρισμοί / αποτρύγωση) is omitted.",
+      "rule": "Do not repeat error: In the list of effective strategies for preventing and treating periodontitis, the important recommendation for \"professional cleanings\" (επαγγελματικοί καθαρισμοί / αποτρύγωση) is omitted.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:59:16.312308"
+    },
+    {
+      "category": "copywriting",
+      "error": "When discussing future research directions, the Greek text omits two important elements: \"the mechanisms\" (οι μηχανισμοί) and \"practical application of such dietary interventions in a clinical setting\" (πρακτική εφαρμογή τέτοιων διατροφικών παρεμβάσεων σε κλινικό περιβάλλον).",
+      "rule": "Do not repeat error: When discussing future research directions, the Greek text omits two important elements: \"the mechanisms\" (οι μηχανισμοί) and \"practical application of such dietary interventions in a clinical setting\" (πρακτική εφαρμογή τέτοιων διατροφικών παρεμβάσεων σε κλινικό περιβάλλον).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:59:16.311872"
+    },
+    {
+      "category": "copywriting",
+      "error": "The phrase \"to optimize healing\" is omitted from the discussion on exploring additional pathways for oral health.",
+      "rule": "Do not repeat error: The phrase \"to optimize healing\" is omitted from the discussion on exploring additional pathways for oral health.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:59:16.311144"
+    },
+    {
+      "category": "copywriting",
+      "error": "The explanatory clarification for non-surgical periodontal therapy, \"which includes professional cleaning procedures like scaling and root planing,\" is completely omitted, reducing the reader's understanding of the procedure.",
+      "rule": "Do not repeat error: The explanatory clarification for non-surgical periodontal therapy, \"which includes professional cleaning procedures like scaling and root planing,\" is completely omitted, reducing the reader's understanding of the procedure.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:59:16.310634"
+    },
+    {
+      "category": "copywriting",
+      "error": "In the discussion of the study, the Greek text inaccurately translates \"could affect clinical parameters and inflammatory markers\" as \"βελτιώνει τους φλεγμονώδεις δείκτες\". This is incorrect for two reasons: 1) It changes \"affect\" (επηρεάζει) to \"improves\" (βελτιώνει), misrepresenting the exploratory nature of the research question. 2) It entirely omits the crucial term \"clinical parameters\" (κλινικές παράμετροι).",
+      "rule": "Do not repeat error: In the discussion of the study, the Greek text inaccurately translates \"could affect clinical parameters and inflammatory markers\" as \"βελτιώνει τους φλεγμονώδεις δείκτες\". This is incorrect for two reasons: 1) It changes \"affect\" (επηρεάζει) to \"improves\" (βελτιώνει), misrepresenting the exploratory nature of the research question. 2) It entirely omits the crucial term \"clinical parameters\" (κλινικές παράμετροι).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:59:16.310202"
+    },
+    {
+      "category": "copywriting",
+      "error": "The clinically relevant term \"tooth mobility\" (κινητικότητα των δοντιών), a key consequence of periodontitis, is omitted from the Greek translation.",
+      "rule": "Do not repeat error: The clinically relevant term \"tooth mobility\" (κινητικότητα των δοντιών), a key consequence of periodontitis, is omitted from the Greek translation.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:59:16.309717"
+    },
+    {
+      "category": "copywriting",
+      "error": "The description \"a widespread gum disease affecting millions\" is significantly shortened to \"μιας νόσου των ούλων\", losing important context about the prevalence and severity of periodontitis.",
+      "rule": "Do not repeat error: The description \"a widespread gum disease affecting millions\" is significantly shortened to \"μιας νόσου των ούλων\", losing important context about the prevalence and severity of periodontitis.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:59:16.309187"
+    },
+    {
+      "category": "copywriting",
+      "error": "The descriptive phrase \"a silent adversary\" regarding chronic inflammation is omitted, reducing the impact and tone of the original text.",
+      "rule": "Do not repeat error: The descriptive phrase \"a silent adversary\" regarding chronic inflammation is omitted, reducing the impact and tone of the original text.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:59:16.308610"
+    },
+    {
+      "category": "copywriting",
+      "error": "The phrase \"seemingly disparate bodily systems\" is translated as \"διαφορετικών συστημάτων\" instead of a more accurate and nuanced term like \"φαινομενικά ασύνδετων συστημάτων\".",
+      "rule": "Do not repeat error: The phrase \"seemingly disparate bodily systems\" is translated as \"διαφορετικών συστημάτων\" instead of a more accurate and nuanced term like \"φαινομενικά ασύνδετων συστημάτων\".. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:59:16.308104"
+    },
+    {
+      "category": "copywriting",
+      "error": "Greek content word count is outside 300-500 words limit (current: 534).",
+      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 534).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-06-29T11:56:57.948660"
+    },
+    {
+      "category": "copywriting",
       "error": "The verb 'αναπαραστήσουν' (to represent/portray) is clinically inaccurate for replicating natural tooth characteristics; 'αναπαραγάγουν' (to replicate/reproduce) is the correct term.",
       "rule": "Do not repeat error: The verb 'αναπαραστήσουν' (to represent/portray) is clinically inaccurate for replicating natural tooth characteristics; 'αναπαραγάγουν' (to replicate/reproduce) is the correct term.. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-22T12:48:11.412584"
@@ -71,84 +149,6 @@
       "error": "Section 5, Sentence 1: The crucial term 'evidence-based' (as in 'evidence-based clinical care') is omitted from 'κορυφαία κλινική φροντίδα', significantly weakening the medical credibility. Also, 'all areas of dentistry' is narrowed to 'τεχνολογικές εξελίξεις'.",
       "rule": "Do not repeat error: Section 5, Sentence 1: The crucial term 'evidence-based' (as in 'evidence-based clinical care') is omitted from 'κορυφαία κλινική φροντίδα', significantly weakening the medical credibility. Also, 'all areas of dentistry' is narrowed to 'τεχνολογικές εξελίξεις'.. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-08T00:23:04.149597"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 4, Sentence 3: 'Internal systems' is omitted from 'patient interactions and internal systems'.",
-      "rule": "Do not repeat error: Section 4, Sentence 3: 'Internal systems' is omitted from 'patient interactions and internal systems'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.148085"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 4, Sentence 2: 'Well-being' is omitted from 'oral health and well-being', and 'administrative' is omitted before 'duties'.",
-      "rule": "Do not repeat error: Section 4, Sentence 2: 'Well-being' is omitted from 'oral health and well-being', and 'administrative' is omitted before 'duties'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.146553"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 4, Sentence 1: The important nuance about 'its widespread impact is yet to fully unfold' is completely omitted, altering the cautious forward-looking tone of the English.",
-      "rule": "Do not repeat error: Section 4, Sentence 1: The important nuance about 'its widespread impact is yet to fully unfold' is completely omitted, altering the cautious forward-looking tone of the English.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.144748"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 3, Sentence 2: The empathetic actions 'answering your questions and making you feel comfortable' are generalized to 'στις δικές σας ανάγκες', reducing the personal and comforting aspect.",
-      "rule": "Do not repeat error: Section 3, Sentence 2: The empathetic actions 'answering your questions and making you feel comfortable' are generalized to 'στις δικές σας ανάγκες', reducing the personal and comforting aspect.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.143051"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 3, Sentence 1: 'More focused care' is translated simply as 'καλύτερης φροντίδας', losing the specificity of 'focused'.",
-      "rule": "Do not repeat error: Section 3, Sentence 1: 'More focused care' is translated simply as 'καλύτερης φροντίδας', losing the specificity of 'focused'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.141422"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 2, Sentence 4: The description 'a warmer, more attentive experience for everyone' is shortened to 'μια πιο ζεστή και εξατομικευμένη εξυπηρέτηση', omitting 'more attentive' and 'for everyone'.",
-      "rule": "Do not repeat error: Section 2, Sentence 4: The description 'a warmer, more attentive experience for everyone' is shortened to 'μια πιο ζεστή και εξατομικευμένη εξυπηρέτηση', omitting 'more attentive' and 'for everyone'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.139337"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 2, Sentence 3: The strategic goal 'The goal is to streamline the initial contact points for patients' is entirely missing.",
-      "rule": "Do not repeat error: Section 2, Sentence 3: The strategic goal 'The goal is to streamline the initial contact points for patients' is entirely missing.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.134445"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 2, Sentence 1: The concept of 'an evolving approach' is completely omitted from the Greek translation.",
-      "rule": "Do not repeat error: Section 2, Sentence 1: The concept of 'an evolving approach' is completely omitted from the Greek translation.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.130339"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 1, Sentence 1: The phrase 'across various sectors, and dentistry is no exception' is significantly simplified in Greek to 'προχωρά σταθερά στην οδοντιατρική', losing the broader context of AI integration.",
-      "rule": "Do not repeat error: Section 1, Sentence 1: The phrase 'across various sectors, and dentistry is no exception' is significantly simplified in Greek to 'προχωρά σταθερά στην οδοντιατρική', losing the broader context of AI integration.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.119823"
-    },
-    {
-      "category": "copywriting",
-      "error": "The translation consistently simplifies or omits key phrases and concepts from the English original, impacting the depth, nuance, and sometimes the empathetic or medically credible tone.",
-      "rule": "Do not repeat error: The translation consistently simplifies or omits key phrases and concepts from the English original, impacting the depth, nuance, and sometimes the empathetic or medically credible tone.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.114925"
-    },
-    {
-      "category": "copywriting",
-      "error": "Greek content word count is outside 300-500 words limit (current: 512).",
-      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 512).. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:22:07.891747"
-    },
-    {
-      "category": "copywriting",
-      "error": "Greek content does not mention the practice name 'Dentplant'.",
-      "rule": "Do not repeat error: Greek content does not mention the practice name 'Dentplant'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:21:35.295148"
-    },
-    {
-      "category": "copywriting",
-      "error": "The phrase 'να σας περιθάλπουμε πιο ολιστικά' (to treat you more holistically) and 'εφαρμόζουμε περίθαλψη' (practicing care) use the word 'περιθάλπω' / 'περίθαλψη', which sounds outdated or associated with charitable/emergency aid rather than modern dental practice. It is better to use 'να σας προσφέρουμε μια πιο ολιστική φροντίδα' and 'να παρέχουμε οδοντιατρική φροντίδα βασισμένη σε ενδείξεις'.",
-      "rule": "Do not repeat error: The phrase 'να σας περιθάλπουμε πιο ολιστικά' (to treat you more holistically) and 'εφαρμόζουμε περίθαλψη' (practicing care) use the word 'περιθάλπω' / 'περίθαλψη', which sounds outdated or associated with charitable/emergency aid rather than modern dental practice. It is better to use 'να σας προσφέρουμε μια πιο ολιστική φροντίδα' and 'να παρέχουμε οδοντιατρική φροντίδα βασισμένη σε ενδείξεις'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-07T23:53:11.666835"
     }
   ]
 }
