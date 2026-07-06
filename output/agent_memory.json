@@ -2,6 +2,24 @@
   "lessons": [
     {
       "category": "copywriting",
+      "error": "The translation contains several unauthorized additions (hallucinations) not present in the English source text: '(μιας ευρέως διαδεδομένης νόσου των ούλων που επηρεάζει εκατομμύρια ανθρώπους)', 'σε όλους τους τομείς της οδοντιατρικής', and the redundant explanation '(η οποία περιλαμβάνει διαδικασίες επαγγελματικού καθαρισμού, όπως...)'. Translators should remain faithful to the source text without inserting unsourced explanations.",
+      "rule": "Do not repeat error: The translation contains several unauthorized additions (hallucinations) not present in the English source text: '(μιας ευρέως διαδεδομένης νόσου των ούλων που επηρεάζει εκατομμύρια ανθρώπους)', 'σε όλους τους τομείς της οδοντιατρικής', and the redundant explanation '(η οποία περιλαμβάνει διαδικασίες επαγγελματικού καθαρισμού, όπως...)'. Translators should remain faithful to the source text without inserting unsourced explanations.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-07-06T11:25:03.923904"
+    },
+    {
+      "category": "copywriting",
+      "error": "In the first paragraph, 'gum disease' is translated as 'ουλίτιδας' (gingivitis). Since the text refers to its well-established link with cardiovascular health, the correct term should be 'περιοδοντική νόσος' or 'νόσος των ούλων', as gingivitis is only the mild, initial phase of gum disease.",
+      "rule": "Do not repeat error: In the first paragraph, 'gum disease' is translated as 'ουλίτιδας' (gingivitis). Since the text refers to its well-established link with cardiovascular health, the correct term should be 'περιοδοντική νόσος' or 'νόσος των ούλων', as gingivitis is only the mild, initial phase of gum disease.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-07-06T11:25:03.923352"
+    },
+    {
+      "category": "copywriting",
+      "error": "The term 'inflammatory mediators' was translated as 'φλεγμονώδεις διαβιβαστές'. The correct clinical/medical term in Greek is 'μεσολαβητές φλεγμονής' or 'φλεγμονώδεις μεσολαβητές'. 'Διαβιβαστές' is typically reserved for transmitters (e.g., neurotransmitters).",
+      "rule": "Do not repeat error: The term 'inflammatory mediators' was translated as 'φλεγμονώδεις διαβιβαστές'. The correct clinical/medical term in Greek is 'μεσολαβητές φλεγμονής' or 'φλεγμονώδεις μεσολαβητές'. 'Διαβιβαστές' is typically reserved for transmitters (e.g., neurotransmitters).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-07-06T11:25:03.922750"
+    },
+    {
+      "category": "copywriting",
       "error": "Greek content word count is outside 300-500 words limit (current: 536).",
       "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 536).. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-29T12:00:06.745726"
@@ -131,24 +149,6 @@
       "error": "The phrase 'evolving development' was translated as 'εξελισσόμενη εξέλιξη'. This is a pleonasm (tautology) in Greek because both words share the same root. It should be revised to 'συνεχή εξέλιξη' (continuous development) or simply 'εξέλιξη' to sound natural and professional.",
       "rule": "Do not repeat error: The phrase 'evolving development' was translated as 'εξελισσόμενη εξέλιξη'. This is a pleonasm (tautology) in Greek because both words share the same root. It should be revised to 'συνεχή εξέλιξη' (continuous development) or simply 'εξέλιξη' to sound natural and professional.. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-08T11:51:49.151163"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 5, Sentence 3: 'Scientific awareness' is omitted from 'continuous education and scientific awareness', further diminishing the emphasis on scientific rigor. 'In administrative roles' is also omitted after AI.",
-      "rule": "Do not repeat error: Section 5, Sentence 3: 'Scientific awareness' is omitted from 'continuous education and scientific awareness', further diminishing the emphasis on scientific rigor. 'In administrative roles' is also omitted after AI.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.153403"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 5, Sentence 2: The welcoming phrase 'from the moment you walk through our doors' is omitted, reducing the empathetic tone.",
-      "rule": "Do not repeat error: Section 5, Sentence 2: The welcoming phrase 'from the moment you walk through our doors' is omitted, reducing the empathetic tone.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.151675"
-    },
-    {
-      "category": "copywriting",
-      "error": "Section 5, Sentence 1: The crucial term 'evidence-based' (as in 'evidence-based clinical care') is omitted from 'κορυφαία κλινική φροντίδα', significantly weakening the medical credibility. Also, 'all areas of dentistry' is narrowed to 'τεχνολογικές εξελίξεις'.",
-      "rule": "Do not repeat error: Section 5, Sentence 1: The crucial term 'evidence-based' (as in 'evidence-based clinical care') is omitted from 'κορυφαία κλινική φροντίδα', significantly weakening the medical credibility. Also, 'all areas of dentistry' is narrowed to 'τεχνολογικές εξελίξεις'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T00:23:04.149597"
     }
   ]
 }
