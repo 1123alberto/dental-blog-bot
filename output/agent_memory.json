@@ -2,6 +2,36 @@
   "lessons": [
     {
       "category": "copywriting",
+      "error": "The final sentence of the Greek text contains an unauthorized addition that does not exist in the English source: 'βοηθώντας σας να διατηρήσετε όχι μόνο το χαμόγελό σας, αλλά και τη συνολική σας ευεξία.' (helping you maintain not only your smile, but also your overall well-being).",
+      "rule": "Do not repeat error: The final sentence of the Greek text contains an unauthorized addition that does not exist in the English source: 'βοηθώντας σας να διατηρήσετε όχι μόνο το χαμόγελό σας, αλλά και τη συνολική σας ευεξία.' (helping you maintain not only your smile, but also your overall well-being).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-07-13T10:18:13.090623"
+    },
+    {
+      "category": "copywriting",
+      "error": "The translation of 'evidence-based care' as 'φροντίδα με βάση επιστημονικά δεδομένα (evidence-based care)' is awkward and includes unnecessary English parenthetical text. The standard clinical term in Greek is 'τεκμηριωμένη φροντίδα'.",
+      "rule": "Do not repeat error: The translation of 'evidence-based care' as 'φροντίδα με βάση επιστημονικά δεδομένα (evidence-based care)' is awkward and includes unnecessary English parenthetical text. The standard clinical term in Greek is 'τεκμηριωμένη φροντίδα'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-07-13T10:18:13.090046"
+    },
+    {
+      "category": "copywriting",
+      "error": "The phrase 'non-cavitated enamel lesions' is translated as 'βλάβες του σμάλτου χωρίς κοιλότητα'. The correct professional dental term is 'μη κοιλοποιημένες βλάβες της αδαμαντίνης'.",
+      "rule": "Do not repeat error: The phrase 'non-cavitated enamel lesions' is translated as 'βλάβες του σμάλτου χωρίς κοιλότητα'. The correct professional dental term is 'μη κοιλοποιημένες βλάβες της αδαμαντίνης'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-07-13T10:18:13.089478"
+    },
+    {
+      "category": "copywriting",
+      "error": "The term 'remineralisation' is translated literally as 'επαναμεταλλικοποίηση'. The standard, correct clinical term in Greek dentistry is 'επανασβεστίωση' (matching with 'απασβεστίωση' for 'demineralisation').",
+      "rule": "Do not repeat error: The term 'remineralisation' is translated literally as 'επαναμεταλλικοποίηση'. The standard, correct clinical term in Greek dentistry is 'επανασβεστίωση' (matching with 'απασβεστίωση' for 'demineralisation').. Adhere strictly to the guidelines.",
+      "timestamp": "2026-07-13T10:18:13.088823"
+    },
+    {
+      "category": "copywriting",
+      "error": "The term 'enamel' is translated as 'σμάλτο'. While understood by laypeople, the correct clinical and medical term in Greek dentistry is 'αδαμαντίνη' (or 'οδοντική αδαμαντίνη').",
+      "rule": "Do not repeat error: The term 'enamel' is translated as 'σμάλτο'. While understood by laypeople, the correct clinical and medical term in Greek dentistry is 'αδαμαντίνη' (or 'οδοντική αδαμαντίνη').. Adhere strictly to the guidelines.",
+      "timestamp": "2026-07-13T10:18:13.088252"
+    },
+    {
+      "category": "copywriting",
       "error": "The translation contains several unauthorized additions (hallucinations) not present in the English source text: '(μιας ευρέως διαδεδομένης νόσου των ούλων που επηρεάζει εκατομμύρια ανθρώπους)', 'σε όλους τους τομείς της οδοντιατρικής', and the redundant explanation '(η οποία περιλαμβάνει διαδικασίες επαγγελματικού καθαρισμού, όπως...)'. Translators should remain faithful to the source text without inserting unsourced explanations.",
       "rule": "Do not repeat error: The translation contains several unauthorized additions (hallucinations) not present in the English source text: '(μιας ευρέως διαδεδομένης νόσου των ούλων που επηρεάζει εκατομμύρια ανθρώπους)', 'σε όλους τους τομείς της οδοντιατρικής', and the redundant explanation '(η οποία περιλαμβάνει διαδικασίες επαγγελματικού καθαρισμού, όπως...)'. Translators should remain faithful to the source text without inserting unsourced explanations.. Adhere strictly to the guidelines.",
       "timestamp": "2026-07-06T11:25:03.923904"
@@ -119,36 +149,6 @@
       "error": "In the second paragraph, the phrase \"αποτελεί ακρογωνιαίο λίχο\" contains a grammatical error. \"λίχο\" should be corrected to \"λίθο\" to reflect the correct accusative case of the masculine noun \"λίθος\" (stone/cornerstone).",
       "rule": "Do not repeat error: In the second paragraph, the phrase \"αποτελεί ακρογωνιαίο λίχο\" contains a grammatical error. \"λίχο\" should be corrected to \"λίθο\" to reflect the correct accusative case of the masculine noun \"λίθος\" (stone/cornerstone).. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-15T13:04:37.501013"
-    },
-    {
-      "category": "copywriting",
-      "error": "Greek content word count is outside 300-500 words limit (current: 12).",
-      "rule": "Do not repeat error: Greek content word count is outside 300-500 words limit (current: 12).. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-15T13:02:51.049108"
-    },
-    {
-      "category": "copywriting",
-      "error": "English content word count is outside 300-500 words limit (current: 12).",
-      "rule": "Do not repeat error: English content word count is outside 300-500 words limit (current: 12).. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-15T13:02:51.048514"
-    },
-    {
-      "category": "copywriting",
-      "error": "English content does not mention the practice name 'Dentplant'.",
-      "rule": "Do not repeat error: English content does not mention the practice name 'Dentplant'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-15T13:02:51.047600"
-    },
-    {
-      "category": "copywriting",
-      "error": "The term 'clinically proven' in the bullet point 'A Supportive Tool' was translated as 'κλινικά εγκεκριμένα' (clinically approved). The correct medical translation is 'κλινικά αποδεδειγμένα' (clinically proven), which is also consistent with the translation of 'clinically proven adjunct' ('κλινικά αποδεδειγμένο συμπλήρωμα') used earlier in the text.",
-      "rule": "Do not repeat error: The term 'clinically proven' in the bullet point 'A Supportive Tool' was translated as 'κλινικά εγκεκριμένα' (clinically approved). The correct medical translation is 'κλινικά αποδεδειγμένα' (clinically proven), which is also consistent with the translation of 'clinically proven adjunct' ('κλινικά αποδεδειγμένο συμπλήρωμα') used earlier in the text.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T11:51:49.151773"
-    },
-    {
-      "category": "copywriting",
-      "error": "The phrase 'evolving development' was translated as 'εξελισσόμενη εξέλιξη'. This is a pleonasm (tautology) in Greek because both words share the same root. It should be revised to 'συνεχή εξέλιξη' (continuous development) or simply 'εξέλιξη' to sound natural and professional.",
-      "rule": "Do not repeat error: The phrase 'evolving development' was translated as 'εξελισσόμενη εξέλιξη'. This is a pleonasm (tautology) in Greek because both words share the same root. It should be revised to 'συνεχή εξέλιξη' (continuous development) or simply 'εξέλιξη' to sound natural and professional.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-08T11:51:49.151163"
     }
   ]
 }
