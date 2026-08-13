@@ -1,140 +1,291 @@
 # 🦷 Dental Blog Bot 2.0
 
-Version **2.0.0** — an automated, clinically safeguarded content-strategy system that turns dental-journal evidence into patient-friendly bilingual Dentplant articles.
+**Version 2.0.0** · Dentplant’s bilingual dental-content strategy system.
 
-It combines Dentplant-aware editorial scoring, Search Console opportunity signals, deterministic CREATE/UPDATE/SKIP decisions, source-supported ContentBriefs, medical QA, validated internal links, and a clinical-review draft-PR gate for higher-risk articles.
+Dental Blog Bot 2.0 is not simply an article generator. It turns selected dental-source material, Dentplant’s site structure, measured search performance, and clinical safeguards into a deterministic weekly publication decision for the Dentplant website.
 
-## 📂 Project Structure
+## What it does
 
-- `main.py`: The entry point. Orchestrates the pipeline execution.
-- `scraper.py`: Helper functions for parsing RSS feeds, cleaning article content, and scraping article images.
-- `generator.py`: Coordinates the multi-agent system execution and the QA feedback loop.
-- `publisher.py`: Handles formatting, local backups, and database merging to update the production website's posts list.
-- `agents/`: Directory containing the multi-agent system components:
-  - `base.py`: Declares `BaseAgent`, encapsulating Gemini client access, retry logic, and fallback models.
-  - `scraper_agent.py`: `ScraperAgent` manages raw feed discovery and content sanitization.
-  - `editorial_agent.py`: `EditorialAgent` deduplicates incoming news, scores/classifies articles, filters based on recent publication history, and selects the best candidate.
-  - `copywriter_agent.py`: `CopywriterAgent` drafts bilingual posts in English and Greek sequentially, and processes QA feedback for revisions.
-  - `qa_agent.py`: `QAAgent` validates generated content against strict style and word-count guidelines programmatically and performs LLM-assisted checks on Greek clinical terminology.
-  - `memory.py`: `AgentMemory` handles saving and loading past QA errors as persistent lessons.
-  - `prompts.py`: Centralized store for copywriting prompts and guidelines.
-- `.github/workflows/weekly_blog.yml`: GitHub Actions workflow for automated weekly execution.
-- `output/`: Folder where a backup copy of every generated blog post and the `agent_memory.json` file are saved.
+The bot combines:
 
----
+- dental-source ingestion and source-aware editorial scoring;
+- the Dentplant content map and internal-link structure;
+- optional Google Search Console performance signals;
+- deterministic CREATE / UPDATE / SKIP weekly decisions;
+- bilingual English/Greek generation from a structured `ContentBrief`;
+- deterministic medical QA and validated internal-link insertion; and
+- truthful clinical-review status and approval routing.
 
-## 🤖 Multi-Agent Architecture
+It does not force a publication when there is no meaningful opportunity, does not automatically rewrite an existing Dentplant page, and does not represent automated QA as clinician review.
 
-The bot is structured as a collaborative multi-agent system designed for maximum resilience, editorial precision, and clinical translation accuracy.
+## Weekly strategic decision model
+
+Every run evaluates several candidates and returns one inspectable decision in `output/weekly_decision.json`.
+
+### `CREATE_NEW_ARTICLE`
+
+A candidate must clear editorial and Dentplant-strategy thresholds. The bot builds a `ContentBrief`, drafts bilingual content, runs QA, classifies clinical-review status, validates planned internal links, and prepares publisher output.
+
+- `automated_draft` content may publish directly to the website’s `master` branch.
+- `clinical_review_required` content is routed to a dedicated branch and a draft GitHub Pull Request for manual review.
+
+### `UPDATE_EXISTING_PAGE`
+
+This is an advisory-only recommendation when an existing mapped Dentplant page has a stronger optimization opportunity than a competing new article. No existing page is rewritten automatically.
+
+### `SKIP_THIS_WEEK`
+
+The bot can intentionally publish nothing. It generates no article and changes no website content.
+
+## System architecture
 
 ```mermaid
-graph TD
-    ScraperAgent[Scraper Agent] -->|Raw Articles| EditorialAgent[Editorial Agent]
-    RecentHistory[(Recent Posts History)] -->|Avoid duplicate topics| EditorialAgent
-    EditorialAgent -->|Selects Best Candidate| CopywriterAgent[Copywriter Agent]
-    AgentMemory[(Agent Memory json)] <-->|Read/Write lessons learned| CopywriterAgent
-    AgentMemory <-->|Read/Write lessons learned| QAAgent[QA Agent]
-    CopywriterAgent -->|Drafts Bilingual Article| QAAgent
-    QAAgent -->|Check word count, formatting, medical translation| QAFeedback{Passed QA?}
-    QAFeedback -->|No - Log to Memory| CopywriterAgent
-    QAFeedback -->|Yes| Publisher[Publisher]
+flowchart TD
+    S[Dental sources] --> E[EditorialAgent]
+    M[Dentplant Content Map] --> E
+    SC[Search Console snapshot<br/>when available] --> E
+    E --> T[Top 3 strategically scored candidates]
+    T --> D[ContentDecisionAgent]
+    D -->|CREATE_NEW_ARTICLE| B[ContentBrief]
+    D -->|UPDATE_EXISTING_PAGE| U[Advisory only]
+    D -->|SKIP_THIS_WEEK| K[No publication]
+    B --> C[CopywriterAgent<br/>English + Greek]
+    C --> Q[QAAgent]
+    Q --> R[Clinical-review classification]
+    R --> L[Validated internal links]
+    L --> P[Publisher output]
+    P -->|automated_draft| DP[Direct website publish]
+    P -->|clinical_review_required| BR[Dedicated review branch]
+    BR --> PR[Draft GitHub PR to master]
+    PR --> MR[Manual clinical review]
 ```
 
-### 🧠 Agent Roles & Collaboration
-1. **Scraper Agent (`ScraperAgent`)**: Triggers the news ingestion. Fetches dental journals, parses RSS feeds, downloads full articles, extracts images, and sanitizes input data.
-2. **Editorial Agent (`EditorialAgent`)**: Acts as the "Editor-in-Chief". It:
-   - Groups duplicate or highly similar news stories using Jaccard similarity on titles.
-   - Evaluates and scores articles based on clinical relevance, scientific credibility, and educational value.
-   - Classifies articles into specific categories (e.g., *Implantology*, *Periodontology*, *Digital Dentistry*).
-   - Filters out promotional, low-quality, or US-centric (insurance/regulatory) topics.
-   - Penalizes articles similar to recently published topics.
-   - Selects the single best candidate from the top 3 highest-rated items.
-3. **Copywriter Agent (`CopywriterAgent`)**: Sequential bilingual copywriting. It first drafts the English version, then translates/rewrites it into professional medical Greek. This two-stage separation prevents language bleeding and ensures a natural, native flow in both languages.
-4. **Quality Assurance Agent (`QAAgent`)**: Enforces strict publishing standards.
-   - **Programmatic checks**: Ensures presence of all required tags/markers, checks that titles are under 12 words and contain no markdown formatting, confirms word counts are strictly within the 300-500 word limit, and verifies the practice name is included.
-   - **LLM-assisted checks**: Compares the English and Greek versions to ensure Greek medical terms are translated correctly (e.g., *osseointegration* -> *οστεοενσωμάτωση*, *peri-implantitis* -> *περιεμφυτευματίτιδα*, *shedding* -> *έκλυση* or *απελευθέρωση*) and that the phrasing reads naturally.
-5. **Agent Memory (`AgentMemory`)**: Implements persistent learning. If a generated post fails the QA check, the specific errors/rules are saved to `output/agent_memory.json`. In subsequent iterations (or subsequent pipeline runs), these lessons are loaded and injected as rules into the agents' prompts, creating a self-correcting feedback loop that prevents regression.
+`UPDATE_EXISTING_PAGE` and `SKIP_THIS_WEEK` are non-publishing outcomes.
 
----
+## Editorial strategy
 
-## 🧠 The 10-Stage Pipeline
+`EditorialAgent` deduplicates source stories, applies editorial/clinical/source-quality checks, and adds Dentplant-specific strategy scores. These include:
 
-The bot executes the editorial process using a coordinated multi-agent workflow:
+- service relevance and cluster contribution;
+- patient-intent fit;
+- content-gap value;
+- cannibalization risk;
+- internal-link opportunity; and
+- Search Console demand, CTR, ranking, trend, and existing-page opportunity when available.
 
-1.  **Fetching**: `ScraperAgent` parses high-authority feeds.
-2.  **Extraction**: Pulls full article text and scans for relevant media.
-3.  **Deduplication**: `EditorialAgent` groups and filters out redundant stories.
-4.  **Scoring**: Articles are rated on clinical relevance, credibility, and patient value.
-5.  **Classification**: Articles are categorized into dental specialties.
-6.  **Image Validation**: Ranks images, preferring clinical/authentic photography.
-7.  **History Filtering**: Cross-references against the last 10 published posts to avoid topic repetition.
-8.  **Candidate Selection**: Filters down to the Top 3 candidates.
-9.  **Editorial Decision**: `EditorialAgent` selects the best story for the week.
-10. **Bilingual Generation & QA**: `CopywriterAgent` drafts the post, which is validated by `QAAgent` and refined based on `AgentMemory` lessons.
+The decision layer compares the top three strategically scored candidates. The editorially highest-ranked candidate does not automatically win: high overlap and a strong existing-page opportunity can favor `UPDATE_EXISTING_PAGE`, while weak or irrelevant candidates can still produce `SKIP_THIS_WEEK`.
 
+## Search Console integration
 
----
+`search_console.py` uses the Google Search Console API when it is configured and authorized.
 
-## ⚙️ Configuration & Environment Variables
+- Configure the property with `SEARCH_CONSOLE_SITE_URL`, for example `https://www.dentplant.gr/`.
+- Authentication uses Google Application Default Credentials (ADC), including `GOOGLE_APPLICATION_CREDENTIALS` where appropriate.
+- The integration compares two complete, non-overlapping 28-day windows and excludes the current day.
+- Query/page rows use clicks, impressions, CTR, and average position.
 
-The bot uses the following environment variables (defined in a `.env` file):
+The deterministic opportunity model calculates bounded 0–10 signals for search demand, CTR opportunity, ranking opportunity, trend, and existing-page opportunity. Dentplant URL normalization removes query strings and fragments, recognizes home-page variants, and rejects unrelated hosts.
 
-| Environment Variable | Description | Default Value |
-| :--- | :--- | :--- |
-| `GOOGLE_API_KEY` | **[Required]** Your Google Gemini API key. | None |
-| `WEBSITE_PATH` | Path to the website repository root. | `website` (in CI) |
-| `OUTPUT_DIR` | Directory where individual HTML blog posts will be saved. | `WEBSITE_PATH/article` |
-| `WEBSITE_DATA_PATH` | Path to the website's posts database JSON file. | `WEBSITE_PATH/data/posts.json` |
+Search Console is an additional strategic signal, not a publication driver. If credentials, configuration, or API access are unavailable, the bot logs the unavailable signal and continues with a saved compact snapshot when available or neutral scores otherwise. It does not invent performance data.
 
----
+## Dentplant content map
 
-## 🚀 Local Setup & Run
+`data/dentplant_content_map.json` is a deterministic inventory of the Dentplant website. It records page paths, canonical URLs, titles/descriptions/headings, page types, internal and inbound links, relationship candidates, and sitemap membership.
 
-1. **Install Dependencies**:
-   Ensure you have Python 3.10+ installed. In your virtual environment, run:
-   ```bash
-   pip install -r requirements.txt
-   ```
+Regenerate it without modifying the website checkout:
 
-2. **Configure Environment**:
-   Copy `.env.example` to `.env` and fill in your Gemini API key.
+```bash
+WEBSITE_PATH=/home/angelo/Gemini/dentplant-new python build_content_map.py
+```
 
-3. **Run the Bot**:
-   ```bash
-   python main.py
-   ```
-   *Note: The bot will automatically check your local `posts.json` (if configured) to ensure it doesn't repeat recent topics.*
+`build_content_map.py` validates the page inventory and produces stable output from the same checkout.
 
----
+## ContentBrief
 
-## 📅 Automatic Scheduling (GitHub Actions)
+For `CREATE_NEW_ARTICLE`, `agents/content_brief.py` produces the structured plan consumed by the copywriter. It contains:
 
-The bot runs automatically every **Monday at 9:00 AM (Greece time)**. 
+- source provenance and compact supported claims;
+- evidence maturity;
+- patient intent and target Dentplant cluster;
+- related mapped pages;
+- an approved bilingual internal-link plan;
+- duplication-avoidance guidance;
+- clinical-risk notes; and
+- editorial constraints.
 
-### Automated Workflow:
-1.  Checks out this repository.
-2.  Clones the website repository (`1123alberto/dentplant-new`).
-3.  Runs the strategic pipeline to generate and validate a new post when appropriate.
-4.  Directly publishes low-risk automated drafts; higher-risk articles are committed to a dedicated branch and opened as draft clinical-review PRs.
-5.  Leaves UPDATE recommendations advisory and SKIP decisions publication-free.
+The copywriter uses this plan rather than independently selecting article strategy or inventing claims.
 
-### Setup Instructions on GitHub:
+## Bilingual generation and QA
 
-1. **Add Secrets**:
-   Go to your bot repository on GitHub, navigate to **Settings > Secrets and variables > Actions**, and click **New repository secret** to add:
-   * **`GOOGLE_API_KEY`**: Your Gemini API Key.
-   * **`WEBSITE_PUSH_PAT`**: A Personal Access Token (PAT) with `repo` scope permissions. This is required for the action to pull and push changes to the separate website repository (`1123alberto/dentplant-new`).
+`CopywriterAgent` drafts English first and then Greek, using the same `ContentBrief`. `QAAgent` checks format integrity, bilingual content requirements, and the current 300–500 word target per language. When a model client is available, it also checks Greek clinical terminology and flow.
 
-2. **Manual Trigger**:
-   You can also run the bot manually from GitHub:
-   * Go to the **Actions** tab of this repository.
-   * Select **Weekly Dental Blog Bot** from the sidebar.
-   * Click **Run workflow** -> **Run workflow**.
+Deterministic ContentBrief-aware safeguards reject or flag:
 
----
+- unsupported percentages or other statistics;
+- guaranteed, zero-risk, lifetime-success, universally safe, or completely painless claims;
+- association-to-causation inflation for oral-systemic evidence;
+- early or emerging evidence presented as standard routine care;
+- unsupported claims that Dentplant offers or routinely performs a technology/treatment;
+- missing proportionate risk context where risk topics require it;
+- diagnostic, candidacy, or examination-replacement wording; and
+- link-plan targets or anchors that do not match the brief.
 
-## ⚠️ Troubleshooting
+Automated QA is not clinical review.
 
-- **API Errors**: Verify that your `GOOGLE_API_KEY` is correct. The bot includes multi-model fallback to improve reliability.
-- **Git Push/Authentication Errors**: Ensure the `WEBSITE_PUSH_PAT` secret is configured correctly with write access to `1123alberto/dentplant-new`.
-- **Empty Publishes**: The pipeline includes error detection to prevent empty files from being pushed if the AI generation fails.
+## Clinical trust model
+
+`agents/clinical_review.py` keeps generation, review recommendation, and completed review separate:
+
+| Status | Meaning |
+| --- | --- |
+| `automated_draft` | Automated QA passed, no higher-risk trigger was found, and no human review is recorded. |
+| `clinical_review_required` | Deterministic higher-risk triggers require clinical review before direct production publication. |
+| `clinically_reviewed` | An explicit persisted manual clinical-review record exists. |
+
+Automated QA, creation of a draft PR, and merging a PR cannot create `clinically_reviewed`. The explicit `mark_clinically_reviewed(...)` utility requires a permitted reviewer identity and review timestamp.
+
+Approved naming is:
+
+- English: `Dr. Angelo Moshopoulos`
+- Greek: `κ. Άγγελος Μοσχόπουλος`
+
+The system does not automatically use `Δρ. Άγγελος Μοσχόπουλος` in Greek and does not invent credentials or titles.
+
+## Clinical-review approval gate
+
+`approval_gate.py` turns review status into structured publication metadata.
+
+### Low risk
+
+`automated_draft` → `direct_publish` → normal website `master` publish.
+
+### Review required
+
+`clinical_review_required` → `clinical_review_pr` → deterministic branch such as:
+
+```text
+clinical-review/blog-YYYY-MM-DD-article-slug
+```
+
+The GitHub Actions workflow commits the prepared website changes to that branch and opens a draft PR targeting `master`. It does not force-push, auto-merge, or label the article clinically reviewed. Existing open PRs for the same branch are reused; a branch collision without an open matching PR fails closed. A branch-push or PR-creation failure never falls back to a direct `master` publish.
+
+**Merge is the publication approval action, but merge alone does not update the compact clinical-review record to `clinically_reviewed`.** That remains an explicit manual action.
+
+## Safe internal linking
+
+`internal_links.py` renders links only from the `ContentBrief` plan.
+
+- Every target must be a normalized Dentplant path present in the content map.
+- Generated targets and bilingual anchors must exactly match the approved plan.
+- External, arbitrary, malformed, traversing, or model-invented URLs are rejected.
+- The renderer validates safe prose insertion, avoids nested anchors, and checks the final bilingual link set.
+- Invalid plans fail closed before publishing.
+
+Final article links use valid relative paths such as `../implants.html`.
+
+## Project structure
+
+```text
+main.py                         Weekly runtime orchestration and structured result
+generator.py                    Editorial evaluation, generation, and QA loop
+publisher.py                    Bilingual HTML, SEO/template output, website data updates
+approval_gate.py                Direct-publish versus clinical-review-PR handoff
+search_console.py               Search Console retrieval, snapshot, normalization, scoring
+internal_links.py               Fail-closed plan validation and link rendering
+build_content_map.py            Deterministic Dentplant site inventory generator
+version.py                      Product name and version
+agents/
+  editorial_agent.py            Editorial and Dentplant strategic scoring
+  content_decision_agent.py     CREATE / UPDATE / SKIP decision engine
+  content_brief.py              Structured article plan
+  copywriter_agent.py           English/Greek ContentBrief-aware drafting
+  qa_agent.py                   Format, medical-safety, and brief-compliance QA
+  clinical_review.py            Review status, attribution, manual review utility
+  memory.py / base.py           Lessons and shared model/runtime helpers
+data/
+  dentplant_content_map.json    Generated site inventory
+output/                         Compact runtime records and local publication backups
+.github/workflows/weekly_blog.yml  Monday production workflow
+test_*.py                       Deterministic unit and integration-style tests
+```
+
+## Runtime artifacts
+
+The runtime writes compact operational records when applicable:
+
+- `output/weekly_decision.json`
+- `output/weekly_content_brief.json`
+- `output/weekly_clinical_review.json`
+- `data/search_console_snapshot.json` when Search Console data is successfully captured
+
+They are designed to exclude credentials, raw model prompts, raw provider responses, and full scraped source bodies.
+
+## Configuration
+
+Runtime environment variables:
+
+| Variable | Purpose |
+| --- | --- |
+| `GOOGLE_API_KEY` | Gemini API key for model-backed editorial/copywriting/translation checks. |
+| `GEMINI_MODEL` | Optional model override; defaults are handled by the runtime. |
+| `WEBSITE_PATH` | Dentplant checkout root; defaults locally to `~/Gemini/dentplant-new`. |
+| `OUTPUT_DIR` | Article output directory; defaults to `WEBSITE_PATH/article`. |
+| `WEBSITE_DATA_PATH` | Posts JSON path; defaults to `WEBSITE_PATH/data/posts.json`. |
+| `SEARCH_CONSOLE_SITE_URL` | Search Console property URL. |
+| `GOOGLE_APPLICATION_CREDENTIALS` | Optional ADC service-account credential file location for Search Console environments. |
+
+GitHub Actions secret:
+
+| Secret | Purpose |
+| --- | --- |
+| `WEBSITE_PUSH_PAT` | Checks out/pushes the separate Dentplant repository and authenticates `gh` for draft PR creation. |
+
+Do not commit `.env`, tokens, or credential files.
+
+## Local setup
+
+```bash
+pip install -r requirements.txt
+python main.py
+```
+
+The local dashboard remains available:
+
+```bash
+python main.py --dashboard
+```
+
+## GitHub Actions production workflow
+
+`.github/workflows/weekly_blog.yml` runs at **07:00 UTC every Monday** (approximately 09:00 Greece time), and can also be dispatched manually. It checks out both the bot and `1123alberto/dentplant-new`, then handles website and bot repository changes separately.
+
+| Runtime outcome | Website action |
+| --- | --- |
+| CREATE + `automated_draft` | Commit and push the website checkout to `master`. |
+| CREATE + `clinical_review_required` | Commit/push a review branch and open/reuse a draft PR targeting `master`. |
+| UPDATE | Persist advisory bot output; no website branch or commit. |
+| SKIP | Persist decision output; no website branch or commit. |
+
+## Testing
+
+Run the full suite from the project root:
+
+```bash
+.venv/bin/pytest -q
+```
+
+Focused tests mock model, network, Search Console, and GitHub-facing operations where appropriate. The v2.0.0 release validation completed with 72 passing tests.
+
+## Operational limitations
+
+- `UPDATE_EXISTING_PAGE` is advisory; it does not rewrite an existing page automatically.
+- Merging a clinical-review PR does not itself mark the review record `clinically_reviewed`.
+- Search Console signals are available only when the property and credentials are configured and authorized.
+- Exact approved-anchor insertion can fail closed instead of rewriting article prose.
+- Automated QA is not a substitute for human clinical review.
+
+## Release information
+
+- Product: **Dental Blog Bot 2.0**
+- Version: **2.0.0**
+- Tag: `v2.0.0-blog-strategy`
