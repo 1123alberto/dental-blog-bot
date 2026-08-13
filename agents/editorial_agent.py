@@ -1,6 +1,187 @@
 import re
 import json
+from pathlib import Path
 from agents.base import BaseAgent
+from search_console import opportunity_scores, query_relevance
+
+
+CONTENT_MAP_PATH = Path(__file__).resolve().parent.parent / "data" / "dentplant_content_map.json"
+STRATEGIC_SCORE_FIELDS = (
+    "cluster_contribution",
+    "service_relevance",
+    "patient_intent_fit",
+    "content_gap_value",
+    "internal_link_opportunity",
+    "cannibalization_risk",
+)
+STOP_WORDS = {
+    "a", "an", "the", "and", "or", "but", "in", "on", "at", "to", "for", "with", "by", "of",
+    "from", "about", "into", "over", "after", "is", "are", "was", "were", "be", "been", "being",
+    "new", "study", "research", "report", "shows", "show", "latest", "dental", "dentistry",
+}
+SERVICE_CLUSTERS = {
+    "implants": ("implant", "osseointegration", "abutment", "bone graft", "sinus lift", "all-on-4", "titanium"),
+    "aligners": ("aligner", "orthodont", "braces", "retention"),
+    "aesthetics": ("veneer", "whitening", "bleaching", "cosmetic", "aesthetic", "smile"),
+    "periodontology": ("periodont", "gum", "gingiv", "plaque", "floss"),
+    "endodontics": ("endodont", "root canal"),
+    "prevention": ("prevent", "fluoride", "hygiene", "brush", "sealant"),
+}
+PATIENT_INTENT_TERMS = (
+    "treatment", "candidate", "candidacy", "diagnos", "prevent", "recovery", "recover", "risk",
+    "alternative", "maintenance", "long-term", "outcome", "cost", "pain", "care", "complication",
+)
+CLINICAL_RISK_TERMS = (
+    "implant failure", "failure of implant", "implant infection", "implant loss", "failed implant",
+    "loosening of implant", "failure rate", "titanium particles", "complication", "peri-implantitis",
+)
+
+
+def load_content_map(path=CONTENT_MAP_PATH):
+    """Load the generated website inventory without making the editorial flow depend on it."""
+    try:
+        with Path(path).open(encoding="utf-8") as handle:
+            content_map = json.load(handle)
+        pages = content_map.get("pages", [])
+        if not isinstance(pages, list):
+            raise ValueError("pages must be a list")
+        return content_map
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"[EditorialAgent] Content map unavailable: {exc}. Using neutral strategic defaults.")
+        return {"pages": []}
+
+
+def _tokens(text):
+    words = re.findall(r"[\w-]+", (text or "").lower().replace("-", " "))
+    return {word for word in words if len(word) > 2 and word not in STOP_WORDS}
+
+
+def _article_text(article):
+    return " ".join(str(article.get(key, "")) for key in ("title", "summary", "full_text", "category"))
+
+
+def _matching_clusters(text):
+    text = text.lower()
+    return [name for name, terms in SERVICE_CLUSTERS.items() if any(term in text for term in terms)]
+
+
+def _page_text(page):
+    return " ".join([
+        page.get("path", ""), page.get("title", ""), *page.get("h1", []),
+        *page.get("h2", []), *page.get("h3", []), page.get("page_type", ""),
+    ])
+
+
+def evaluate_dentplant_strategy(article, content_map=None):
+    """Score observable fit with Dentplant's current pages; no external data is used."""
+    content_map = content_map or load_content_map()
+    pages = content_map.get("pages", [])
+    text = _article_text(article)
+    text_lower = text.lower()
+    article_tokens = _tokens(text)
+    clusters = _matching_clusters(text)
+    clinical_risk_topic = any(term in text_lower for term in CLINICAL_RISK_TERMS)
+
+    related = []
+    for page in pages:
+        page_tokens = _tokens(_page_text(page))
+        overlap = len(article_tokens & page_tokens)
+        union = len(article_tokens | page_tokens) or 1
+        similarity = overlap / union
+        path_lower = page.get("path", "").lower()
+        cluster_match = any(cluster.rstrip("s") in path_lower or any(term in path_lower for term in SERVICE_CLUSTERS[cluster]) for cluster in clusters)
+        if overlap or cluster_match:
+            score = (
+                similarity
+                + (0.25 if cluster_match else 0)
+                + (0.30 if page.get("page_type") == "treatment hub" else 0)
+                + (0.05 if page.get("page_type") == "treatment detail" else 0)
+            )
+            related.append((score, page))
+    related.sort(key=lambda item: (-item[0], item[1].get("path", "")))
+    related_pages = [page.get("path") for _, page in related[:5]]
+    best_similarity = related[0][0] if related else 0
+
+    service_relevance = 2
+    if clusters:
+        service_relevance = 8 if any(page.get("is_treatment_page") for _, page in related) else 6
+    cluster_contribution = 2 if not clusters else (8 if related_pages else 6)
+    # Existing pages that substantially overlap in path/title/headings raise cannibalization and lower gap value.
+    cannibalization_risk = min(10, round(best_similarity * 12)) if related else 0
+    content_gap_value = max(1, 9 - cannibalization_risk + (1 if clusters else 0))
+    intent_matches = sum(term in text_lower for term in PATIENT_INTENT_TERMS)
+    patient_intent_fit = min(10, 4 + intent_matches * 2 + (2 if clusters else 0))
+    internal_link_opportunity = min(10, len(related_pages) * 2)
+    if clusters and internal_link_opportunity < 4:
+        internal_link_opportunity = 4
+
+    scores = {
+        "cluster_contribution": cluster_contribution,
+        "service_relevance": service_relevance,
+        "patient_intent_fit": patient_intent_fit,
+        "content_gap_value": content_gap_value,
+        "internal_link_opportunity": internal_link_opportunity,
+        "cannibalization_risk": cannibalization_risk,
+    }
+    reasoning = (
+        f"Matched Dentplant clusters: {', '.join(clusters) if clusters else 'none'}; "
+        f"related pages: {', '.join(related_pages) if related_pages else 'none'}; "
+        f"best observable overlap: {best_similarity:.2f}."
+    )
+    return scores, related_pages, clinical_risk_topic, reasoning
+
+
+def _add_search_console_evaluation(article, snapshot):
+    neutral = {"search_demand": 0, "ctr_opportunity": 0, "ranking_opportunity": 0, "trend": 0, "existing_page_opportunity": 0}
+    if not snapshot:
+        article["search_console_scores"] = neutral
+        article["matched_queries"] = []
+        article["matched_search_pages"] = []
+        article["search_console_reasoning"] = "Search Console performance signals unavailable; neutral scores used."
+        return
+    related = article.get("related_dentplant_pages", [])
+    text = _article_text(article)
+    matches = []
+    for item in snapshot.get("queries", []):
+        relevance = query_relevance(item.get("query"), text, related)
+        if relevance >= 3:
+            scores = opportunity_scores(item, item.get("previous"), relevance)
+            matches.append((sum(scores.values()), relevance, item, scores))
+    matches.sort(key=lambda item: (-item[0], -item[1], item[2]["query"]))
+    top = matches[:5]
+    if not top:
+        article["search_console_scores"] = neutral; article["matched_queries"] = []; article["matched_search_pages"] = []
+        article["search_console_reasoning"] = "No relevant Search Console queries matched this candidate."
+        return
+    aggregate = {key: _score_average([entry[3][key] for entry in top]) for key in neutral if key != "existing_page_opportunity"}
+    mapped = [entry[2]["page"] for entry in top]
+    existing = [entry for entry in top if entry[2]["page"] in related]
+    aggregate["existing_page_opportunity"] = _score_average([
+        (entry[3]["ctr_opportunity"] + entry[3]["ranking_opportunity"] + entry[3]["search_demand"]) / 3
+        for entry in existing
+    ]) if existing else 0
+    article["search_console_scores"] = aggregate
+    article["matched_queries"] = [{"query": entry[2]["query"], "page": entry[2]["page"], "impressions": entry[2]["impressions"]} for entry in top]
+    article["matched_search_pages"] = list(dict.fromkeys(mapped))
+    article["search_console_reasoning"] = f"Matched {len(top)} relevant query/page rows; existing-page opportunity {aggregate['existing_page_opportunity']:.1f}."
+
+
+def _score_average(values):
+    return round(sum(values) / len(values), 2) if values else 0
+
+
+def add_strategic_evaluation(articles, content_map=None, search_console_snapshot=None):
+    content_map = content_map or load_content_map()
+    for article in articles:
+        scores, related_pages, clinical_risk_topic, reasoning = evaluate_dentplant_strategy(article, content_map)
+        article["strategic_scores"] = scores
+        article["related_dentplant_pages"] = related_pages
+        article["clinical_risk_topic"] = clinical_risk_topic
+        article["strategic_reasoning"] = reasoning
+        _add_search_console_evaluation(article, search_console_snapshot)
+        # Retained for compatibility, but risk topics are never rejected solely for clinical subject matter.
+        article["is_inappropriate"] = False
+    return articles
 
 def deduplicate_articles(articles):
     """
@@ -90,11 +271,15 @@ def get_fallback_article_scores(art):
         "is_low_quality": False,
         "is_us_centric": False,
         "is_inappropriate": False,
+        "clinical_risk_topic": False,
+        "strategic_scores": {field: 0 for field in STRATEGIC_SCORE_FIELDS},
+        "related_dentplant_pages": [],
+        "strategic_reasoning": "Neutral strategic fallback score",
         "scoring_reasoning": "Fallback score"
     }
 
 
-def heuristic_score_and_classify(articles):
+def heuristic_score_and_classify(articles, search_console_snapshot=None):
     """
     Fallback scorer in case of Gemini failures. Uses simple rule-based heuristics.
     """
@@ -134,7 +319,7 @@ def heuristic_score_and_classify(articles):
         is_promo = any(k in title or k in summary for k in ["acquires", "merger", "market size", "quarterly", "revenue", "agreement with", "partnership"])
         is_low = any(k in title or k in summary for k in ["celebrity", "shocking", "insane", "magic"])
         is_us = any(k in title or k in summary for k in ["medicaid", "medicare", "epa", "florida", "new york", "california", "congress", "senate", "ada proposes"])
-        is_inappropriate = any(k in title or k in summary for k in ["implant failure", "failure of implant", "implant infection", "implant loss", "failed implant", "loosening of implant", "failure rate", "titanium particles"])
+        clinical_risk_topic = any(k in title or k in summary for k in CLINICAL_RISK_TERMS)
 
         art["category"] = category
         art["scores"] = {
@@ -148,10 +333,11 @@ def heuristic_score_and_classify(articles):
         art["is_promotional"] = is_promo
         art["is_low_quality"] = is_low
         art["is_us_centric"] = is_us
-        art["is_inappropriate"] = is_inappropriate
+        art["is_inappropriate"] = False
+        art["clinical_risk_topic"] = clinical_risk_topic
         art["scoring_reasoning"] = "Heuristically calculated"
 
-    return articles
+    return add_strategic_evaluation(articles, search_console_snapshot=search_console_snapshot)
 
 
 def score_image(article):
@@ -227,7 +413,24 @@ def get_top_3_candidates(articles):
     Sorts articles by final score and returns the top 3 candidate articles.
     """
     for art in articles:
-        pos_score = sum(art.get("scores", {}).values())
+        editorial_scores = art.get("scores", {})
+        strategic_scores = art.get("strategic_scores")
+        # Legacy callers that provide pre-scored articles retain their historic total.
+        editorial_component = sum(editorial_scores.values())
+        strategic_component = 0
+        cannibalization_penalty = 0
+        if strategic_scores is not None:
+            strategic_component = (
+                strategic_scores.get("cluster_contribution", 0) * 1.5
+                + strategic_scores.get("service_relevance", 0) * 1.5
+                + strategic_scores.get("patient_intent_fit", 0) * 1.5
+                + strategic_scores.get("content_gap_value", 0) * 1.5
+                + strategic_scores.get("internal_link_opportunity", 0)
+            )
+            cannibalization_penalty = strategic_scores.get("cannibalization_risk", 0) * 2
+        search = art.get("search_console_scores") or {}
+        search_component = (search.get("search_demand", 0) * 1.2 + search.get("ctr_opportunity", 0)
+                            + search.get("ranking_opportunity", 0) + max(0, search.get("trend", 0) - 5) * 0.5)
         img_score = score_image(art)
         art["image_score"] = img_score
         
@@ -238,10 +441,13 @@ def get_top_3_candidates(articles):
             penalty += 25
         if art.get("is_us_centric"):
             penalty += 50
-        if art.get("is_inappropriate"):
-            penalty += 100
+        # Clinical risk topics are useful patient education unless separate quality controls flag them.
             
-        final_score = pos_score + img_score - penalty
+        final_score = editorial_component + strategic_component + search_component + img_score - penalty - cannibalization_penalty
+        art["editorial_score"] = editorial_component
+        art["strategic_score"] = strategic_component
+        art["search_console_score"] = search_component
+        art["cannibalization_penalty"] = cannibalization_penalty
         art["final_score"] = final_score
 
     sorted_articles = sorted(articles, key=lambda x: x["final_score"], reverse=True)
@@ -259,8 +465,9 @@ class EditorialAgent(BaseAgent):
     EditorialAgent scores, categorizes, filters, and selects the single best
     article candidate for publication using editorial guidelines and history avoidance.
     """
-    def __init__(self, client=None, model_name="gemini-3.5-flash"):
+    def __init__(self, client=None, model_name="gemini-3.5-flash", search_console_snapshot=None):
         super().__init__(client, model_name)
+        self.search_console_snapshot = search_console_snapshot
 
     def score_and_select(self, articles, recent_posts, memory=None):
         """
@@ -271,6 +478,15 @@ class EditorialAgent(BaseAgent):
             print("[EditorialAgent] No articles provided for evaluation.")
             return None
 
+        top_3 = self.evaluate_candidates(articles, recent_posts)
+        if not top_3:
+            return None
+
+        # Preserve the legacy single-candidate API and its final Gemini selection.
+        return self.choose_best_candidate(top_3, recent_posts, memory)
+
+    def evaluate_candidates(self, articles, recent_posts):
+        """Return the top strategically scored candidates without a second selection call."""
         # 1. Deduplicate
         unique_articles = deduplicate_articles(articles)
         if not unique_articles:
@@ -289,9 +505,7 @@ class EditorialAgent(BaseAgent):
             print("[EditorialAgent] Failed to identify top 3 candidates.")
             return None
 
-        # 5. Choose the absolute best candidate using Gemini
-        best_candidate = self.choose_best_candidate(top_3, recent_posts, memory)
-        return best_candidate
+        return top_3
 
     def score_and_classify(self, articles):
         """
@@ -299,7 +513,7 @@ class EditorialAgent(BaseAgent):
         """
         if not self.client:
             print("[EditorialAgent] Warning: Gemini client not initialized. Using heuristic fallback scoring.")
-            return heuristic_score_and_classify(articles)
+            return heuristic_score_and_classify(articles, self.search_console_snapshot)
 
         articles_data = []
         for idx, art in enumerate(articles):
@@ -339,9 +553,9 @@ For each article, you must:
    - practical_patient_relevance
 3. Identify if it contains elements we want to avoid:
    * is_promotional: true if it is a promotional press release, corporate/financial announcement, or low-value product advertisement.
-   * is_low_quality: true if it is sensationalist, has weak scientific evidence, or is low-value/celebrity news.
    * is_us_centric: true if the topic is specifically about US insurance (Medicaid/Medicare), US litigation/EPA rulings, or US-specific administration that is not relevant to Europe.
-   * is_inappropriate: true if the article describes methods, mechanisms, or scenarios in which dental implants, treatments, or surgeries fail (e.g., implant failures, severe infections causing implant loss, complications), or contains alarmist/discouraging content for patients seeking dental treatments.
+   * is_low_quality: true if the article is sensationalist, misleading, unsupported, disproportionately alarmist, or clinically irrelevant. Clinically valid discussions of complications and treatment risks are allowed.
+   * clinical_risk_topic: true when the article discusses treatment risks or complications. This is informational only and is not a rejection flag.
 
 Return the response as a JSON array of objects.
 Example format:
@@ -358,7 +572,7 @@ Example format:
     "is_promotional": false,
     "is_low_quality": false,
     "is_us_centric": false,
-    "is_inappropriate": false,
+    "clinical_risk_topic": false,
     "reasoning": "Brief explanation."
   }}
 ]
@@ -391,15 +605,16 @@ Articles to evaluate:
                     art["is_promotional"] = bool(score_info.get("is_promotional", False))
                     art["is_low_quality"] = bool(score_info.get("is_low_quality", False))
                     art["is_us_centric"] = bool(score_info.get("is_us_centric", False))
-                    art["is_inappropriate"] = bool(score_info.get("is_inappropriate", False))
+                    art["is_inappropriate"] = False
+                    art["clinical_risk_topic"] = bool(score_info.get("clinical_risk_topic", False))
                     art["scoring_reasoning"] = score_info.get("reasoning", "")
                 else:
                     art.update(get_fallback_article_scores(art))
         except Exception as e:
             print(f"[EditorialAgent] Error scoring with Gemini: {e}. Using heuristic fallback.")
-            return heuristic_score_and_classify(articles)
+            return heuristic_score_and_classify(articles, self.search_console_snapshot)
 
-        return articles
+        return add_strategic_evaluation(articles, search_console_snapshot=self.search_console_snapshot)
 
     def choose_best_candidate(self, top_3_articles, recent_posts=None, memory=None):
         """
@@ -425,7 +640,10 @@ Articles to evaluate:
                 "summary": art.get("summary"),
                 "image": art.get("image"),
                 "score": art.get("final_score"),
-                "scoring_reasoning": art.get("scoring_reasoning")
+                "scoring_reasoning": art.get("scoring_reasoning"),
+                "strategic_scores": art.get("strategic_scores"),
+                "related_dentplant_pages": art.get("related_dentplant_pages"),
+                "clinical_risk_topic": art.get("clinical_risk_topic"),
             })
 
         lessons_block = memory.get_lessons_prompt_block() if memory else ""
@@ -436,7 +654,7 @@ Articles to evaluate:
 
         system_instruction = (
             "You are an expert Dental Editorial Director selecting the single best candidate for publication. "
-            "Evaluate clinical value, topic diversity, and quality of visual assets."
+            "Evaluate clinical value, Dentplant strategic fit, topic diversity, and quality of visual assets."
         )
 
         prompt = f"""
@@ -448,8 +666,8 @@ Select the absolute BEST candidate for publication on our premium practice blog,
 {history_block}
 
 Considerations:
-- Clinical relevance, evidence strength, patient interest.
-- Do not select any candidate that describes implant/treatment failure or negative clinical outcomes that would discourage patient confidence in dental treatments.
+- Clinical relevance, evidence strength, patient interest, and Dentplant strategic score.
+- Legitimate risk or complication education is eligible. Exclude it only when it is sensationalist, misleading, unsupported, disproportionately alarmist, or otherwise low quality.
 - **TOPIC DIVERSITY:** Do not select a candidate that is substantially similar to the recently published topics listed above.
 - High-quality image availability (prefer clinical/authentic images over stock or none).
 - Rationale of why this candidate is selected over the other two.

@@ -1,6 +1,8 @@
-# 🦷 Dental Blog Bot
+# 🦷 Dental Blog Bot 2.0
 
-An automated tool that scrapes dental journals and uses AI to generate patient-friendly, bilingual blog posts for your website.
+Version **2.0.0** — an automated, clinically safeguarded content-strategy system that turns dental-journal evidence into patient-friendly bilingual Dentplant articles.
+
+It combines Dentplant-aware editorial scoring, Search Console opportunity signals, deterministic CREATE/UPDATE/SKIP decisions, source-supported ContentBriefs, medical QA, validated internal links, and a clinical-review draft-PR gate for higher-risk articles.
 
 ## 📂 Project Structure
 
@@ -112,9 +114,9 @@ The bot runs automatically every **Monday at 9:00 AM (Greece time)**.
 ### Automated Workflow:
 1.  Checks out this repository.
 2.  Clones the website repository (`1123alberto/dentplant-new`).
-3.  Runs the 10-stage pipeline to generate a new post.
-4.  Updates the website's database and saves the new article.
-5.  Pushes the changes back to the website repository.
+3.  Runs the strategic pipeline to generate and validate a new post when appropriate.
+4.  Directly publishes low-risk automated drafts; higher-risk articles are committed to a dedicated branch and opened as draft clinical-review PRs.
+5.  Leaves UPDATE recommendations advisory and SKIP decisions publication-free.
 
 ### Setup Instructions on GitHub:
 

@@ -3,12 +3,15 @@ import re
 import json
 from datetime import datetime
 import markdown
+from internal_links import LinkPlanValidationError, render_internal_links
+from agents.clinical_review import AUTOMATED_DRAFT, attribution_for
 
 # Environment-aware paths
 # Defaults to local structure, but can be overridden in GitHub Actions
-BASE_DIR = os.getenv("WEBSITE_PATH", os.path.expanduser("~/Gemini/dentpant-new"))
+BASE_DIR = os.getenv("WEBSITE_PATH", os.path.expanduser("~/Gemini/dentplant-new"))
 OUTPUT_DIR = os.environ.get("OUTPUT_DIR", os.path.join(BASE_DIR, "article"))
 WEBSITE_DATA_PATH = os.environ.get("WEBSITE_DATA_PATH", os.path.join(BASE_DIR, "data", "posts.json"))
+LOCAL_OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "output")
 
 def clean_field(text):
     if not text: return ""
@@ -203,7 +206,7 @@ def create_google_post_assets(data, file_name, json_image_path):
         
         # 1. Determine paths
         slug = os.path.splitext(file_name)[0]
-        local_output = os.path.join(os.path.dirname(__file__), "output")
+        local_output = LOCAL_OUTPUT_DIR
         google_post_dir = os.path.join(local_output, "google_posts", slug)
         os.makedirs(google_post_dir, exist_ok=True)
 
@@ -335,9 +338,37 @@ def load_merged_posts():
     return merged_posts
 
 
-def publish_blog_post(markdown_content):
+def publish_blog_post(markdown_content, content_brief=None, review_status=None):
+    link_validation = None
+    if content_brief:
+        try:
+            markdown_content, link_validation = render_internal_links(markdown_content, content_brief)
+        except LinkPlanValidationError as exc:
+            print(f"Internal-link validation failed; article will not be published: {exc}")
+            return None
     data = parse_bilingual_content(markdown_content)
+    data["_content_brief"] = content_brief
+    data["_link_validation"] = link_validation
+    data["_review_status"] = review_status or {
+        "status": AUTOMATED_DRAFT,
+        "review_required_reasons": [],
+        "reviewer": None,
+        "reviewed_at": None,
+        "source": "automated_pipeline",
+    }
     return publish_bilingual_data(data)
+
+
+def category_label(content_brief):
+    cluster = (content_brief or {}).get("primary_cluster", "").lower()
+    return {
+        "implants": "Implantology",
+        "periodontology": "Periodontology",
+        "prevention": "Preventive Dentistry",
+        "clear aligners": "Orthodontics",
+        "aesthetic dentistry": "Aesthetic Dentistry",
+        "endodontics": "Endodontics",
+    }.get(cluster, "Research & Innovation")
 
 def publish_bilingual_data(data):
     # If image_url is empty, assign fallback default image
@@ -443,20 +474,45 @@ def publish_bilingual_data(data):
             else:
                 html_image_path = json_image_path
 
+    content_brief = data.get("_content_brief") or {}
+    has_content_brief = bool(content_brief)
+    link_validation = data.get("_link_validation")
+    review_status = data.get("_review_status") or {"status": AUTOMATED_DRAFT}
+    article_published_date = datetime.now().strftime("%B %d, %Y")
+    article_iso_date = datetime.now().strftime("%Y-%m-%d")
+    category = category_label(content_brief) if has_content_brief else "Breakthrough News"
+
     # Construct image html
     if html_image_path:
-        image_html = f'<img src="{html_image_path}" alt="Dental News" class="w-full h-full object-cover">'
+        image_alt = escape_html_attr(data["el"]["title"] or data["en"]["title"] or "Dentplant dental article") if has_content_brief else "Dental News"
+        image_html = f'<img src="{html_image_path}" alt="{image_alt}" class="w-full h-full object-cover">'
     else:
         image_html = '<div class="h-full w-full bg-gradient-to-r from-cyan-500 to-blue-600"></div>'
 
     # Get ISO date format for JSON-LD
-    iso_date = get_iso_date(data["date"])
 
     # Prepare escaped fields for HTML and JS script attributes
     el_title_esc = escape_js_quotes(data['el']['title'])
     en_title_esc = escape_js_quotes(data['en']['title'])
     el_teaser_attr = escape_html_attr(data['el']['teaser'])
     en_teaser_attr = escape_html_attr(data['en']['teaser'])
+    primary_title = data['el']['title'] or data['en']['title']
+    primary_title_attr = escape_html_attr(primary_title)
+    source_url = content_brief.get("source", {}).get("url")
+    metadata_title = f"{primary_title_attr} | Dentplant" if has_content_brief else escape_html_attr(f"{data['el']['title']} | {data['en']['title']}")
+    json_headline = (el_title_esc or en_title_esc) if has_content_brief else f"{el_title_esc} | {en_title_esc}"
+    json_date = article_iso_date if has_content_brief else get_iso_date(data["date"])
+    source_metadata = f',\n      "isBasedOn": "{source_url}"' if source_url else ""
+    english_byline = (
+        f"Source: {data['source']} • Source publication date: {data['date']}<br>Dentplant article published: {article_published_date}"
+        if has_content_brief else f"{data['source']} • {data['date']}"
+    )
+    greek_byline = (
+        f"Πηγή: {data['source']} • Ημερομηνία δημοσίευσης πηγής: {data['date']}<br>Δημοσίευση άρθρου Dentplant: {article_published_date}"
+        if has_content_brief else f"{data['source']} • {data['date']}"
+    )
+    english_attribution = attribution_for(review_status, "en")
+    greek_attribution = attribution_for(review_status, "el")
 
     # Create Bilingual Standalone Page
     html_card = f"""<!DOCTYPE html>
@@ -464,17 +520,17 @@ def publish_bilingual_data(data):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{data['el']['title']} | {data['en']['title']}</title>
+    <title>{metadata_title}</title>
     <meta name="description" content="{el_teaser_attr}">
     <link rel="canonical" href="https://www.dentplant.gr/article/{file_name}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://www.dentplant.gr/article/{file_name}">
-    <meta property="og:title" content="{data['el']['title']} | {data['en']['title']}">
+    <meta property="og:title" content="{metadata_title}">
     <meta property="og:description" content="{el_teaser_attr}">
     {f'<meta property="og:image" content="https://www.dentplant.gr/{json_image_path}">' if json_image_path else ""}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://www.dentplant.gr/article/{file_name}">
-    <meta name="twitter:title" content="{data['el']['title']} | {data['en']['title']}">
+    <meta name="twitter:title" content="{metadata_title}">
     <meta name="twitter:description" content="{el_teaser_attr}">
     {f'<meta name="twitter:image" content="https://www.dentplant.gr/{json_image_path}">' if json_image_path else ""}
 
@@ -494,10 +550,10 @@ def publish_bilingual_data(data):
     {{
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "{el_title_esc} | {en_title_esc}",
+      "headline": "{json_headline}",
       "description": "{el_teaser_attr}",
       "image": "{f'https://www.dentplant.gr/{json_image_path}' if json_image_path else 'https://www.dentplant.gr/assets/images/logo.png'}",
-      "datePublished": "{iso_date}",
+      "datePublished": "{json_date}"{source_metadata},
       "author": {{
         "@type": "Organization",
         "name": "Dentplant"
@@ -529,19 +585,21 @@ def publish_bilingual_data(data):
         <div class="h-[400px] w-full">{image_html}</div>
         <div class="p-8 md:p-12">
             <div class="flex justify-between items-center mb-6">
-                <span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold uppercase rounded-full">Breakthrough News</span>
+                <span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold uppercase rounded-full">{category}</span>
                 <button onclick="toggleLang()" class="text-xs font-bold text-gray-400 hover:text-blue-600">EN / ΕΛ</button>
             </div>
             
             <div class="lang-en">
                 <h1 class="text-3xl font-bold text-gray-900 mb-4">{data['en']['title']}</h1>
-                <p class="text-sm text-gray-400 mb-8">{data['source']} • {data['date']}</p>
+                <p class="text-sm text-gray-400 mb-8">{english_byline}</p>
+                <p class="text-sm text-gray-500 mb-6">{english_attribution}</p>
                 <div class="prose">{data['en']['content']}</div>
             </div>
 
             <div class="lang-el">
                 <h1 class="text-3xl font-bold text-gray-900 mb-4">{data['el']['title']}</h1>
-                <p class="text-sm text-gray-400 mb-8">{data['source']} • {data['date']}</p>
+                <p class="text-sm text-gray-400 mb-8">{greek_byline}</p>
+                <p class="text-sm text-gray-500 mb-6">{greek_attribution}</p>
                 <div class="prose">{data['el']['content']}</div>
             </div>
         </div>
@@ -569,6 +627,9 @@ def publish_bilingual_data(data):
         if not os.path.exists(OUTPUT_DIR): os.makedirs(OUTPUT_DIR)
         with open(file_path, "w", encoding="utf-8") as f: f.write(html_card)
 
+        if link_validation:
+            print(f"Validated {len(link_validation['links']['en'])} approved internal links per language.")
+
         # REDUNDANCY: Also save a copy in the local bot folder
         local_output = os.path.join(os.path.dirname(__file__), "output")
         if not os.path.exists(local_output): os.makedirs(local_output)
@@ -585,6 +646,7 @@ def publish_bilingual_data(data):
             "source": data["source"],
             "image": json_image_path,
             "url": f"article/{file_name}", # Path relative to blog.html
+            "authorship": {"author": "Dentplant Editorial Team", "clinical_review": review_status},
             "en": data["en"],
             "el": data["el"]
         }

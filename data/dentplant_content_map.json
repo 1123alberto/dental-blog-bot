@@ -1,0 +1,3025 @@
+{
+  "schema_version": "1.0",
+  "source": {
+    "site_base_url": "https://www.dentplant.gr/",
+    "sitemap_path": "sitemap.xml"
+  },
+  "normalization": {
+    "internal_urls": "https://www.dentplant.gr with no query string, fragment, or /index.html suffix"
+  },
+  "pages": [
+    {
+      "path": "about.html",
+      "canonical_url": "https://www.dentplant.gr/about.html",
+      "title": "Angelo Moshopoulos: Χειρουργός Οδοντίατρος στο Παλαιό Φάληρο",
+      "meta_description": "Γνωρίστε τον Άγγελο Μοσχόπουλο, έμπειρο χειρουργό οδοντίατρο στο Παλαιό Φάληρο. Εξειδίκευση σε εμφυτεύματα, αισθητική οδοντιατρική (λεύκανση, όψεις) και διάφανους νάρθηκες Clear Aligners. Δείτε το βιογραφικό του.",
+      "h1": [
+        "Άγγελος Μοσχόπουλος"
+      ],
+      "h2": [],
+      "h3": [
+        "Κοινωνική Προσφορά"
+      ],
+      "language": "el",
+      "page_type": "doctor/about",
+      "is_treatment_page": false,
+      "is_article": false,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 38,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "aesthetics.html",
+      "canonical_url": "https://www.dentplant.gr/aesthetics.html",
+      "title": "Αισθητική Οδοντιατρική | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Ολοκληρωμένες υπηρεσίες αισθητικής οδοντιατρικής στο Παλαιό Φάληρο. Εξατομικευμένος σχεδιασμός χαμόγελου, επαγγελματική λεύκανση δοντιών και όψεις πορσελάνης.",
+      "h1": [
+        "Αισθητική Οδοντιατρική στο Παλαιό Φάληρο"
+      ],
+      "h2": [
+        "Υπηρεσίες Αισθητικής Οδοντιατρικής",
+        "Ποια Αισθητική Θεραπεία Ταιριάζει στο Χαμόγελό σας;",
+        "Συχνές Ερωτήσεις για την Αισθητική Οδοντιατρική"
+      ],
+      "h3": [
+        "Επαγγελματική Λεύκανση Δοντιών",
+        "Όψεις Πορσελάνης",
+        "Λεύκανση Δοντιών",
+        "Όψεις Πορσελάνης",
+        "Διαφανείς Νάρθηκες"
+      ],
+      "language": "el",
+      "page_type": "treatment hub",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/porcelain-veneers.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/teeth-whitening.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/porcelain-veneers.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/teeth-whitening.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 13,
+      "inbound_link_count": 37,
+      "parent_candidates": [],
+      "child_candidates": [
+        "https://www.dentplant.gr/porcelain-veneers.html",
+        "https://www.dentplant.gr/teeth-whitening.html"
+      ],
+      "in_sitemap": true
+    },
+    {
+      "path": "article-aligners-candidate.html",
+      "canonical_url": "https://www.dentplant.gr/article-aligners-candidate.html",
+      "title": "Είμαι Κατάλληλος για Διαφανείς Νάρθηκες; | Άγγελος Μοσχόπουλος",
+      "meta_description": "Μάθετε ποιοι παράγοντες επηρεάζουν την καταλληλότητα για διαφανείς νάρθηκες, από τη σύγκλειση και τη στοματική υγεία έως τη συνεπή χρήση.",
+      "h1": [
+        "Είμαι Κατάλληλος για Διαφανείς Νάρθηκες;"
+      ],
+      "h2": [
+        "Τι καθορίζει την καταλληλότητα για διαφανείς νάρθηκες;",
+        "Συνωστισμός και Διαστήματα μεταξύ των Δοντιών",
+        "Σύγκλειση και Πολυπλοκότητα των Μετακινήσεων",
+        "Υγεία Δοντιών και Ούλων πριν από την Ορθοδοντική Θεραπεία",
+        "Συνεργασία του Ασθενούς και Συνεπής Χρήση",
+        "Υπάρχει Ηλικιακό Όριο για τους Διαφανείς Νάρθηκες;",
+        "Πότε μπορεί να χρειάζεται διαφορετική Ορθοδοντική Προσέγγιση;",
+        "Η Κλινική Αξιολόγηση πριν από την Απόφαση"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "informational article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-aligners-vs-braces.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-aligners-vs-braces.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 12,
+      "inbound_link_count": 2,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article-aligners-cost.html",
+      "canonical_url": "https://www.dentplant.gr/article-aligners-cost.html",
+      "title": "Πόσο Κοστίζουν οι Διαφανείς Νάρθηκες; | Άγγελος Μοσχόπουλος",
+      "meta_description": "Μάθετε ποιοι παράγοντες επηρεάζουν το κόστος των διαφανών ναρθήκων, από την πολυπλοκότητα και τη διάρκεια έως τον ψηφιακό σχεδιασμό.",
+      "h1": [
+        "Πόσο Κοστίζουν οι Διαφανείς Νάρθηκες;"
+      ],
+      "h2": [
+        "Τι επηρεάζει το κόστος των διαφανών ναρθήκων;",
+        "Πολυπλοκότητα του Περιστατικού και Απαιτούμενες Μετακινήσεις",
+        "Ψηφιακός Σχεδιασμός και Διαγνωστική Αξιολόγηση",
+        "Διάρκεια Θεραπείας και Αριθμός Σταδίων",
+        "Επανέλεγχοι, Προσαρμογές και Παρακολούθηση της Πορείας",
+        "Γιατί δεν υπάρχει μία ενιαία τιμή για όλους;",
+        "Πώς Διαμορφώνεται ένα Εξατομικευμένο Πλάνο Θεραπείας",
+        "Η Κλινική Αξιολόγηση πριν από την Εκτίμηση Κόστους"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "informational article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-aligners-candidate.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-aligners-candidate.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 12,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article-aligners-retention.html",
+      "canonical_url": "https://www.dentplant.gr/article-aligners-retention.html",
+      "title": "Χρειάζομαι Συγκρατητικό Μετά τους Διαφανείς Νάρθηκες; | Άγγελος Μοσχόπουλος",
+      "meta_description": "Μάθετε τι περιλαμβάνει η συγκράτηση μετά τη θεραπεία με διαφανείς νάρθηκες, γιατί χρησιμοποιείται και πώς παρακολουθείται η σταθερότητα μετά την ενεργή θεραπεία.",
+      "h1": [
+        "Χρειάζομαι Συγκρατητικό Μετά τους Διαφανείς Νάρθηκες;"
+      ],
+      "h2": [
+        "Τι Συμβαίνει μετά την Ολοκλήρωση της Θεραπείας με Διαφανείς Νάρθηκες;",
+        "Γιατί Χρησιμοποιείται Συγκράτηση μετά την Ορθοδοντική Θεραπεία;",
+        "Τι Είναι το Συγκρατητικό και Ποιος Είναι ο Ρόλος του;",
+        "Πώς Καθορίζεται το Πρόγραμμα Χρήσης του Συγκρατητικού;",
+        "Συνέπεια και Σταθερότητα μετά τη Θεραπεία",
+        "Φροντίδα του Συγκρατητικού",
+        "Τι Γίνεται αν το Συγκρατητικό Δεν Εφαρμόζει Σωστά;",
+        "Παρακολούθηση μετά το Τέλος της Ενεργής Θεραπείας"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "informational article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/terms.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 9,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article-aligners-vs-braces.html",
+      "canonical_url": "https://www.dentplant.gr/article-aligners-vs-braces.html",
+      "title": "Διάφανοι Νάρθηκες ή Σιδεράκια; Τι να Επιλέξετε | Άγγελος Μοσχόπουλος",
+      "meta_description": "Διάφανοι νάρθηκες ή σιδεράκια; Συγκρίνετε εμφάνιση, υγιεινή, καθημερινή χρήση και βασικές διαφορές πριν από την εξατομικευμένη αξιολόγηση.",
+      "h1": [
+        "Διάφανοι Νάρθηκες ή Σιδεράκια; Πώς να Επιλέξετε"
+      ],
+      "h2": [
+        "Βασικές Διαφορές: Διαφανείς Νάρθηκες και Σταθερά Σιδεράκια",
+        "Αισθητική και Εμφάνιση στην Καθημερινότητα",
+        "Διατροφή και Στοματική Υγιεινή",
+        "Άνεση και Περίοδος Προσαρμογής",
+        "Συνεργασία του Ασθενούς και Χρόνος Χρήσης",
+        "Πότε μπορεί να είναι καταλληλότερα τα Σταθερά Σιδεράκια",
+        "Πώς Επιλέγεται η Κατάλληλη Θεραπεία"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "informational article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 2,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article-bone-graft.html",
+      "canonical_url": "https://www.dentplant.gr/article-bone-graft.html",
+      "title": "Οστικό Μόσχευμα & Οδοντικά Εμφυτεύματα | Άγγελος Μοσχόπουλος",
+      "meta_description": "Ενημερωτικός οδηγός για το οστικό μόσχευμα και την οστική ανάπλαση (GBR). Μάθετε πώς αποκαθίσταται το οστό της γνάθου πριν την τοποθέτηση εμφυτευμάτων.",
+      "h1": [
+        "Οστικό Μόσχευμα και Οδοντικά Εμφυτεύματα"
+      ],
+      "h2": [
+        "Τι είναι το οστικό μόσχευμα και γιατί χρειάζεται;",
+        "Καθοδηγούμενη Οστική Αναγέννηση (GBR) & Υλικά Μοσχεύματος",
+        "Διατήρηση Φατνιακής Ακρολοφίας & Εμφυτεύματα"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "informational article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/surgery-bone-graft.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/surgery-bone-graft.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 12,
+      "inbound_link_count": 5,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article-candidate.html",
+      "canonical_url": "https://www.dentplant.gr/article-candidate.html",
+      "title": "Είμαι κατάλληλος υποψήφιος για οδοντικά εμφυτεύματα; | Άγγελος Μοσχόπουλος",
+      "meta_description": "Μάθετε αν είστε κατάλληλος υποψήφιος για οδοντικά εμφυτεύματα. Ενημερωθείτε για την οστική μάζα, την υγεία των ούλων και τις προϋποθέσεις θεραπείας.",
+      "h1": [
+        "Είμαι κατάλληλος υποψήφιος για Οδοντικά Εμφυτεύματα;"
+      ],
+      "h2": [
+        "Εισαγωγή & Βιοσυμβατότητα Τιτανίου",
+        "Υγεία των Ούλων & Οστική Μάζα",
+        "Χρόνιες Παθήσεις & Κάπνισμα",
+        "Ηλικιακά Όρια",
+        "Ψηφιακός Διαγνωστικός Σχεδιασμός (CBCT)",
+        "Ανεπάρκεια Οστού & Προπαρασκευαστικές Τεχνικές"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "informational article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-bone-graft.html",
+        "https://www.dentplant.gr/article-timeline.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-bone-graft.html",
+        "https://www.dentplant.gr/article-timeline.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 13,
+      "inbound_link_count": 4,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article-comparison.html",
+      "canonical_url": "https://www.dentplant.gr/article-comparison.html",
+      "title": "Εμφυτεύματα ή Γέφυρες Δοντιών: Τι να επιλέξετε; | Άγγελος Μοσχόπουλος",
+      "meta_description": "Η επιλογή ανάμεσα σε οδοντικά εμφυτεύματα, γέφυρες ή οδοντοστοιχίες εξαρτάται από τις ανάγκες σας και την εξατομικευμένη κλινική αξιολόγηση.",
+      "h1": [
+        "Εμφυτεύματα, Γέφυρες ή Τεχνητές Οδοντοστοιχίες: Τι να επιλέξετε;"
+      ],
+      "h2": [
+        "Εισαγωγή & Επιλογές Αποκατάστασης",
+        "Τεχνητές Οδοντοστοιχίες (Μασέλες)",
+        "Γέφυρες Δοντιών",
+        "Οδοντικά Εμφυτεύματα",
+        "Βιολογικά Πλεονεκτήματα & Διατήρηση Οστού",
+        "Μακροπρόθεσμη Αξία & Εξατομικευμένη Επιλογή"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "informational article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-candidate.html",
+        "https://www.dentplant.gr/article-cost.html",
+        "https://www.dentplant.gr/article-timeline.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-candidate.html",
+        "https://www.dentplant.gr/article-cost.html",
+        "https://www.dentplant.gr/article-timeline.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 14,
+      "inbound_link_count": 3,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article-cost.html",
+      "canonical_url": "https://www.dentplant.gr/article-cost.html",
+      "title": "Κόστος Οδοντικών Εμφυτευμάτων | Άγγελος Μοσχόπουλος",
+      "meta_description": "Το κόστος των οδοντικών εμφυτευμάτων διαμορφώνεται από εξατομικευμένες παραμέτρους. Απαιτείται κλινική αξιολόγηση για ένα ακριβές πλάνο θεραπείας.",
+      "h1": [
+        "Πόσο κοστίζουν τα Οδοντικά Εμφυτεύματα;"
+      ],
+      "h2": [
+        "Εισαγωγή & Αρχική Εκτίμηση Κόστους",
+        "Παράγοντες που Διαμορφώνουν τη Συνολική Τιμή",
+        "Μακροπρόθεσμη Αξία & Σύγκριση με Εναλλακτικές",
+        "Ποιότητα Ζωής & Λειτουργική Αποκατάσταση",
+        "Διαφανής Διαγνωστικός Έλεγχος & Πλάνο Θεραπείας"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "informational article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-bone-graft.html",
+        "https://www.dentplant.gr/article-comparison.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-bone-graft.html",
+        "https://www.dentplant.gr/article-comparison.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 13,
+      "inbound_link_count": 3,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article-sedation.html",
+      "canonical_url": "https://www.dentplant.gr/article-sedation.html",
+      "title": "Συνειδητή Καταστολή στην Οδοντιατρική: Οδηγός Ασθενούς | Dentplant",
+      "meta_description": "Ο φόβος για τον οδοντίατρο (οδοντιατρική φοβία) είναι ένα εξαιρετικά συνηθισμένο φαινόμενο που επηρεάζει εκατομμύρια ανθρώπους παγκοσμίως. Πολλοί ασθενείς που έχουν ανάγκη από οδοντικά εμφυτεύματα αναβάλλουν τη θεραπεία τους για χρόνια λόγω του άγχους της χειρουργικής επέμβασης. Αυτή η καθυστέρηση όμως οδηγεί σε επιδείνωση της στοματικής υγείας, περαιτέρω απώλεια οστού και μείωση της ποιότητας ζωής. Στο ιατρείο μας, κατανοούμε απόλυτα αυτούς τους ενδοιασμούς και προσφέρουμε τη λύση της συνειδητής καταστολής (μέθης), με στόχο τη μείωση του άγχους και τη μεγαλύτερη άνεση του ασθενούς.",
+      "h1": [
+        "Συνειδητή Καταστολή στην Οδοντιατρική: Οδηγός Ασθενούς"
+      ],
+      "h2": [
+        "Τι είναι η Συνειδητή Καταστολή (Μέθη);",
+        "Πώς Διαφέρει η Μέθη από τη Τοπική και τη Γενική Αναισθησία;",
+        "Αντιμετώπιση του Οδοντιατρικού Άγχους",
+        "Προϋποθέσεις & Αξιολόγηση Υποψηφίων",
+        "Τι να Περιμένετε Πριν και Μετά τη Θεραπεία",
+        "Πότε να Ζητήσετε Κλινική Αξιολόγηση"
+      ],
+      "h3": [
+        "Ενδιαφέρεστε για Θεραπεία με Συνειδητή Καταστολή;"
+      ],
+      "language": "el",
+      "page_type": "informational article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/surgery-sedation.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/surgery-sedation.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 12,
+      "inbound_link_count": 2,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article-timeline.html",
+      "canonical_url": "https://www.dentplant.gr/article-timeline.html",
+      "title": "Η Διαδικασία των Εμφυτευμάτων: Βήμα προς Βήμα | Άγγελος Μοσχόπουλος",
+      "meta_description": "Ανακαλύψτε τα 5 στάδια της θεραπείας με οδοντικά εμφυτεύματα, από τη διαγνωστική CBCT έως την τελική αποκατάσταση και τους χρόνους επούλωσης.",
+      "h1": [
+        "Διαδικασία για Οδοντικά Εμφυτεύματα: Από τη Διάγνωση στην Ολοκλήρωση"
+      ],
+      "h2": [
+        "1. Διάγνωση και Ψηφιακός Σχεδιασμός",
+        "2. Χειρουργική Τοποθέτηση",
+        "3. Οστεοενσωμάτωση (Περίοδος Επούλωσης)",
+        "4. Αποκάλυψη και Προσθετική Φάση",
+        "5. Τοποθέτηση και Συντήρηση"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "informational article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-bone-graft.html",
+        "https://www.dentplant.gr/article-candidate.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-bone-graft.html",
+        "https://www.dentplant.gr/article-candidate.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 13,
+      "inbound_link_count": 4,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-15-4.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-15-4.html",
+      "title": "Πέρα από τα Αντιβιοτικά: Νέοι Τρόποι Πρόληψης της Περιοδοντίτιδας | Άγγελος Μοσχόπουλος",
+      "meta_description": "Οι ερευνητές ανακαλύπτουν πώς να σταματούν τα επιβλαβή βακτήρια διακόπτοντας την «επικοινωνία» τους, διατηρώντας την υγιή ισορροπία του στόματος.",
+      "h1": [
+        "Beyond Antibiotics: New Ways to Prevent Gum Disease",
+        "Πέρα από τα Αντιβιοτικά: Νέοι Τρόποι Πρόληψης της Περιοδοντίτιδας"
+      ],
+      "h2": [],
+      "h3": [
+        "The Shift Toward Precision Oral Care",
+        "Why the Microbiome Matters",
+        "Staying Ahead at Dentplant",
+        "Η Μετάβαση στην Οδοντιατρική Φροντίδα Ακριβείας",
+        "Γιατί το Μικροβίωμα Έχει Σημασία",
+        "Η Δέσμευση της Dentplant στην Καινοτομία"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-16-1.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-16-1.html",
+      "title": "Η Επανάσταση της 3D Εκτύπωσης στην Οδοντιατρική | Άγγελος Μοσχόπουλος",
+      "meta_description": "Η ψηφιακή μεταμόρφωση είναι εδώ! Μάθετε πώς η τελευταία τεχνολογία 3D εκτύπωσης επιτρέπει πιο ακριβείς και γρήγορες οδοντιατρικές αποκαταστάσεις.",
+      "h1": [
+        "The 3D Printing Revolution in Dentistry: Precision Meets Speed",
+        "Η Επανάσταση της 3D Εκτύπωσης στην Οδοντιατρική: Ακρίβεια και Ταχύτητα"
+      ],
+      "h2": [],
+      "h3": [
+        "A New Era of Dental Restorations",
+        "Why 3D Printing Matters for Patients",
+        "The Dentplant Commitment to Innovation",
+        "Μια Νέα Εποχή στις Οδοντιατρικές Αποκαταστάσεις",
+        "Γιατί η 3D Εκτύπωση είναι Σημαντική για τους Ασθενείς",
+        "Η Δέσμευση της Dentplant στην Καινοτομία"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-16-4.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-16-4.html",
+      "title": "Οι Νεάντερταλ εφάρμοζαν την Οδοντιατρική πριν από 60.000 χρόνια στη Σιβηρία | Άγγελος Μοσχόπουλος",
+      "meta_description": "Μια συγκλονιστική ανακάλυψη στα όρη Αλτάι αποκαλύπτει την αρχαιότερη απόδειξη επεμβατικής οδοντιατρικής χειρουργικής. Ένας τραπεζίτης Νεάντερταλ 60.000 ετών παρουσιάζει ακριβή διάτρηση.",
+      "h1": [
+        "Neanderthals Practiced Dentistry 60,000 Years Ago in Siberia",
+        "Οι Νεάντερταλ εφάρμοζαν την Οδοντιατρική πριν από 60.000 χρόνια στη Σιβηρία"
+      ],
+      "h2": [],
+      "h3": [
+        "Ancient Dental Breakthrough",
+        "The Procedure: Precision in the Stone Age",
+        "Why It Matters",
+        "Μια Προϊστορική Επανάσταση στην Οδοντιατρική",
+        "Η Διαδικασία: Ακρίβεια στην Εποχή του Λίθου",
+        "Γιατί Είναι Σημαντικό"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-17.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-17.html",
+      "title": "Επανεξετάζοντας την Περιοδοντική Νόσο: Στοχεύοντας στην «Επικοινωνία» των Βακτηρίων | Άγγελος Μοσχόπουλος",
+      "meta_description": "Οι ερευνητές ανακαλύπτουν πώς να σταματήσουν την ουλίτιδα εμποδίζοντας τα βακτηριακά σήματα. Μάθετε πώς η οδοντιατρική κινείται προς ένα πιο ισορροπημένο στοματικό μικροβίωμα.",
+      "h1": [
+        "Rethinking Gum Disease: Targeting Bacterial \"Communication\" Over Harsh Elimination",
+        "Επανεξετάζοντας την Περιοδοντική Νόσο: Στοχεύοντας στην «Επικοινωνία» των Βακτηρίων"
+      ],
+      "h2": [],
+      "h3": [
+        "A Paradigm Shift in Periodontal Care",
+        "How Bacterial \"Talk\" Influences Your Health",
+        "Staying at the Cutting Edge at Dentplant",
+        "Μια Σημαντική Αλλαγή στον Τρόπο Αντιμετώπισης της Περιοδοντίτιδας",
+        "Πώς η Βακτηριακή «Συνομιλία» Επηρεάζει την Υγεία σας",
+        "Παραμένοντας στην Αιχμή των Εξελίξεων στη Dentplant"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-18.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-18.html",
+      "title": "Πέρα από το Χαμόγελο: Η Συστηματική Σύνδεση με τη Συνολική Υγεία | Άγγελος Μοσχόπουλος",
+      "meta_description": "Ερευνητές ανακαλύπτουν πώς οι «κρυφές» οδοντικές λοιμώξεις επηρεάζουν το σάκχαρο και την υγεία του σώματος. Μάθετε πώς εξελίσσεται η οδοντιατρική για τη συνολική σας προστασία.",
+      "h1": [
+        "Beyond the Smile: The Systemic Link to Overall Wellness",
+        "Πέρα από το Χαμόγελο: Η Συστηματική Σύνδεση με τη Συνολική Υγεία"
+      ],
+      "h2": [],
+      "h3": [
+        "Understanding the Mouth-Body Connection",
+        "The Impact of \"Silent\" Infections",
+        "The Future of Preventive Care",
+        "Κατανοώντας τη Σύνδεση Στόματος και Σώματος",
+        "Η Επίδραση των «Βουβών» Λοιμώξεων",
+        "Το Μέλλον της Προληπτικής Φροντίδας"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-19-1.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-19-1.html",
+      "title": "Σιωπηλές Λοιμώξεις: Η Κρυφή Σύνδεση Στοματικής Υγείας και Σακχάρου | Άγγελος Μοσχόπουλος",
+      "meta_description": "Νέα έρευνα υπογραμμίζει πώς οι μη ανιχνεύσιμες οδοντικές λοιμώξεις μπορεί να διαταράξουν τη μεταβολική υγεία. Μάθετε γιατί η αντιμετώπιση της κρυφής φλεγμονής είναι ζωτικής σημασίας.",
+      "h1": [
+        "Silent Infections: The Hidden Link Between Dental Health and Blood Sugar",
+        "Σιωπηλές Λοιμώξεις: Η Κρυφή Σύνδεση Στοματικής Υγείας και Σακχάρου στο Αίμα"
+      ],
+      "h2": [],
+      "h3": [
+        "The Problem of Apical Periodontitis",
+        "A Systemic Chain Reaction",
+        "Professional Diagnostics and Prevention",
+        "Το Πρόβλημα της Ακρορριζικής Περιοδοντίτιδας",
+        "Μια Συστηματική Αλυσιδωτή Αντίδραση",
+        "Επαγγελματική Διαγνωστική και Πρόληψη"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-19-2.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-19-2.html",
+      "title": "Η Ακρίβεια στα Εμφυτεύματα Ολικού Τόξου | Άγγελος Μοσχόπουλος",
+      "meta_description": "Ανακαλύψτε πώς ο «προσθετικά καθοδηγούμενος» ψηφιακός σχεδιασμός φέρνει επανάσταση στις αποκαταστάσεις ολικού τόξου, εξασφαλίζοντας μεγαλύτερη προβλεψιμότητα και μακροχρόνια σταθερότητα.",
+      "h1": [
+        "Precision in Full-Arch Implants: The Evolution of Digital Surgical Guides",
+        "Η Ακρίβεια στα Εμφυτεύματα Ολικού Τόξου: Η Εξέλιξη των Ψηφιακών Χειρουργικών Οδηγών"
+      ],
+      "h2": [],
+      "h3": [
+        "The Shift to Prosthetically Driven Care",
+        "Why Precision Architecture Matters",
+        "A Commitment to Evidence-Based Innovation",
+        "Η Μετάβαση στην Προσθετικά Καθοδηγούμενη Φροντίδα",
+        "Γιατί η Αρχιτεκτονική Ακρίβειας Είναι Σημαντική",
+        "Δέσμευση στην Καινοτομία Βασισμένη σε Τεκμήρια"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-19-3.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-19-3.html",
+      "title": "Ηλεκτρονικό Τσιγάρο & Στοματική Υγεία | Άγγελος Μοσχόπουλος",
+      "meta_description": "Πολλοί στρέφονται στο άτμισμα θεωρώντας το μια ακίνδυνη εναλλακτική λύση. Ωστόσο, τα κλινικά δεδομένα αποκαλύπτουν σημαντικούς κινδύνους για τη μικροβιακή ισορροπία της στοματικής κοιλότητας.",
+      "h1": [
+        "Vaping and Oral Health: How E-Cigarettes Disrupt the Oral Microbiome",
+        "Ηλεκτρονικό Τσιγάρο και Στοματική Υγεία: Πώς Επηρεάζεται το Μικροβίωμα του Στόματος"
+      ],
+      "h2": [],
+      "h3": [
+        "The Illusion of a Safer Alternative",
+        "Disrupting the Ecosystem: Oral Dysbiosis",
+        "Why It Matters: Silent Inflammation",
+        "Practical Implications and Patient Care",
+        "Η Ψευδαίσθηση μιας Ασφαλούς Εναλλακτικής",
+        "Διαταραχή του Οικοσυστήματος: Στοματική Δυσβίωση",
+        "Γιατί Έχει Σημασία: Η «Βουβή» Φλεγμονή",
+        "Πρακτικές Συμβουλές και Φροντίδα των Ασθενών"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-19-4.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-19-4.html",
+      "title": "Ρύθμιση της Αρτηριακής Πίεσης: Ο Ρόλος των Ούλων σας | Άγγελος Μοσχόπουλος",
+      "meta_description": "Νέα κλινική έρευνα αποκαλύπτει ότι η ενεργή περιοδοντίτιδα μπορεί να εμποδίσει τη δράση των αντιυπερτασικών φαρμάκων. Μάθετε πώς η αντιμετώπιση της φλεγμονής στα ούλα προστατεύει το καρδιαγγειακό σας σύστημα.",
+      "h1": [
+        "Uncontrolled Blood Pressure? The Answer May Lie in Your Gums",
+        "Ρύθμιση της Αρτηριακής Πίεσης: Ο Ρόλος των Ούλων σας"
+      ],
+      "h2": [],
+      "h3": [
+        "The Vascular Toll of Oral Inflammation",
+        "Why This Matters for Hypertensive Patients",
+        "A Dual Approach to Wellness",
+        "Το Αγγειακό Κόστος της Στοματικής Φλεγμονής",
+        "Γιατί Αυτό Αφορά τους Υπερτασικούς Ασθενείς",
+        "Μια Ολιστική Προσέγγιση της Υγείας"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-23.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-23.html",
+      "title": "Η περιοδοντική νόσος συνδέεται με αυτοάνοσα νοσήματα και αυξημένη θνησιμότητα | Study Links Periodontal Disease to Autoimmune Conditions and Higher Mortality Risk",
+      "meta_description": "Μια νέα κλινική μελέτη αναδεικνύει πώς η χρόνια φλεγμονή των ούλων αποτελεί δείκτη συστηματικής υγείας. Μάθετε γιατί η προστασία των ούλων σας είναι απαραίτητη για τη θωράκιση του ανοσοποιητικού σας συστήματος.",
+      "h1": [
+        "Study Links Periodontal Disease to Autoimmune Conditions and Higher Mortality Risk",
+        "Η περιοδοντική νόσος συνδέεται με αυτοάνοσα νοσήματα και αυξημένη θνησιμότητα"
+      ],
+      "h2": [],
+      "h3": [
+        "The Systemic Cost of Chronic Inflammation",
+        "A Critical Indicator of General Health",
+        "Proactive Care at Dentplant",
+        "Το Συστηματικό Κόστος της Χρόνιας Φλεγμονής",
+        "Ένας Κρίσιμος Δείκτης Υγείας",
+        "Προληπτική Φροντίδα στη Dentplant"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-26-3.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-26-3.html",
+      "title": "Υγιές Χαμόγελο: Η Dentplant Συμμετέχει στην Υπόσχεση Πρόληψης του Smile Month | Embrace a Healthier Smile: Dentplant Joins the Smile Month Prevention Pledge",
+      "meta_description": "Ανακαλύψτε πώς το Smile Month και η Dentplant συνεργάζονται για να προωθήσουν την προληπτική στοματική υγεία και να σας βοηθήσουν να διατηρήσετε ένα φωτεινότερο, υγιέστερο χαμόγελο για μια ζωή.",
+      "h1": [
+        "Embrace a Healthier Smile: Dentplant Joins the Smile Month Prevention Pledge",
+        "Υγιές Χαμόγελο: Η Dentplant Συμμετέχει στην Υπόσχεση Πρόληψης του Smile Month"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-05-26.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-05-26.html",
+      "title": "Κατανόηση της Τεχνολογίας των Ηλεκτρικών Οδοντόβουρτσων για Καλύτερη Στοματική Υγιεινή | Understanding Electric Toothbrush Technology for Better Daily Oral Health",
+      "meta_description": "Είναι η τεχνική βουρτσίσματός σας πραγματικά αποτελεσματική; Ανακαλύψτε την επιστήμη πίσω από τις ηλεκτρικές οδοντόβουρτσες και πώς η κατάλληλη τεχνολογία μπορεί να αναβαθμίσει την καθημερινή σας στοματική υγιεινή.",
+      "h1": [
+        "Understanding Electric Toothbrush Technology for Better Daily Oral Health",
+        "Κατανόηση της Τεχνολογίας των Ηλεκτρικών Οδοντόβουρτσων για Καλύτερη Στοματική Υγιεινή"
+      ],
+      "h2": [],
+      "h3": [
+        "The Science of Mechanical Plaque Removal",
+        "Protecting Your Gums from Excess Force",
+        "An Evidence-Based Approach to Preventive Care",
+        "Η Επιστήμη της Μηχανικής Αφαίρεσης της Πλάκας",
+        "Προστασία των Ούλων από την Υπερβολική Πίεση",
+        "Μια Προσέγγιση Προληπτικής Φροντίδας Βασισμένη σε Ενδείξεις"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-06-03.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-06-03.html",
+      "title": "Φυτική τσίκλα μειώνει τα μικρόβια που συνδέονται με τον καρκίνο | Plant-Based Chewing Gum Targets Oral Microbes Linked to Head and Neck Cancer",
+      "meta_description": "Μια νέα επιστημονική μελέτη εξετάζει τη χρήση μιας ειδικής φυτικής τσίχλας για την καταπολέμηση στοματικών παθογόνων. Ανακαλύψτε πώς συνδέεται η στοματική χλωρίδα με τη συστηματική υγεία.",
+      "h1": [
+        "Plant-Based Chewing Gum Targets Oral Microbes Linked to Head and Neck Cancer",
+        "Φυτική τσίκλα μειώνει τα μικρόβια που συνδέονται με τον καρκίνο"
+      ],
+      "h2": [],
+      "h3": [
+        "Connecting the Oral Microbiome to Systemic Risks",
+        "A Targeted Approach Against Oral Pathogens",
+        "Bridging Research and Daily Dental Care",
+        "Συνδέοντας το Στοματικό Μικροβίωμα με Συστηματικούς Κινδύνους",
+        "Μια Στοχευμένη Προσέγγιση κατά των Στοματικών Παθογόνων",
+        "Γέφυρα μεταξύ Έρευνας και Καθημερινής Φροντίδας"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-06-08-1.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-06-08-1.html",
+      "title": "Επιστημονική Συναίνεση για τον Ρόλο του Στοματικού Διαλύματος στην Καθημερινή Υγιεινή | An Evidence-Based Consensus on the Role of Daily Mouthwash",
+      "meta_description": "Κορυφαίοι οδοντίατροι θεσπίζουν νέες κλινικές κατευθυντήριες οδηγίες για τη χρήση στοματικού διαλύματος. Μάθετε πώς αυτή η επιστημονικά τεκμηριωμένη προσέγγιση στοχεύει το κρυφό βιοϋμένιο για την προστασία των ούλων σας.",
+      "h1": [
+        "An Evidence-Based Consensus on the Role of Daily Mouthwash",
+        "Επιστημονική Συναίνεση για τον Ρόλο του Στοματικού Διαλύματος στην Καθημερινή Υγιεινή"
+      ],
+      "h2": [],
+      "h3": [
+        "Addressing the Silent Challenges of Oral Hygiene",
+        "Beyond the Toothbrush: Targeting Plaque Biofilm",
+        "Our Commitment to Evidence-Based Care",
+        "Αντιμετωπίζοντας τις «Βουβές» Προκλήσεις της Στοματικής Υγιεινής",
+        "Πέρα από το Βούρτσισμα: Στοχεύοντας το Βακτηριακό Βιοϋμένιο",
+        "Η Δέσμευσή μας για Φροντίδα Βασισμένη σε Ενδείξεις"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-06-08.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-06-08.html",
+      "title": "Βοηθοί με Τεχνητή Νοημοσύνη: Επαναπροσδιορίζοντας την Εμπειρία του Οδοντιατρικού Ασθενή | AI-Powered Assistants: Redefining the Dental Patient Journey",
+      "meta_description": "Ανακαλύψτε πώς η καινοτόμος τεχνολογία βελτιώνει τη λειτουργία των οδοντιατρικών μονάδων, απελευθερώνοντας τις ομάδες μας για πιο εστιασμένη φροντίδα των ασθενών.",
+      "h1": [
+        "AI-Powered Assistants: Redefining the Dental Patient Journey",
+        "Βοηθοί με Τεχνητή Νοημοσύνη: Επαναπροσδιορίζοντας την Εμπειρία του Οδοντιατρικού Ασθενή"
+      ],
+      "h2": [],
+      "h3": [
+        "The Evolving Landscape of Dental Practice Operations",
+        "What This Means for Patient Experience",
+        "Observing a New Era in Dental Practice Management",
+        "The Future of Support in Oral Healthcare",
+        "Our Commitment at Dentplant",
+        "Το Μεταβαλλόμενο Τοπίο στη Λειτουργία των Οδοντιατρείων",
+        "Τι Σημαίνει Αυτό για την Εμπειρία του Ασθενή",
+        "Μια Νέα Εποχή στη Διαχείριση των Ιατρείων",
+        "Το Μέλλον της Υποστήριξης στην Οδοντιατρική",
+        "Η Δέσμευσή μας στην Dentplant"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-06-22.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-06-22.html",
+      "title": "Προσαρμόσιμο Χαμόγελο: Πώς οι Όψεις Ρητίνης Βελτιώνουν τον Αισθητικό Έλεγχο | The Adaptable Smile: How Modifiable Composite Veneers Enhance Aesthetic Control",
+      "meta_description": "Η επίτευξη του ιδανικού σας χαμόγελου είναι μια συνεργατική διαδικασία που συχνά απαιτεί προσαρμογές στην πράξη. Ανακαλύψτε πώς οι σύγχρονες άμεσες αποκαταστάσεις σύνθετης ρητίνης προσφέρουν μια εξαιρετικά προσαρμόσιμη και αναστρέψιμη επιλογή για την εξατομικευμένη αισθητική των δοντιών σας.",
+      "h1": [
+        "The Adaptable Smile: How Modifiable Composite Veneers Enhance Aesthetic Control",
+        "Προσαρμόσιμο Χαμόγελο: Πώς οι Όψεις Ρητίνης Βελτιώνουν τον Αισθητικό Έλεγχο"
+      ],
+      "h2": [],
+      "h3": [
+        "The Evolution of Aesthetic Customization",
+        "The Science of Polychromatic Layering",
+        "Seamless Chairside Adjustments",
+        "The Dentplant Commitment to Personalized Care",
+        "Η Εξέλιξη της Αισθητικής Εξατομίκευσης",
+        "Η Επιστήμη της Πολυχρωματικής Διαστρωμάτωσης",
+        "Απρόσκοπτες Προσαρμογές στο Οδοντιατρείο",
+        "Η Δέσμευση της Dentplant για Εξατομικευμένη Φροντίδα"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-06-29.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-06-29.html",
+      "title": "Μπορεί η Διατροφή να Επηρεάσει την Υγεία των Ούλων; Νέες Προοπτικές | Can Diet Influence Gum Health? Emerging Insights into Fasting-Mimicking",
+      "meta_description": "Η διατροφή παίζει έναν εκπληκτικό ρόλο στη συνολική υγεία, και νέα έρευνα υποδηλώνει ότι μπορεί να επηρεάζει και τη φλεγμονή των ούλων. Εξερευνήστε πώς μια συγκεκριμένη διατροφική προσέγγιση θα μπορούσε να συμπληρώσει την παραδοσιακή περιοδοντική φροντίδα.",
+      "h1": [
+        "Can Diet Influence Gum Health? Emerging Insights into Fasting-Mimicking",
+        "Μπορεί η Διατροφή να Επηρεάσει την Υγεία των Ούλων; Νέες Προοπτικές"
+      ],
+      "h2": [],
+      "h3": [
+        "The Diet-Inflammation Connection",
+        "Exploring the Fasting-Mimicking Diet",
+        "Why This Research Matters for Your Oral Health",
+        "Limitations and Future Directions",
+        "Η Σύνδεση Διατροφής-Φλεγμονής",
+        "Διερευνώντας τη Δίαιτα Μίμησης Νηστείας",
+        "Γιατί Αυτή η Έρευνα έχει Σημασία για τη Στοματική σας Υγεία",
+        "Περιορισμοί και Μελλοντικές Κατευθύνσεις"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-07-06.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-07-06.html",
+      "title": "Χρόνια Στοματική Φλεγμονή και Γονιμότητα: Κατανοώντας τους Νέους Βιολογικούς Συνδέσμους | Chronic Oral Inflammation and Fertility: Understanding the New Biological Links",
+      "meta_description": "Νέες έρευνες αποκαλύπτουν μια αναπάντεχη βιολογική σύνδεση μεταξύ της χρόνιας στοματικής φλεγμονής και της αναπαραγωγικής υγείας. Η κατανόηση αυτής της σχέσης υπογραμμίζει τη βαθιά επίδραση της προληπτικής οδοντιατρικής στη συνολική συστηματική ευεξία.",
+      "h1": [
+        "Chronic Oral Inflammation and Fertility: Understanding the New Biological Links",
+        "Χρόνια Στοματική Φλεγμονή και Γονιμότητα: Κατανοώντας τους Νέους Βιολογικούς Συνδέσμους"
+      ],
+      "h2": [],
+      "h3": [
+        "A Systemic Pathway Identified",
+        "Translating Science to Patient Care",
+        "Preventive Strategies for Long-Term Wellness",
+        "The Dentplant Commitment",
+        "Ένας Συστηματικός Μηχανισμός που Ταυτοποιήθηκε",
+        "Μεταφέροντας την Επιστήμη στην Φροντίδα των Ασθενών",
+        "Προληπτικές Στρατηγικές για Μακροχρόνια Ευεξία",
+        "Η Δέσμευση της Dentplant"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-07-13.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-07-13.html",
+      "title": "Προστασία της αδαμαντίνης των δοντιών: Η επιστήμη της βιομιμητικής επανασβεστίωσης | Protecting Tooth Enamel: The Science of Biomimetic Remineralisation",
+      "meta_description": "Η τερηδόνα σε αρχικό στάδιο συχνά ξεκινά σιωπηλά, χωρίς πόνο ή ορατές κοιλότητες. Ανακαλύψτε πώς η βιομιμητική επιστήμη μιμείται τη φύση για να αποκαταστήσει τα χαμένα μέταλλα και να προστατεύσει την αδαμαντίνη σας προτού προκληθεί μόνιμη βλάβη.",
+      "h1": [
+        "Protecting Tooth Enamel: The Science of Biomimetic Remineralisation",
+        "Προστασία της αδαμαντίνης των δοντιών: Η επιστήμη της βιομιμητικής επανασβεστίωσης"
+      ],
+      "h2": [],
+      "h3": [
+        "Understanding Biomimetic Remineralisation",
+        "Why Early Intervention Matters",
+        "Our Approach at Dentplant",
+        "Κατανόηση της Βιομιμητικής Επανασβεστίωσης",
+        "Γιατί η Έγκαιρη Παρέμβαση Είναι Σημαντική",
+        "Η Προσέγγισή μας στο Dentplant"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-07-20.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-07-20.html",
+      "title": "Πέρα από το Οδοντικό Νήμα: Ο Κλινικός Ρόλος των Συσκευών Νερού | Beyond String Floss: The Clinical Role of Water Flossers",
+      "meta_description": "Η διατήρηση της βέλτιστης υγείας στα μεσοδόντια διαστήματα είναι κρίσιμη για την πρόληψη των σιωπηλών λοιμώξεων. Ανακαλύψτε πώς οι συσκευές καταιονισμού νερού χρησιμοποιούν τη στοχευμένη υδροδυναμική για τη διάσπαση του βιοϋμενίου και την υποστήριξη της μακροχρόνιας περιοδοντικής υγείας.",
+      "h1": [
+        "Beyond String Floss: The Clinical Role of Water Flossers",
+        "Πέρα από το Οδοντικό Νήμα: Ο Κλινικός Ρόλος των Συσκευών Νερού"
+      ],
+      "h2": [],
+      "h3": [
+        "Disrupting Biofilm with Hydrodynamics",
+        "Enhancing Accessibility and Special Care",
+        "Customized Care at Dentplant",
+        "Διάσπαση του Βιοϋμενίου με Υδροδυναμική",
+        "Ενίσχυση της Προσβασιμότητας και Ειδική Φροντίδα",
+        "Εξατομικευμένη Φροντίδα στη Dentplant"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-07-27.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-07-27.html",
+      "title": "Κατανόηση της Δυσλειτουργίας των Σιελογόνων Αδένων και του Συνδρόμου Down | Understanding Salivary Gland Dysfunction and Down Syndrome",
+      "meta_description": "Μια νέα προκλινική έρευνα διερευνά τους βιολογικούς μηχανισμούς πίσω από τη μειωμένη ροή σάλιου σε ασθενείς με σύνδρομο Down. Η κατανόηση αυτών των μονοπατιών αποτελεί ζωτικό βήμα προς στοχευμένες θεραπείες για την προστασία της μακροχρόνιας περιοδοντικής υγείας.",
+      "h1": [
+        "Understanding Salivary Gland Dysfunction and Down Syndrome",
+        "Κατανόηση της Δυσλειτουργίας των Σιελογόνων Αδένων και του Συνδρόμου Down"
+      ],
+      "h2": [],
+      "h3": [
+        "The Silent Impact of Reduced Salivary Flow",
+        "Proactive Strategies for Long-Term Oral Health",
+        "Η Βουβή Επίδραση της Μειωμένης Ροής Σάλιου",
+        "Προληπτικές Στρατηγικές για Μακροχρόνια Στοματική Υγεία"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-08-03.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-08-03.html",
+      "title": "Διαχείριση του Στοματικού Βιοϋμενίου: Η Κλινική Σημασία του Καθαρισμού της Γλώσσας | Managing the Oral Biofilm: The Clinical Importance of Tongue Cleaning",
+      "meta_description": "Ενώ το βούρτσισμα και το οδοντικό νήμα είναι απαραίτητα για την προστασία των δοντιών, η γλώσσα αποτελεί κύρια δεξαμενή στοματικών βακτηρίων. Ανακαλύψτε πώς η ενσωμάτωση ενός ξέστρου γλώσσας στην καθημερινή σας ρουτίνα βοηθά στη διαχείριση του στοματικού βιοϋμενίου και στην πρόληψη της χρόνιας δυσοσμίας.",
+      "h1": [
+        "Managing the Oral Biofilm: The Clinical Importance of Tongue Cleaning",
+        "Διαχείριση του Στοματικού Βιοϋμενίου: Η Κλινική Σημασία του Καθαρισμού της Γλώσσας"
+      ],
+      "h2": [],
+      "h3": [
+        "The Anatomy of the Tongue and Oral Biofilm",
+        "The Clinical Benefits of Tongue Scraping",
+        "Implementation and Clinical Best Practices",
+        "The Dentplant Philosophy of Preventive Care",
+        "Η Ανατομία της Γλώσσας και το Στοματικό Βιοϋμένιο",
+        "Τα Κλινικά Οφέλη από τη Χρήση Ξέστρου Γλώσσας",
+        "Εφαρμογή και Κλινικές Βέλτιστες Πρακτικές",
+        "Η Φιλοσοφία Προληπτικής Φροντίδας της Dentplant"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "article/news-2026-08-10.html",
+      "canonical_url": "https://www.dentplant.gr/article/news-2026-08-10.html",
+      "title": "Αντιμετώπιση των Επιπτώσεων του Παρατεταμένου Θηλασμού του Δακτύλου στα Παιδιά | Managing the Developmental Impact of Prolonged Childhood Thumb Sucking",
+      "meta_description": "Παρόλο που ο θηλασμός του δακτύλου αποτελεί φυσιολογικό αντανακλαστικό αυτοκαταπράυνσης στη βρεφική ηλικία, η παράτασή του κατά τη σχολική ηλικία μπορεί να επηρεάσει τη στοματική ανάπτυξη. Η έγκαιρη παρέμβαση είναι καθοριστική για την προστασία της οδοντικής υγείας και της σύγκλεισης του παιδιού σας.",
+      "h1": [
+        "Managing the Developmental Impact of Prolonged Childhood Thumb Sucking",
+        "Αντιμετώπιση των Επιπτώσεων του Παρατεταμένου Θηλασμού του Δακτύλου στα Παιδιά"
+      ],
+      "h2": [],
+      "h3": [
+        "The Transition from Reflex to Developmental Risk",
+        "Structural and Functional Impact",
+        "Guided Intervention and Evidence-Based Care",
+        "Η Μετάβαση από το Αντανακλαστικό στον Αναπτυξιακό Κίνδυνο",
+        "Δομικές και Λειτουργικές Επιπτώσεις",
+        "Καθοδηγούμενη Παρέμβαση και Τεκμηριωμένη Φροντίδα"
+      ],
+      "language": "el",
+      "page_type": "news/blog article",
+      "is_treatment_page": false,
+      "is_article": true,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/blog.html"
+      ],
+      "internal_link_count": 1,
+      "inbound_link_count": 1,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": false
+    },
+    {
+      "path": "blog.html",
+      "canonical_url": "https://www.dentplant.gr/blog.html",
+      "title": "Οδοντιατρικό Blog & Νέα | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Ενημερωθείτε για τα οδοντικά εμφυτεύματα, την αισθητική οδοντιατρική και τις τελευταίες επιστημονικές εξελίξεις από τον χειρουργό οδοντίατρο Άγγελο Μοσχόπουλο.",
+      "h1": [
+        "Dental Breakthroughs"
+      ],
+      "h2": [
+        "Αντιμετώπιση των Επιπτώσεων του Παρατεταμένου Θηλασμού του Δακτύλου στα Παιδιά Managing the Developmental Impact of Prolonged Childhood Thumb Sucking",
+        "Διαχείριση του Στοματικού Βιοϋμενίου: Η Κλινική Σημασία του Καθαρισμού της Γλώσσας Managing the Oral Biofilm: The Clinical Importance of Tongue Cleaning",
+        "Κατανόηση της Δυσλειτουργίας των Σιελογόνων Αδένων και του Συνδρόμου Down Understanding Salivary Gland Dysfunction and Down Syndrome",
+        "Πέρα από το Οδοντικό Νήμα: Ο Κλινικός Ρόλος των Συσκευών Νερού Beyond String Floss: The Clinical Role of Water Flossers",
+        "Προστασία της αδαμαντίνης των δοντιών: Η επιστήμη της βιομιμητικής επανασβεστίωσης Protecting Tooth Enamel: The Science of Biomimetic Remineralisation",
+        "Χρόνια Στοματική Φλεγμονή και Γονιμότητα: Κατανοώντας τους Νέους Βιολογικούς Συνδέσμους Chronic Oral Inflammation and Fertility: Understanding the New Biological Links",
+        "Μπορεί η Διατροφή να Επηρεάσει την Υγεία των Ούλων; Νέες Προοπτικές Can Diet Influence Gum Health? Emerging Insights into Fasting-Mimicking",
+        "Προσαρμόσιμο Χαμόγελο: Πώς οι Όψεις Ρητίνης Βελτιώνουν τον Αισθητικό Έλεγχο The Adaptable Smile: How Modifiable Composite Veneers Enhance Aesthetic Control",
+        "Πληροφορίες Τεύχους: Προωθώντας την Περιοδοντική Φροντίδα στην Dentplant Issue Information: Advancing Periodontal Care at Dentplant",
+        "Επιστημονική Συναίνεση για τον Ρόλο του Στοματικού Διαλύματος στην Καθημερινή Υγιεινή An Evidence-Based Consensus on the Role of Daily Mouthwash",
+        "Βοηθοί με Τεχνητή Νοημοσύνη: Επαναπροσδιορίζοντας την Εμπειρία του Οδοντιατρικού Ασθενή AI-Powered Assistants: Redefining the Dental Patient Journey",
+        "Φυτική τσίκλα μειώνει τα μικρόβια που συνδέονται με τον καρκίνο Plant-Based Chewing Gum Targets Oral Microbes Linked to Head and Neck Cancer"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "utility/other",
+      "is_treatment_page": false,
+      "is_article": false,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article/news-2026-06-03.html",
+        "https://www.dentplant.gr/article/news-2026-06-08-1.html",
+        "https://www.dentplant.gr/article/news-2026-06-08.html",
+        "https://www.dentplant.gr/article/news-2026-06-15.html",
+        "https://www.dentplant.gr/article/news-2026-06-22.html",
+        "https://www.dentplant.gr/article/news-2026-06-29.html",
+        "https://www.dentplant.gr/article/news-2026-07-06.html",
+        "https://www.dentplant.gr/article/news-2026-07-13.html",
+        "https://www.dentplant.gr/article/news-2026-07-20.html",
+        "https://www.dentplant.gr/article/news-2026-07-27.html",
+        "https://www.dentplant.gr/article/news-2026-08-03.html",
+        "https://www.dentplant.gr/article/news-2026-08-10.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article/news-2026-06-03.html",
+        "https://www.dentplant.gr/article/news-2026-06-08-1.html",
+        "https://www.dentplant.gr/article/news-2026-06-08.html",
+        "https://www.dentplant.gr/article/news-2026-06-22.html",
+        "https://www.dentplant.gr/article/news-2026-06-29.html",
+        "https://www.dentplant.gr/article/news-2026-07-06.html",
+        "https://www.dentplant.gr/article/news-2026-07-13.html",
+        "https://www.dentplant.gr/article/news-2026-07-20.html",
+        "https://www.dentplant.gr/article/news-2026-07-27.html",
+        "https://www.dentplant.gr/article/news-2026-08-03.html",
+        "https://www.dentplant.gr/article/news-2026-08-10.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 23,
+      "inbound_link_count": 61,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "booking.html",
+      "canonical_url": "https://www.dentplant.gr/booking.html",
+      "title": "Online Ραντεβού | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Κλείστε το οδοντιατρικό σας ραντεβού online εύκολα και γρήγορα. Επιλέξτε την ημέρα και την ώρα που σας εξυπηρετεί στην κλινική μας στο Παλαιό Φάληρο. Σας περιμένουμε!",
+      "h1": [
+        "Κλείστε το Ραντεβού σας"
+      ],
+      "h2": [],
+      "h3": [
+        "Μάιος 2026",
+        "Δευτέρα 1 Ιουνίου 2026",
+        "Στοιχεία Επικοινωνίας",
+        "Το ραντεβού σας προστέθηκε!"
+      ],
+      "language": "el",
+      "page_type": "contact/location",
+      "is_treatment_page": false,
+      "is_article": false,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 38,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "clear-aligners.html",
+      "canonical_url": "https://www.dentplant.gr/clear-aligners.html",
+      "title": "Clear Aligners | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Διάφανοι νάρθηκες ορθοδοντικής στο Παλαιό Φάληρο. Ισιώστε τα δόντια σας αόρατα, άνετα & αποτελεσματικά χωρίς μεταλλικά σιδεράκια. Δείτε αποτελέσματα πριν/μετά!",
+      "h1": [
+        "Διάφανοι Νάρθηκες"
+      ],
+      "h2": [
+        "Τι είναι οι Διάφανοι Νάρθηκες;",
+        "Η Διαδικασία",
+        "Πλεονεκτήματα",
+        "Πραγματικά Αποτελέσματα",
+        "Χρήσιμοι Οδηγοί για Διαφανείς Νάρθηκες",
+        "Συχνές Ερωτήσεις"
+      ],
+      "h3": [
+        "Αρχική Αξιολόγηση",
+        "Ψηφιακή Σάρωση & Σχεδιασμός",
+        "Θεραπεία με Νάρθηκες",
+        "Διόρθωση Συνωστισμού",
+        "Κλείσιμο Διαστημάτων"
+      ],
+      "language": "el",
+      "page_type": "treatment hub",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-aligners-candidate.html",
+        "https://www.dentplant.gr/article-aligners-cost.html",
+        "https://www.dentplant.gr/article-aligners-retention.html",
+        "https://www.dentplant.gr/article-aligners-vs-braces.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-aligners-candidate.html",
+        "https://www.dentplant.gr/article-aligners-cost.html",
+        "https://www.dentplant.gr/article-aligners-retention.html",
+        "https://www.dentplant.gr/article-aligners-vs-braces.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 15,
+      "inbound_link_count": 38,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "contact.html",
+      "canonical_url": "https://www.dentplant.gr/contact.html",
+      "title": "Επικοινωνία & Τοποθεσία | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Επικοινωνήστε με την κλινική Dentplant στο Παλαιό Φάληρο. Βρείτε μας στην Πλατεία Ντάβαρη 2 ή καλέστε στο 210 9312651 για το ραντεβού...",
+      "h1": [
+        "Άγγελος Μοσχόπουλος"
+      ],
+      "h2": [],
+      "h3": [
+        "Διεύθυνση",
+        "Ωράριο Λειτουργίας",
+        "Τηλέφωνο"
+      ],
+      "language": "el",
+      "page_type": "contact/location",
+      "is_treatment_page": false,
+      "is_article": false,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 38,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "disclaimer.html",
+      "canonical_url": "https://www.dentplant.gr/disclaimer.html",
+      "title": "Ιατρική Αποποίηση Ευθύνης | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Ιατρική Αποποίηση Ευθύνης της Dental Implants & Aesthetics Clinic στο Παλαιό Φάληρο. Σημαντικές πληροφορίες σχετικά με τη σχέση γιατρού-ασθενούς...",
+      "h1": [
+        "Ιατρική Αποποίηση Ευθύνης"
+      ],
+      "h2": [
+        "1. Δεν έχουμε γνωρίσει ακόμα το χαμόγελό σας",
+        "2. Ενημέρωση, όχι Συμβουλή",
+        "3. Πραγματικά Αποτελέσματα, Προσωπικές Ιστορίες",
+        "4. Εάν πονάτε αυτή τη στιγμή",
+        "5. Τεχνική Ακρίβεια",
+        "6. Περιορισμός Ευθύνης",
+        "7. Εφαρμοστέο Δίκαιο & Συμμόρφωση GDPR",
+        "8. Πνευματική Ιδιοκτησία",
+        "9. Εμπορικά Σήματα & Μη Εμπορική Σχέση"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "utility/other",
+      "is_treatment_page": false,
+      "is_article": false,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 0,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "implant-all-on-4.html",
+      "canonical_url": "https://www.dentplant.gr/implant-all-on-4.html",
+      "title": "Σύστημα All-on-4 | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Πλήρης οδοντική αποκατάσταση με μόνο 4 εμφυτεύματα. Ιδανική λύση για περιπτώσεις με μειωμένο οστό, συχνά με δόντια σε 24 ώρες.",
+      "h1": [
+        "Σύστημα All-on-4®"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/implants.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "implant-full-arch.html",
+      "canonical_url": "https://www.dentplant.gr/implant-full-arch.html",
+      "title": "Εμφυτεύματα Ολικού Τόξου | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Σταθερή γέφυρα επί εμφυτευμάτων για την πλήρη αποκατάσταση της άνω ή κάτω γνάθου. Ξεχάστε τις χαλαρές μασέλες.",
+      "h1": [
+        "Εμφυτεύματα Ολικού Τόξου"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/implants.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "implant-immediate-loading.html",
+      "canonical_url": "https://www.dentplant.gr/implant-immediate-loading.html",
+      "title": "Άμεση Φόρτωση Εμφυτευμάτων | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Αποκτήστε δόντια την ίδια μέρα με την άμεση φόρτωση εμφυτευμάτων. Σύγχρονα κλινικά πρωτόκολλα από τον Άγγελο Μοσχόπουλο.",
+      "h1": [
+        "Άμεση Φόρτωση Εμφυτευμάτων (Same-Day Implants)"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/implants.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "implant-mini.html",
+      "canonical_url": "https://www.dentplant.gr/implant-mini.html",
+      "title": "Μίνι Οδοντικά Εμφυτεύματα | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Σταθεροποιήστε τις χαλαρές οδοντοστοιχίες με μίνι εμφυτεύματα. Ελάχιστα επεμβατική τοποθέτηση και άμεσα αποτελέσματα.",
+      "h1": [
+        "Μίνι Εμφυτεύματα (Mini Implants)"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/implants.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "implant-single-tooth.html",
+      "canonical_url": "https://www.dentplant.gr/implant-single-tooth.html",
+      "title": "Μονήρες Εμφύτευμα Δοντιού | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Αποκαταστήστε ένα χαμένο δόντι μεμονωμένα με μονήρες εμφύτευμα τιτανίου. Η πιο φυσική λύση χωρίς τροχισμό των διπλανών δοντιών.",
+      "h1": [
+        "Μονήρες Εμφύτευμα Δοντιού"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/implants.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "implants.html",
+      "canonical_url": "https://www.dentplant.gr/implants.html",
+      "title": "Οδοντικά Εμφυτεύματα Αθήνα & Παλαιό Φάληρο | Dentplant",
+      "meta_description": "Εξειδικευμένες θεραπείες οδοντικών εμφυτευμάτων στην Αθήνα και το Παλαιό Φάληρο από τον κ. Άγγελο Μοσχόπουλο. Σύγχρονος ψηφιακός σχεδιασμός, άμεση αποκατάσταση και έμφαση στην άνεση του ασθενούς.",
+      "h1": [
+        "Οδοντικά Εμφυτεύματα στην Αθήνα και το Παλαιό Φάληρο"
+      ],
+      "h2": [
+        "Ανακαλύψτε τις επιλογές σας για την αποκατάσταση του χαμόγελου σας.",
+        "Χρήσιμες Πληροφορίες πριν από τη Θεραπεία",
+        "Γιατί να Επιλέξετε την Κλινική Dentplant",
+        "Απαντήσεις από τον Ιατρό"
+      ],
+      "h3": [
+        "Μονήρες Εμφύτευμα Δοντιού",
+        "Εμφυτεύματα Ολικού Τόξου",
+        "Σύστημα All-on-4",
+        "Μίνι Εμφυτεύματα",
+        "Άμεση Φόρτωση",
+        "Παράγοντες & Κόστος Εμφυτευμάτων",
+        "Προϋποθέσεις & Καταλληλότητα",
+        "Στάδια & Διάρκεια Θεραπείας",
+        "Εμφυτεύματα vs Γέφυρες & Οδοντοστοιχίες",
+        "Οστικό Μόσχευμα & Ανύψωση Ιγμορείου",
+        "Έχετε Απορίες για τη Θεραπεία σας;",
+        "Πιστοποιημένα Υλικά Τιτανίου",
+        "Ψηφιακή 3D Καθοδήγηση",
+        "Άμεση Φόρτωση Δοντιού"
+      ],
+      "language": "el",
+      "page_type": "treatment hub",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-candidate.html",
+        "https://www.dentplant.gr/article-comparison.html",
+        "https://www.dentplant.gr/article-cost.html",
+        "https://www.dentplant.gr/article-timeline.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implant-all-on-4.html",
+        "https://www.dentplant.gr/implant-full-arch.html",
+        "https://www.dentplant.gr/implant-immediate-loading.html",
+        "https://www.dentplant.gr/implant-mini.html",
+        "https://www.dentplant.gr/implant-single-tooth.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/surgery-bone-graft.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-candidate.html",
+        "https://www.dentplant.gr/article-comparison.html",
+        "https://www.dentplant.gr/article-cost.html",
+        "https://www.dentplant.gr/article-timeline.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implant-all-on-4.html",
+        "https://www.dentplant.gr/implant-full-arch.html",
+        "https://www.dentplant.gr/implant-immediate-loading.html",
+        "https://www.dentplant.gr/implant-mini.html",
+        "https://www.dentplant.gr/implant-single-tooth.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/surgery-bone-graft.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 21,
+      "inbound_link_count": 37,
+      "parent_candidates": [],
+      "child_candidates": [
+        "https://www.dentplant.gr/implant-all-on-4.html",
+        "https://www.dentplant.gr/implant-full-arch.html",
+        "https://www.dentplant.gr/implant-immediate-loading.html",
+        "https://www.dentplant.gr/implant-mini.html",
+        "https://www.dentplant.gr/implant-single-tooth.html"
+      ],
+      "in_sitemap": true
+    },
+    {
+      "path": "index.html",
+      "canonical_url": "https://www.dentplant.gr/",
+      "title": "Οδοντικά Εμφυτεύματα | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Μια κορυφαία κλινική οδοντικών εμφυτευμάτων στο Παλαιό Φάληρο. Συνδυάζουμε την ψηφιακή ακρίβεια με την εξατομικευμένη φροντίδα για φυσικά, υγιή και μακροχρόνια αποτελέσματα.",
+      "h1": [
+        "Dr. Angelo Moshopoulos Dental Implants & Aesthetics"
+      ],
+      "h2": [
+        "5.0 / 5.0 Rating",
+        "Εγγύηση Εμφυτευμάτων",
+        "3D Digital Precision",
+        "Επιστημονικά Άρθρα & Ενημέρωση",
+        "Τι λένε οι ασθενείς μας"
+      ],
+      "h3": [
+        "Οδοντικά Εμφυτεύματα: Είμαι κατάλληλος υποψήφιος;",
+        "Οστικό Μόσχευμα & Εμφυτεύματα",
+        "Διαδικασία Εμφυτευμάτων: Βήμα προς Βήμα",
+        "Κόστος για Οδοντικά Εμφυτεύματα",
+        "Εμφυτεύματα ή Γέφυρες: Τι να επιλέξετε;",
+        "Ανώδυνη Τοποθέτηση Εμφυτευμάτων με Μέθη"
+      ],
+      "language": "el",
+      "page_type": "homepage",
+      "is_treatment_page": false,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-bone-graft.html",
+        "https://www.dentplant.gr/article-candidate.html",
+        "https://www.dentplant.gr/article-comparison.html",
+        "https://www.dentplant.gr/article-cost.html",
+        "https://www.dentplant.gr/article-sedation.html",
+        "https://www.dentplant.gr/article-timeline.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-bone-graft.html",
+        "https://www.dentplant.gr/article-candidate.html",
+        "https://www.dentplant.gr/article-comparison.html",
+        "https://www.dentplant.gr/article-cost.html",
+        "https://www.dentplant.gr/article-sedation.html",
+        "https://www.dentplant.gr/article-timeline.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 17,
+      "inbound_link_count": 38,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "oral-surgery.html",
+      "canonical_url": "https://www.dentplant.gr/oral-surgery.html",
+      "title": "Οδοντιατρικές Υπηρεσίες | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Χειρουργική στόματος και ανώδυνες χειρουργικές εξαγωγές φρονιμιτών στο Παλαιό Φάληρο. Μικροχειρουργική στόματος και οστικά μοσχεύματα από τον Άγγελο Μοσχόπουλο.",
+      "h1": [
+        "Χειρουργική Στόματος"
+      ],
+      "h2": [
+        "Απαντήσεις από τον Ιατρό"
+      ],
+      "h3": [
+        "Χειρουργική Εξαγωγή Φρονιμιτών",
+        "Οστικό Μόσχευμα & Ανύψωση Ιγμορείου",
+        "Ακρορριζεκτομή & Μικροχειρουργική",
+        "Ανώδυνη Χειρουγγική με Μέθη"
+      ],
+      "language": "el",
+      "page_type": "treatment hub",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/surgery-apicoectomy.html",
+        "https://www.dentplant.gr/surgery-bone-graft.html",
+        "https://www.dentplant.gr/surgery-sedation.html",
+        "https://www.dentplant.gr/surgery-wisdom-teeth.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/surgery-apicoectomy.html",
+        "https://www.dentplant.gr/surgery-bone-graft.html",
+        "https://www.dentplant.gr/surgery-sedation.html",
+        "https://www.dentplant.gr/surgery-wisdom-teeth.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 15,
+      "inbound_link_count": 37,
+      "parent_candidates": [],
+      "child_candidates": [
+        "https://www.dentplant.gr/surgery-apicoectomy.html",
+        "https://www.dentplant.gr/surgery-bone-graft.html",
+        "https://www.dentplant.gr/surgery-sedation.html",
+        "https://www.dentplant.gr/surgery-wisdom-teeth.html"
+      ],
+      "in_sitemap": true
+    },
+    {
+      "path": "porcelain-veneers.html",
+      "canonical_url": "https://www.dentplant.gr/porcelain-veneers.html",
+      "title": "Όψεις Πορσελάνης | Παλαιό Φάληρο | Dentplant",
+      "meta_description": "Όψεις πορσελάνης στο Παλαιό Φάληρο. Εξατομικευμένος σχεδιασμός χαμόγελου και αισθητική βελτίωση σχήματος, χρώματος και αναλογιών κατόπιν κλινικής αξιολόγησης.",
+      "h1": [
+        "Όψεις Πορσελάνης στο Παλαιό Φάληρο"
+      ],
+      "h2": [
+        "Τι είναι οι Όψεις Πορσελάνης;",
+        "Η Διαδικασία & τα Στάδια Θεραπείας",
+        "Προστασία & Διαμόρφωση Οδοντικών Ιστών",
+        "Σύγχρονα Κεραμικά Υλικά",
+        "Αναμενόμενα Αποτελέσματα & Περιορισμοί",
+        "Διάρκεια & Φροντίδα Αποκαταστάσεων",
+        "Ποιοι Είναι Κατάλληλοι Υποψήφιοι;",
+        "Συχνές Ερωτήσεις για τις Όψεις Πορσελάνης",
+        "Προγραμματίστε την Αξιολόγησή σας"
+      ],
+      "h3": [
+        "1. Κλινική Αξιολόγηση & Σχεδιασμός",
+        "2. Διαγνωστική Φάση & Σχεδιασμός",
+        "3. Συντηρητική Προετοιμασία",
+        "4. Δοκιμή & Επαλήθευση",
+        "5. Τελική Συγκόλληση & Επανέλεγχος",
+        "Συντηρητική Προσέγγιση",
+        "Επιλογή Ελάχιστης Διαμόρφωσης",
+        "Βιοσυμβατή Συγκόλληση",
+        "Αισθητική Βελτίωση",
+        "Ορθοδοντική & Σύγκλειση",
+        "Λειτουργικοί Παράγοντες"
+      ],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/aesthetics.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "privacy.html",
+      "canonical_url": "https://www.dentplant.gr/privacy.html",
+      "title": "Πολιτική Απορρήτου | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Πολιτική Απορρήτου της Dental Implants & Aesthetics Clinic στο Παλαιό Φάληρο. Μάθετε πώς προστατεύουμε τα προσωπικά σας δεδομένα σε συμμόρφωση με τον ΓΚΠΔ (GDPR) και την ελληνική νομοθεσία.",
+      "h1": [
+        "Πολιτική Απορρήτου"
+      ],
+      "h2": [
+        "1. Υπεύθυνος Επεξεργασίας",
+        "2. Ποια Προσωπικά Δεδομένα Συλλέγουμε",
+        "3. Νομική Βάση Επεξεργασίας",
+        "4. Πώς Χρησιμοποιούμε τα Δεδομένα σας",
+        "5. Cookies και Τεχνολογίες Παρακολούθησης",
+        "6. Αποδέκτες των Δεδομένων σας",
+        "7. Χρόνος Διατήρησης Δεδομένων",
+        "8. Τα Δικαιώματά σας",
+        "9. Ασφάλεια Δεδομένων",
+        "10. Μεταφορά Δεδομένων εκτός ΕΟΧ",
+        "11. Υποχρέωση Παροχής Δεδομένων",
+        "12. Απουσία Αυτοματοποιημένης Λήψης Αποφάσεων"
+      ],
+      "h3": [
+        "2.1 Επισκέπτες Ιστοτόπου",
+        "2.2 Φόρμες Κρατήσεων και Επικοινωνίας",
+        "2.3 Ασθενείς (Ιατρικά / Δεδομένα Υγείας)"
+      ],
+      "language": "el",
+      "page_type": "utility/other",
+      "is_treatment_page": false,
+      "is_article": false,
+      "is_priority_candidate": false,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 38,
+      "parent_candidates": [],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "surgery-apicoectomy.html",
+      "canonical_url": "https://www.dentplant.gr/surgery-apicoectomy.html",
+      "title": "Ακρορριζεκτομή & Μικροχειρουργική | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Χειρουργική αντιμετώπιση χρόνιων λοιμώξεων ριζών (ακρορριζεκτομή), αφαίρεση κυστών και πλαστική διορθωτική ούλων στο Παλαιό Φάληρο.",
+      "h1": [
+        "Ακρορριζεκτομή & Μικροχειρουργική"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/oral-surgery.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "surgery-bone-graft.html",
+      "canonical_url": "https://www.dentplant.gr/surgery-bone-graft.html",
+      "title": "Οστικό Μόσχευμα & Ανύψωση Ιγμορείου | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Οστική ανάπλαση και ανύψωση ιγμορείου στο Παλαιό Φάληρο, με εξατομικευμένη αξιολόγηση και σχεδιασμό πριν από θεραπεία με εμφυτεύματα.",
+      "h1": [
+        "Οστικό Μόσχευμα & Ανύψωση Ιγμορείου"
+      ],
+      "h2": [
+        "Οστική Αναπλαστική Χειρουργική & Προετοιμασία για Εμφυτεύματα",
+        "Ανύψωση Ιγμορείου (Sinus Lift)",
+        "Αξιολόγηση και Σχεδιασμός Θεραπείας στο Παλαιό Φάληρο",
+        "Πότε μπορεί να χρειαστεί οστική ανάπλαση",
+        "Στόχοι της Οστικής Ανάπλασης"
+      ],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-bone-graft.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-bone-graft.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 12,
+      "inbound_link_count": 3,
+      "parent_candidates": [
+        "https://www.dentplant.gr/oral-surgery.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "surgery-sedation.html",
+      "canonical_url": "https://www.dentplant.gr/surgery-sedation.html",
+      "title": "Οδοντιατρική Θεραπεία με Μέθη σε Αθήνα & Παλαιό Φάληρο | Dentplant",
+      "meta_description": "Εξειδικευμένες οδοντιατρικές επεμβάσεις με συνειδητή καταστολή (μέθη) για ασθενείς από την Αθήνα και το Παλαιό Φάληρο. Αρχική αξιολόγηση στη Dentplant και θεραπεία σε νοσοκομειακό περιβάλλον.",
+      "h1": [
+        "Οδοντιατρική Θεραπεία με Συνειδητή Καταστολή στο Παλαιό Φάληρο"
+      ],
+      "h2": [
+        "Εξειδικευμένες Χειρουργικές Υπηρεσίες με Μέθη",
+        "Επεμβάσεις που Πραγματοποιούνται υπό Συνειδητή Καταστολή",
+        "Οργάνωση & Στάδια της Θεραπευτικής Διαδικασίας",
+        "Αξιολόγηση Καταλληλότητας & Ιατρικό Ιστορικό",
+        "Εκπαιδευτικός Οδηγός & Πληροφορίες"
+      ],
+      "h3": [
+        "1. Αρχική Αξιολόγηση στη Dentplant",
+        "2. Ιατρικός Έλεγχος & Προετοιμασία",
+        "3. Θεραπεία σε Νοσοκομειακό Περιβάλλον",
+        "4. Νοσοκομειακή Παρακολούθηση & Ανάρρωση",
+        "5. Μετεγχειρητική Παρακολούθηση στη Dentplant",
+        "Προγραμματίστε την Αρχική σας Αξιολόγηση"
+      ],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-sedation.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/article-sedation.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 12,
+      "inbound_link_count": 2,
+      "parent_candidates": [
+        "https://www.dentplant.gr/oral-surgery.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "surgery-wisdom-teeth.html",
+      "canonical_url": "https://www.dentplant.gr/surgery-wisdom-teeth.html",
+      "title": "Χειρουργική Εξαγωγή Φρονιμιτών | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Εξειδικευμένη χειρουργική αφαίρεση έγκλειστων φρονιμιτών. Ανώδυνη διαδικασία με σύγχρονα πρωτόκολλα και ελάχιστο χρόνο αποκατάστασης.",
+      "h1": [
+        "Χειρουργική Εξαγωγή Φρονιμιτών"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/oral-surgery.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "teeth-whitening.html",
+      "canonical_url": "https://www.dentplant.gr/teeth-whitening.html",
+      "title": "Επαγγελματική Λεύκανση Δοντιών | Παλαιό Φάληρο | Dentplant",
+      "meta_description": "Επαγγελματική λεύκανση δοντιών στο Παλαιό Φάληρο. Εξατομικευμένη αξιολόγηση και ασφαλείς μέθοδοι για τη βελτίωση του φυσικού χρώματος των δοντιών.",
+      "h1": [
+        "Επαγγελματική Λεύκανση Δοντιών στο Παλαιό Φάληρο"
+      ],
+      "h2": [
+        "Η Διαδικασία & τα Στάδια Θεραπείας",
+        "Διαχείριση Ευαισθησίας & Άνεση Ασθενούς",
+        "Συμβουλές Συντήρησης & Φροντίδας",
+        "Αναμενόμενα Αποτελέσματα & Περιορισμοί",
+        "Ποιοι Είναι Κατάλληλοι Υποψήφιοι;",
+        "Συχνές Ερωτήσεις για τη Λεύκανση Δοντιών",
+        "Προγραμματίστε την Αξιολόγησή σας"
+      ],
+      "h3": [
+        "1. Κλινική Αξιολόγηση & Προετοιμασία",
+        "2. Εφαρμογή Λευκαντικού Παράγοντα",
+        "3. Αξιολόγηση Αποτελέσματος & Οδηγίες",
+        "Παροδική Ευαισθησία",
+        "Προστασία Ούλων & Ιστών",
+        "Επικοινωνία με το Ιατρείο",
+        "Δράση σε Φυσικά Δόντια",
+        "Προσθετικές Αποκαταστάσεις",
+        "Διάρκεια Αποτελέσματος"
+      ],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/aesthetics.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "treatment-endodontics.html",
+      "canonical_url": "https://www.dentplant.gr/treatment-endodontics.html",
+      "title": "Ενδοδοντική Θεραπεία | Απονευρώσεις Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Εξειδικευμένη ενδοδοντική θεραπεία (απονευρώσεις) με χρήση μηχανοκίνητων συστημάτων για τη διάσωση του δοντιού.",
+      "h1": [
+        "Ενδοδοντική Θεραπεία (Απονευρώσεις)"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "treatment-periodontology.html",
+      "canonical_url": "https://www.dentplant.gr/treatment-periodontology.html",
+      "title": "Θεραπεία Περιοδοντίου | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Εξειδικευμένη θεραπεία περιοδοντίτιδας και ουλίτιδας στο Παλαιό Φάληρο. Συντηρητικές μέθοδοι, βαθύς καθαρισμός (scaling) και σταθεροποίηση των δοντιών.",
+      "h1": [
+        "Περιοδοντική Θεραπεία & Συντήρηση"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "treatment-prevention.html",
+      "canonical_url": "https://www.dentplant.gr/treatment-prevention.html",
+      "title": "Προληπτική Οδοντιατρική & Βιομικροβιολογία | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Εξειδικευμένη προληπτική οδοντιατρική και βιομικροβιολογικός έλεγχος. Guided Biofilm Therapy (GBT) για τη θωράκιση της στοματικής σας υγείας.",
+      "h1": [
+        "Προληπτική Οδοντιατρική & Βιομικροβιολογία"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "treatment-prosthodontics.html",
+      "canonical_url": "https://www.dentplant.gr/treatment-prosthodontics.html",
+      "title": "Γενική & Εξειδικευμένη Προσθετική | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Αποκατάσταση ελλειπόντων και κατεστραμμένων δοντιών με στεφάνες (θήκες), γέφυρες και οδοντοστοιχίες. Σύγχρονη προσθετική αποκατάσταση στο Παλαιό Φάληρο.",
+      "h1": [
+        "Γενική & Εξειδικευμένη Προσθετική"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "treatment-restorative.html",
+      "canonical_url": "https://www.dentplant.gr/treatment-restorative.html",
+      "title": "Θεραπευτική & Αποκαταστατική Οδοντιατρική | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Εξειδικευμένη θεραπευτική και βιομιμητική οδοντιατρική. Αποκατάσταση δοντιών με σύγχρονα, βιοσυμβατά υλικά χωρίς μέταλλα.",
+      "h1": [
+        "Θεραπευτική & Αποκαταστατική Οδοντιατρική"
+      ],
+      "h2": [],
+      "h3": [],
+      "language": "el",
+      "page_type": "treatment detail",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 11,
+      "inbound_link_count": 1,
+      "parent_candidates": [
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "child_candidates": [],
+      "in_sitemap": true
+    },
+    {
+      "path": "treatments.html",
+      "canonical_url": "https://www.dentplant.gr/treatments.html",
+      "title": "Οδοντιατρικές Θεραπείες | Παλαιό Φάληρο | Άγγελος Μοσχόπουλος",
+      "meta_description": "Ολοκληρωμένη οδοντιατρική φροντίδα και σύγχρονες θεραπείες στο Παλαιό Φάληρο. Σφραγίσματα, απονευρώσεις, καθαρισμοί και θεραπεία ουλίτιδας.",
+      "h1": [
+        "Οδοντιατρικές Θεραπείες"
+      ],
+      "h2": [
+        "Απαντήσεις από τον Ιατρό"
+      ],
+      "h3": [
+        "Γενική Οδοντιατρική & Πρόληψη",
+        "Συντηρητική Οδοντιατρική",
+        "Ενδοδοντική Θεραπεία",
+        "Θεραπεία Περιοδοντίου",
+        "Προσθετική"
+      ],
+      "language": "el",
+      "page_type": "treatment hub",
+      "is_treatment_page": true,
+      "is_article": false,
+      "is_priority_candidate": true,
+      "outbound_internal_links": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatment-endodontics.html",
+        "https://www.dentplant.gr/treatment-periodontology.html",
+        "https://www.dentplant.gr/treatment-prevention.html",
+        "https://www.dentplant.gr/treatment-prosthodontics.html",
+        "https://www.dentplant.gr/treatment-restorative.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "linked_dentplant_pages": [
+        "https://www.dentplant.gr/",
+        "https://www.dentplant.gr/about.html",
+        "https://www.dentplant.gr/aesthetics.html",
+        "https://www.dentplant.gr/blog.html",
+        "https://www.dentplant.gr/booking.html",
+        "https://www.dentplant.gr/clear-aligners.html",
+        "https://www.dentplant.gr/contact.html",
+        "https://www.dentplant.gr/implants.html",
+        "https://www.dentplant.gr/oral-surgery.html",
+        "https://www.dentplant.gr/privacy.html",
+        "https://www.dentplant.gr/treatment-endodontics.html",
+        "https://www.dentplant.gr/treatment-periodontology.html",
+        "https://www.dentplant.gr/treatment-prevention.html",
+        "https://www.dentplant.gr/treatment-prosthodontics.html",
+        "https://www.dentplant.gr/treatment-restorative.html",
+        "https://www.dentplant.gr/treatments.html"
+      ],
+      "internal_link_count": 16,
+      "inbound_link_count": 38,
+      "parent_candidates": [],
+      "child_candidates": [
+        "https://www.dentplant.gr/treatment-endodontics.html",
+        "https://www.dentplant.gr/treatment-periodontology.html",
+        "https://www.dentplant.gr/treatment-prevention.html",
+        "https://www.dentplant.gr/treatment-prosthodontics.html",
+        "https://www.dentplant.gr/treatment-restorative.html"
+      ],
+      "in_sitemap": true
+    }
+  ]
+}

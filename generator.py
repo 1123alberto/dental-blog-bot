@@ -43,6 +43,7 @@ from agents.editorial_agent import (
     get_fallback_article_scores,
     score_image
 )
+from search_console import get_performance_snapshot
 
 def score_and_classify_articles(client, articles):
     agent = EditorialAgent(client=client)
@@ -55,6 +56,92 @@ def choose_best_candidate(client, top_3_articles):
 def write_article(client, best_candidate, practice_name="Dentplant"):
     agent = CopywriterAgent(client=client)
     return agent.write_post(best_candidate, practice_name)
+
+
+def evaluate_article_candidates(articles, recent_posts=None, for_weekly_decision=False):
+    """Run the existing editorial stage once and return reusable generation context."""
+    if not articles:
+        return None
+
+    api_key = os.getenv("GOOGLE_API_KEY")
+    client = None
+    if api_key:
+        try:
+            client = genai.Client(api_key=api_key)
+        except Exception as e:
+            print(f"Warning: Could not initialize Gemini Client: {e}")
+
+    model_name = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+    memory = AgentMemory()
+    snapshot = get_performance_snapshot()
+    editorial_agent = EditorialAgent(client=client, model_name=model_name, search_console_snapshot=snapshot)
+
+    log_group_start("[2] Editorial Evaluation & Article Selection")
+    if for_weekly_decision:
+        candidates = editorial_agent.evaluate_candidates(articles, recent_posts or [])
+        best_candidate = candidates[0] if candidates else None
+    else:
+        best_candidate = editorial_agent.score_and_select(articles, recent_posts or [], memory)
+        candidates = [best_candidate] if best_candidate else []
+    log_group_end()
+    if not best_candidate:
+        return None
+    return {
+        "client": client,
+        "model_name": model_name,
+        "memory": memory,
+        "best_candidate": best_candidate,
+        "candidates": candidates,
+        "search_console_snapshot": snapshot,
+    }
+
+
+def generate_blog_post_from_evaluation(evaluation, practice_name="Dentplant"):
+    """Draft and QA a post from a pre-evaluated candidate without re-scoring it."""
+    if not evaluation or not evaluation.get("best_candidate"):
+        return "Error: No candidate selected"
+
+    client = evaluation.get("client")
+    if not client:
+        candidate = evaluation["best_candidate"]
+        return f"Error: GOOGLE_API_KEY not found in .env or invalid. Choose BEST candidate heuristically: {candidate.get('title')}"
+
+    model_name = evaluation.get("model_name", "gemini-3.5-flash")
+    memory = evaluation.get("memory") or AgentMemory()
+    best_candidate = evaluation["best_candidate"]
+    copywriter_agent = CopywriterAgent(client=client, model_name=model_name)
+    qa_agent = QAAgent(client=client, model_name=model_name)
+
+    log_group_start("[3] Copywriter Drafting (Bilingual)")
+    content_brief = evaluation.get("content_brief")
+    blog_markdown = copywriter_agent.write_post(best_candidate, practice_name, memory, content_brief=content_brief)
+    log_group_end()
+
+    log_group_start("[4] QA Validation Feedback Loop")
+    max_qa_attempts = 3
+    for attempt in range(max_qa_attempts):
+        print(f"[Pipeline] Running QA Agent validation (Attempt {attempt+1}/{max_qa_attempts})...")
+        is_valid, errors = qa_agent.validate_post(blog_markdown, practice_name, content_brief=content_brief)
+
+        if is_valid:
+            print("[Pipeline] QA Validation SUCCESS!")
+            break
+        print("[Pipeline] QA Validation FAILED with errors:")
+        for err in errors:
+            print(f"  - {err}")
+            memory.add_lesson(
+                category="copywriting",
+                error_description=err,
+                correction_rule=f"Do not repeat error: {err}. Adhere strictly to the guidelines.",
+            )
+        if attempt < max_qa_attempts - 1:
+            blog_markdown = copywriter_agent.refine_post(
+                blog_markdown, errors, best_candidate, practice_name, content_brief=content_brief
+            )
+        else:
+            print("[Pipeline] Max QA attempts reached. Proceeding with best available draft.")
+    log_group_end()
+    return blog_markdown
 
 
 def generate_blog_post(news_data, practice_name="Our Dental Practice", recent_posts=None):
@@ -87,80 +174,12 @@ def generate_blog_post(news_data, practice_name="Our Dental Practice", recent_po
     if not articles:
         return "Error: No articles to process"
 
-    api_key = os.getenv("GOOGLE_API_KEY")
-    client = None
-    if api_key:
-        try:
-            client = genai.Client(api_key=api_key)
-        except Exception as e:
-            print(f"Warning: Could not initialize Gemini Client: {e}")
-
-    # Set model name from environment or default to gemini-3.5-flash
-    model_name = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
-
-    # Initialize Agents & Memory
-    memory = AgentMemory()
-    editorial_agent = EditorialAgent(client=client, model_name=model_name)
-    copywriter_agent = CopywriterAgent(client=client, model_name=model_name)
-    qa_agent = QAAgent(client=client, model_name=model_name)
-
-    # 1. Select the best candidate article using the Editorial Agent
-    log_group_start("[2] Editorial Evaluation & Article Selection")
-    best_candidate = editorial_agent.score_and_select(articles, recent_posts or [], memory)
-    log_group_end()
-    
-    if not best_candidate:
-        # Fallback to the first candidate if scoring failed to produce a result
-        if articles:
-            best_candidate = articles[0]
-        else:
-            return "Error: No candidate selected"
-
-    # 2. Check if we have API key for content generation
-    if not client:
-        # If API key is missing or client is mock/None, choose heuristically and return fallback warning
-        return f"Error: GOOGLE_API_KEY not found in .env or invalid. Choose BEST candidate heuristically: {best_candidate.get('title')}"
-
-    # 3. Draft the initial article using the Copywriter Agent
-    log_group_start("[3] Copywriter Drafting (Bilingual)")
-    blog_markdown = copywriter_agent.write_post(best_candidate, practice_name, memory)
-    log_group_end()
-
-    # 4. QA Validation Feedback Loop
-    log_group_start("[4] QA Validation Feedback Loop")
-    max_qa_attempts = 3
-    for attempt in range(max_qa_attempts):
-        print(f"[Pipeline] Running QA Agent validation (Attempt {attempt+1}/{max_qa_attempts})...")
-        is_valid, errors = qa_agent.validate_post(blog_markdown, practice_name)
-
-        if is_valid:
-            print("[Pipeline] QA Validation SUCCESS!")
-            break
-        else:
-            print(f"[Pipeline] QA Validation FAILED with errors:")
-            for err in errors:
-                print(f"  - {err}")
-            
-            # Save feedback to Agent Memory to learn from it
-            for err in errors:
-                # Add learning memory
-                memory.add_lesson(
-                    category="copywriting",
-                    error_description=err,
-                    correction_rule=f"Do not repeat error: {err}. Adhere strictly to the guidelines."
-                )
-
-            if attempt < max_qa_attempts - 1:
-                # Run Copywriter refinement
-                blog_markdown = copywriter_agent.refine_post(blog_markdown, errors, best_candidate, practice_name)
-            else:
-                print("[Pipeline] Max QA attempts reached. Proceeding with best available draft.")
-    log_group_end()
-
-    return blog_markdown
+    evaluation = evaluate_article_candidates(articles, recent_posts)
+    if not evaluation:
+        return "Error: No candidate selected"
+    return generate_blog_post_from_evaluation(evaluation, practice_name)
 
 
 if __name__ == "__main__":
     sample_data = "New study shows laser dentistry reduces healing time by 50% for gum treatments."
     print(generate_blog_post(sample_data))
-

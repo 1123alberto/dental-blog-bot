@@ -3,6 +3,11 @@ import sys
 import json
 import queue
 import asyncio
+from typing import List, Optional
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,8 +25,10 @@ from agents.qa_agent import QAAgent
 from agents.memory import AgentMemory
 from fastapi.staticfiles import StaticFiles
 from google import genai
+from google.genai import types
+from version import PRODUCT_NAME, __version__
 
-app = FastAPI()
+app = FastAPI(title=PRODUCT_NAME, version=__version__)
 
 app.add_middleware(
     CORSMiddleware,
@@ -37,7 +44,7 @@ async def get_draft_preview():
         raise HTTPException(status_code=404, detail="No preview active. Please generate or edit a draft first.")
     return HTMLResponse(content=state["temp_preview_html"])
 
-app.mount("/preview", StaticFiles(directory="/home/angelo/Gemini/dentpant-new"), name="preview")
+app.mount("/preview", StaticFiles(directory="/home/angelo/Gemini/dentplant-new"), name="preview")
 
 # Global logging redirector
 log_queue = queue.Queue()
@@ -104,7 +111,7 @@ async def scrape_candidates():
     if state["is_running"]:
         raise HTTPException(status_code=400, detail="Pipeline is currently active.")
     state["is_running"] = True
-    
+
     # Clear log queue
     while not log_queue.empty():
         try:
@@ -117,14 +124,14 @@ async def scrape_candidates():
         log_group_start("[1] Fetching latest dental journal news & extracting article text")
         news_items = fetch_dental_news()
         log_group_end()
-        
+
         if not news_items:
             print("[Server] No news items found.")
             state["is_running"] = False
             return {"candidates": []}
             
         print(f"[Server] Fetched {len(news_items)} news items.")
-        
+
         # Load history
         recent_titles = []
         try:
@@ -140,7 +147,7 @@ async def scrape_candidates():
         log_group_start("[2] Editorial Evaluation & Article Selection")
         # Deduplicate
         unique_articles = deduplicate_articles(news_items)
-        
+
         # Initialize Gemini Client
         api_key = os.getenv("GOOGLE_API_KEY")
         client = None
@@ -152,7 +159,7 @@ async def scrape_candidates():
                 
         model_name = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
         editorial_agent = EditorialAgent(client=client, model_name=model_name)
-        
+
         # Score & classify
         editorial_agent.score_and_classify(unique_articles)
         
@@ -196,13 +203,13 @@ async def generate_draft(req: DraftRequest):
                 client = genai.Client(api_key=api_key)
             except Exception as e:
                 print(f"[Server] Warning: Could not initialize Gemini client: {e}")
-                
+
         if not client:
             state["is_running"] = False
             raise HTTPException(status_code=400, detail="Gemini client could not be initialized (missing/invalid GOOGLE_API_KEY).")
             
         model_name = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
-        
+
         memory = AgentMemory()
         copywriter_agent = CopywriterAgent(client=client, model_name=model_name)
         qa_agent = QAAgent(client=client, model_name=model_name)
@@ -281,4 +288,90 @@ async def preview_draft(req: PublishRequest):
         return {"status": "success"}
     except Exception as e:
         print(f"[Server] Error rendering preview: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# Pydantic models for chat
+class ChatMessage(BaseModel):
+    role: str  # "user" or "model"
+    text: str
+
+class ChatRequest(BaseModel):
+    message: str
+    history: Optional[List[ChatMessage]] = []
+    lang: Optional[str] = "el"
+
+SYSTEM_INSTRUCTION = """
+You are a warm, professional, and medically responsible AI Assistant for Dr. Angelo Moshopoulos' Dental Implants & Aesthetics Clinic (Dentplant) located in Paleo Faliro, Greece.
+
+Your goal is to answer client queries about treatments, procedures, recovery, and clinic details in a helpful, concise, and structured manner.
+
+Core Guidelines:
+1. **Medical Liability**: Never diagnose conditions, predict clinical outcomes, or prescribe medications. If a user describes symptoms (pain, bleeding, swelling, etc.), be empathetic but clear that you cannot diagnose them. Advise them to schedule a clinical evaluation immediately.
+2. **Clinic Details**:
+   - Location (English): Plateia Ntavari 2, Paleo Faliro, 17564, Greece.
+   - Location (Greek): Πλατεία Ντάβαρη 2, Παλαιό Φάληρο, 17564
+   - Phone: +30 210 9312651
+   - Website: www.dentplant.gr
+   - Treatments: Dental Implants (All-on-4, Immediate Loading, Full Arch, Mini Implants), Oral Surgery (Sinus Lift, Bone Grafting, Apicoectomy, Wisdom Teeth), Aesthetic Dentistry (Teeth Whitening with LED, Porcelain Veneers IPS e.max/Empress), Clear Aligners (invisible orthodontic plates).
+3. **Action-Oriented**: Guide the user to book an appointment using the online scheduling system at `/booking` (or `booking.html`).
+4. **Tone**: Polite, expert, reassuring, and premium. Avoid casual slang or overly technical medical jargon. Keep paragraphs short and use bullet points for readability.
+"""
+
+@app.post("/api/chat")
+async def chat_endpoint(req: ChatRequest):
+    print(f"[Server] Chat query received: {req.message} (lang: {req.lang})")
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        raise HTTPException(status_code=500, detail="Gemini API key is not configured on the server.")
+    try:
+        client = genai.Client(api_key=api_key)
+
+        # Build contents from history
+        contents = []
+        for msg in req.history:
+            contents.append(
+                types.Content(
+                    role="user" if msg.role == "user" else "model",
+                    parts=[types.Part.from_text(text=msg.text)]
+                )
+            )
+        # Add new user message
+        contents.append(
+            types.Content(
+                role="user",
+                parts=[types.Part.from_text(text=req.message)]
+            )
+        )
+        # Append dynamic language instruction constraint to the system instruction
+        lang_instruction = "You MUST respond in English." if req.lang == "en" else "You MUST respond in Greek (Ελληνικά)."
+        full_system_instruction = SYSTEM_INSTRUCTION.strip() + f"\n\n{lang_instruction}"
+        config = types.GenerateContentConfig(
+            system_instruction=full_system_instruction
+        )
+        # Try primary model first, fallback to stable models if needed
+        models = [os.getenv("GEMINI_MODEL", "gemini-2.5-flash"), "gemini-2.5-flash", "gemini-1.5-flash", "gemini-2.0-flash"]
+        unique_models = []
+        for m in models:
+            if m not in unique_models:
+                unique_models.append(m)
+
+        response = None
+        last_error = None
+        for model in unique_models:
+            try:
+                response = client.models.generate_content(
+                    model=model,
+                    contents=contents,
+                    config=config
+                )
+                break
+            except Exception as e:
+                last_error = e
+                print(f"[Server] Chat call failed with model '{model}': {e}")
+        if not response:
+            raise last_error
+
+        return {"response": response.text}
+    except Exception as e:
+        print(f"[Server] Chat endpoint error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
