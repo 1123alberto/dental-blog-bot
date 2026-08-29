@@ -95,6 +95,34 @@ Dentplant explains maintenance and long-term outcomes. 99% of patients benefit.
         self.assertIn(risk_brief["clinical_risk_notes"][0], risk_prompt)
         self.assertIn("Clinical-risk notes:\n- None", ordinary_prompt)
 
+    def test_refinement_replaces_substituted_link_plan_with_exact_brief_values(self):
+        agent = CopywriterAgent(client=object())
+        substituted = """[SOURCE]: Journal
+[DATE]: Aug 12, 2026
+[IMAGE_URL]:
+--- ENGLISH VERSION ---
+[EN_TITLE]: Implant Maintenance
+[EN_TEASER]: Guidance
+[EN_CONTENT]: Content
+--- GREEK VERSION ---
+[EL_TITLE]: Συντήρηση Εμφυτευμάτων
+[EL_TEASER]: Ενημέρωση
+[EL_CONTENT]: Περιεχόμενο
+--- INTERNAL LINK PLAN ---
+[LINK_1_TARGET]: wrong-page.html
+[LINK_1_ANCHOR_EN]: substituted anchor
+[LINK_1_ANCHOR_EL]: αντικατασταθείσα άγκυρα"""
+        agent.run_llm = lambda *args, **kwargs: substituted
+
+        refined = agent.refine_post("old draft", ["Fix wording"], self.candidate, content_brief=self.brief)
+
+        self.assertNotIn("wrong-page.html", refined)
+        self.assertNotIn("substituted anchor", refined)
+        for index, link in enumerate(self.brief["recommended_internal_links"], 1):
+            self.assertIn(f"[LINK_{index}_TARGET]: {link['target_path']}", refined)
+            self.assertIn(f"[LINK_{index}_ANCHOR_EN]: {link['anchor_en']}", refined)
+            self.assertIn(f"[LINK_{index}_ANCHOR_EL]: {link['anchor_el']}", refined)
+
 
 if __name__ == "__main__":
     unittest.main()

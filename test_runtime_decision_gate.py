@@ -7,6 +7,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import main
+from generator import QAValidationError
 
 
 def decision(kind, snapshot=None):
@@ -148,6 +149,29 @@ class TestRuntimeDecisionGate(unittest.TestCase):
             main.main()
         evaluate.assert_called_once_with([{"title": "News"}], recent_posts=[], for_weekly_decision=True)
         self.assertIs(generate.call_args.args[0]["best_candidate"], chosen)
+
+    def test_qa_exhaustion_stops_before_clinical_review_and_publishing(self):
+        decision_agent = MagicMock()
+        decision_agent.decide.return_value = decision("CREATE_NEW_ARTICLE")
+        with (
+            patch.object(main, "WEEKLY_DECISION_PATH", self.decision_path),
+            patch.object(main, "WEEKLY_CONTENT_BRIEF_PATH", self.brief_path),
+            patch.object(main, "WEEKLY_CLINICAL_REVIEW_PATH", self.review_path),
+            patch.object(main, "fetch_dental_news", self.common["fetch_dental_news"]),
+            patch.object(main, "load_merged_posts", self.common["load_merged_posts"]),
+            patch.object(main, "evaluate_article_candidates", self.common["evaluate_article_candidates"]),
+            patch.object(main, "ContentDecisionAgent", return_value=decision_agent),
+            patch.object(main, "generate_blog_post_from_evaluation", side_effect=QAValidationError("QA exhausted")),
+            patch.object(main, "classify_clinical_review") as review,
+            patch.object(main, "publish_blog_post") as publish,
+            patch("sys.argv", ["main.py"]),
+        ):
+            with self.assertRaises(QAValidationError):
+                main.main()
+
+        review.assert_not_called()
+        publish.assert_not_called()
+        self.assertFalse(self.review_path.exists())
 
 
 if __name__ == "__main__":

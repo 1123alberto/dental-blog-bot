@@ -54,6 +54,8 @@ ImageURL: {best_candidate.get('image')}
 
 {self._brief_prompt_block(content_brief)}
 
+{self._link_contract_prompt_block(content_brief)}
+
 **QA Feedback / Errors to Fix:**
 {feedback_str}
 
@@ -63,6 +65,7 @@ ImageURL: {best_candidate.get('image')}
 \"\"\"
 
 Please rewrite the draft, addressing every single point in the QA Feedback.
+The internal-link plan is appended programmatically from the ContentBrief. Do not add, alter, or substitute any link target or anchor pair.
 Ensure your response follows the exact format markers:
 
 [SOURCE]: [source name]
@@ -113,6 +116,8 @@ Extracted Text:
 **Practice Name:** {practice_name}
 
 {self._brief_prompt_block(content_brief)}
+
+{self._link_contract_prompt_block(content_brief)}
 
 Draft the **ENGLISH** version of the blog post.
 Your response MUST contain exactly:
@@ -165,6 +170,8 @@ Date: {candidate.get('date')}
 
 {self._brief_prompt_block(content_brief)}
 
+{self._link_contract_prompt_block(content_brief)}
+
 Draft the **GREEK** version of the blog post. It must match the meaning and structure of the English draft, but be written in natural, fluent, and professional Greek.
 Your response MUST contain exactly:
 1. Title: Greek translation of the title. Do NOT use markdown formatting in the title. Max 12 words.
@@ -214,6 +221,16 @@ Editorial constraints:
 {chr(10).join('- ' + item for item in content_brief.get('editorial_constraints', []))}
 Planned internal-link concepts (do not render links or invent targets; final directives are added separately):
 {links}
+"""
+
+    def _link_contract_prompt_block(self, content_brief):
+        plan = self._link_plan(content_brief)
+        if not plan:
+            return ""
+        return f"""
+**IMMUTABLE INTERNAL-LINK CONTRACT:**
+The target path and EN/EL anchor pair below are fixed ContentBrief values. Preserve them exactly; do not paraphrase, translate differently, reorder, replace, or add links. The final directives are appended programmatically.
+{plan}
 """
 
     def _link_plan(self, content_brief):

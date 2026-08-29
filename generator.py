@@ -11,6 +11,10 @@ from agents.base import PRIMARY_GEMINI_MODEL, get_gemini_model_chain, is_transie
 load_dotenv()
 
 
+class QAValidationError(RuntimeError):
+    """Raised when a generated draft remains invalid after the QA retry budget."""
+
+
 def generate_content_with_fallback(client, prompt, config=None, initial_model=PRIMARY_GEMINI_MODEL):
     last_error = None
     import time
@@ -136,7 +140,9 @@ def generate_blog_post_from_evaluation(evaluation, practice_name="Dentplant"):
                 blog_markdown, errors, best_candidate, practice_name, content_brief=content_brief
             )
         else:
-            print("[Pipeline] Max QA attempts reached. Proceeding with best available draft.")
+            raise QAValidationError(
+                "Copywriter draft failed QA after all configured attempts; stopping before review and publishing."
+            )
     log_group_end()
     return blog_markdown
 
