@@ -3,6 +3,27 @@ import time
 from google import genai
 from google.genai import types
 
+
+PRIMARY_GEMINI_MODEL = "gemini-3.6-flash"
+GEMINI_FALLBACK_MODELS = ("gemini-3.5-flash",)
+
+
+def get_gemini_model_chain(preferred_model=None):
+    """Return the bounded production model chain, without duplicate attempts."""
+    models = [preferred_model or PRIMARY_GEMINI_MODEL, *GEMINI_FALLBACK_MODELS]
+    return list(dict.fromkeys(models))
+
+
+def is_transient_gemini_error(error):
+    """Identify errors worth one short retry before moving to the next model."""
+    status_code = getattr(error, "status_code", None) or getattr(error, "code", None)
+    if status_code in (429, 503):
+        return True
+    error_text = str(error).lower()
+    return any(marker in error_text for marker in (
+        "429", "503", "resource_exhausted", "high demand",
+    ))
+
 def log_group_start(title):
     if os.getenv("GITHUB_ACTIONS") == "true":
         print(f"::group::{title}", flush=True)
@@ -19,7 +40,7 @@ class BaseAgent:
     """
     Base Agent class that shares the Google GenAI Client and common utility methods.
     """
-    def __init__(self, client=None, model_name="gemini-3.5-flash"):
+    def __init__(self, client=None, model_name=PRIMARY_GEMINI_MODEL):
         self.client = client
         self.model_name = model_name
 
@@ -41,14 +62,7 @@ class BaseAgent:
             config.response_schema = response_schema
 
         last_error = None
-        # Try primary model first, fallback to stable models if needed
-        models = [self.model_name, "gemini-2.5-flash", "gemini-2.0-flash"]
-        unique_models = []
-        for m in models:
-            if m not in unique_models:
-                unique_models.append(m)
-
-        for model in unique_models:
+        for model in get_gemini_model_chain(self.model_name):
             for attempt in range(retries):
                 try:
                     response = self.client.models.generate_content(
@@ -60,6 +74,8 @@ class BaseAgent:
                 except Exception as e:
                     last_error = e
                     print(f"[{self.__class__.__name__}] Call failed with model '{model}' (attempt {attempt+1}): {e}")
+                    if not is_transient_gemini_error(e) or attempt == retries - 1:
+                        break
                     time.sleep(1)
 
         raise last_error

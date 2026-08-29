@@ -1,7 +1,7 @@
 import re
 import json
 from pathlib import Path
-from agents.base import BaseAgent
+from agents.base import BaseAgent, PRIMARY_GEMINI_MODEL
 from search_console import opportunity_scores, query_relevance
 
 
@@ -465,7 +465,7 @@ class EditorialAgent(BaseAgent):
     EditorialAgent scores, categorizes, filters, and selects the single best
     article candidate for publication using editorial guidelines and history avoidance.
     """
-    def __init__(self, client=None, model_name="gemini-3.5-flash", search_console_snapshot=None):
+    def __init__(self, client=None, model_name=PRIMARY_GEMINI_MODEL, search_console_snapshot=None):
         super().__init__(client, model_name)
         self.search_console_snapshot = search_console_snapshot
 

@@ -1,12 +1,12 @@
 from scraper import fetch_dental_news
-from agents.base import BaseAgent
+from agents.base import BaseAgent, PRIMARY_GEMINI_MODEL
 
 class ScraperAgent(BaseAgent):
     """
     ScraperAgent manages feed discovery, content downloading, image scraping,
     and initial sanitization of the raw articles.
     """
-    def __init__(self, client=None, model_name="gemini-3.5-flash"):
+    def __init__(self, client=None, model_name=PRIMARY_GEMINI_MODEL):
         super().__init__(client, model_name)
 
     def scrape_and_curate(self):

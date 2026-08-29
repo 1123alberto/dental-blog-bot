@@ -1,13 +1,13 @@
 import re
 import json
-from agents.base import BaseAgent
+from agents.base import BaseAgent, PRIMARY_GEMINI_MODEL
 
 class QAAgent(BaseAgent):
     """
     QAAgent performs programmatic and LLM-based verification on the generated article
     to ensure formatting, length, and bilingual quality standards are met.
     """
-    def __init__(self, client=None, model_name="gemini-3.5-flash"):
+    def __init__(self, client=None, model_name=PRIMARY_GEMINI_MODEL):
         super().__init__(client, model_name)
 
     def validate_post(self, markdown_content, practice_name="Dentplant", content_brief=None):

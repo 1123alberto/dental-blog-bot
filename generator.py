@@ -6,20 +6,15 @@ from dotenv import load_dotenv
 from google import genai
 
 from agents import AgentMemory, ScraperAgent, EditorialAgent, CopywriterAgent, QAAgent, log_group_start, log_group_end
+from agents.base import PRIMARY_GEMINI_MODEL, get_gemini_model_chain, is_transient_gemini_error
 
 load_dotenv()
 
 
-def generate_content_with_fallback(client, prompt, config=None, initial_model="gemini-2.5-flash"):
-    models = [initial_model, "gemini-2.5-flash", "gemini-2.0-flash", "gemini-flash-latest"]
-    unique_models = []
-    for m in models:
-        if m not in unique_models:
-            unique_models.append(m)
-            
+def generate_content_with_fallback(client, prompt, config=None, initial_model=PRIMARY_GEMINI_MODEL):
     last_error = None
     import time
-    for model_name in unique_models:
+    for model_name in get_gemini_model_chain(initial_model):
         for attempt in range(2):
             try:
                 response = client.models.generate_content(
@@ -31,6 +26,8 @@ def generate_content_with_fallback(client, prompt, config=None, initial_model="g
             except Exception as e:
                 last_error = e
                 print(f"Failed to generate content with {model_name} (attempt {attempt+1}): {e}")
+                if not is_transient_gemini_error(e) or attempt == 1:
+                    break
                 time.sleep(1)
     raise last_error
 
@@ -71,7 +68,7 @@ def evaluate_article_candidates(articles, recent_posts=None, for_weekly_decision
         except Exception as e:
             print(f"Warning: Could not initialize Gemini Client: {e}")
 
-    model_name = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+    model_name = os.getenv("GEMINI_MODEL", PRIMARY_GEMINI_MODEL)
     memory = AgentMemory()
     snapshot = get_performance_snapshot()
     editorial_agent = EditorialAgent(client=client, model_name=model_name, search_console_snapshot=snapshot)
@@ -106,7 +103,7 @@ def generate_blog_post_from_evaluation(evaluation, practice_name="Dentplant"):
         candidate = evaluation["best_candidate"]
         return f"Error: GOOGLE_API_KEY not found in .env or invalid. Choose BEST candidate heuristically: {candidate.get('title')}"
 
-    model_name = evaluation.get("model_name", "gemini-3.5-flash")
+    model_name = evaluation.get("model_name", PRIMARY_GEMINI_MODEL)
     memory = evaluation.get("memory") or AgentMemory()
     best_candidate = evaluation["best_candidate"]
     copywriter_agent = CopywriterAgent(client=client, model_name=model_name)

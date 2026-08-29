@@ -1,13 +1,17 @@
 import re
-from agents.base import BaseAgent
+from agents.base import BaseAgent, PRIMARY_GEMINI_MODEL
 from agents.prompts import COPYWRITER_SYSTEM_PROMPT
+
+
+class CopywriterGenerationError(RuntimeError):
+    """Raised when Gemini cannot generate a usable Copywriter draft."""
 
 class CopywriterAgent(BaseAgent):
     """
     CopywriterAgent handles sequential bilingual copywriting (English, then Greek)
     and executes targeted revisions when requested by the Quality Assurance Agent.
     """
-    def __init__(self, client=None, model_name="gemini-3.5-flash"):
+    def __init__(self, client=None, model_name=PRIMARY_GEMINI_MODEL):
         super().__init__(client, model_name)
 
     def write_post(self, best_candidate, practice_name="Dentplant", memory=None, content_brief=None):
@@ -17,7 +21,7 @@ class CopywriterAgent(BaseAgent):
         """
         print("[CopywriterAgent] Commencing sequential copywriting...")
         if not best_candidate:
-            return "Error: No candidate selected"
+            raise CopywriterGenerationError("No candidate selected for copywriting.")
 
         # Step 1: Draft English version
         en_post = self._draft_english(best_candidate, practice_name, memory, content_brief)
@@ -131,8 +135,7 @@ CONTENT:
             return en_draft.strip()
         except Exception as e:
             print(f"[CopywriterAgent] Error drafting English version: {e}")
-            # Minimal fallback structure
-            return f"TITLE: {candidate.get('title')}\nTEASER: Latest dental insights.\nCONTENT:\n{candidate.get('summary')}"
+            raise CopywriterGenerationError("Unable to generate the English draft from any configured Gemini model.") from e
 
     def _draft_greek(self, candidate, en_post, practice_name, memory=None, content_brief=None):
         """Translates/rewrites the post into medical Greek."""
@@ -183,7 +186,7 @@ CONTENT:
             return el_draft.strip()
         except Exception as e:
             print(f"[CopywriterAgent] Error drafting Greek version: {e}")
-            return f"TITLE: {candidate.get('title')} (Greek)\nTEASER: Updates in Greek.\nCONTENT:\n{candidate.get('summary')}"
+            raise CopywriterGenerationError("Unable to generate the Greek draft from any configured Gemini model.") from e
 
     def _brief_prompt_block(self, content_brief):
         if not content_brief:

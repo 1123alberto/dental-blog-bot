@@ -20,6 +20,7 @@ from scraper import fetch_dental_news
 from publisher import load_merged_posts, publish_bilingual_data, parse_bilingual_content, unpublish_bilingual_data, render_preview_html_string
 from agents import log_group_start, log_group_end
 from agents.editorial_agent import deduplicate_articles, EditorialAgent, apply_history_filter
+from agents.base import PRIMARY_GEMINI_MODEL, get_gemini_model_chain
 from agents.copywriter_agent import CopywriterAgent
 from agents.qa_agent import QAAgent
 from agents.memory import AgentMemory
@@ -157,7 +158,7 @@ async def scrape_candidates():
             except Exception as e:
                 print(f"[Server] Warning initializing Gemini client: {e}")
                 
-        model_name = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+        model_name = os.getenv("GEMINI_MODEL", PRIMARY_GEMINI_MODEL)
         editorial_agent = EditorialAgent(client=client, model_name=model_name)
 
         # Score & classify
@@ -208,7 +209,7 @@ async def generate_draft(req: DraftRequest):
             state["is_running"] = False
             raise HTTPException(status_code=400, detail="Gemini client could not be initialized (missing/invalid GOOGLE_API_KEY).")
             
-        model_name = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+        model_name = os.getenv("GEMINI_MODEL", PRIMARY_GEMINI_MODEL)
 
         memory = AgentMemory()
         copywriter_agent = CopywriterAgent(client=client, model_name=model_name)
@@ -348,16 +349,9 @@ async def chat_endpoint(req: ChatRequest):
         config = types.GenerateContentConfig(
             system_instruction=full_system_instruction
         )
-        # Try primary model first, fallback to stable models if needed
-        models = [os.getenv("GEMINI_MODEL", "gemini-2.5-flash"), "gemini-2.5-flash", "gemini-1.5-flash", "gemini-2.0-flash"]
-        unique_models = []
-        for m in models:
-            if m not in unique_models:
-                unique_models.append(m)
-
         response = None
         last_error = None
-        for model in unique_models:
+        for model in get_gemini_model_chain(os.getenv("GEMINI_MODEL", PRIMARY_GEMINI_MODEL)):
             try:
                 response = client.models.generate_content(
                     model=model,
