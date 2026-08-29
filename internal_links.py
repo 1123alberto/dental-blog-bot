@@ -104,8 +104,8 @@ def validate_link_plan(plan, content_brief, content_map=None):
     return plan
 
 
-def _replace_anchor_once(markdown, anchor, href):
-    """Replace one natural prose occurrence; headings and existing links are off limits."""
+def _try_replace_anchor_once(markdown, anchor, href):
+    """Attempt replacing one natural prose occurrence; return (updated_markdown, inserted_bool)."""
     if not anchor:
         raise LinkPlanValidationError("Cannot insert an empty anchor.")
     escaped = re.escape(anchor)
@@ -122,8 +122,16 @@ def _replace_anchor_once(markdown, anchor, href):
         if before.rfind("[") > before.rfind("](") or "](" in after.split(" ", 1)[0]:
             continue
         replacement = f"[{anchor}]({href})"
-        return markdown[:match.start()] + replacement + markdown[match.end():]
-    raise LinkPlanValidationError(f"Approved anchor was not found in safe prose: {anchor}")
+        return markdown[:match.start()] + replacement + markdown[match.end():], True
+    return markdown, False
+
+
+def _replace_anchor_once(markdown, anchor, href):
+    """Replace one natural prose occurrence; headings and existing links are off limits."""
+    updated, inserted = _try_replace_anchor_once(markdown, anchor, href)
+    if not inserted:
+        raise LinkPlanValidationError(f"Approved anchor was not found in safe prose: {anchor}")
+    return updated
 
 
 def _content_sections(markdown):
@@ -141,13 +149,55 @@ def render_internal_links(markdown, content_brief, content_map=None):
     plan = validate_link_plan(parse_link_plan(markdown), content_brief, content_map)
     article, en_match, el_match = _content_sections(markdown)
     en_content, el_content = en_match.group(2), el_match.group(2)
+    inserted_links = []
+    skipped_links = []
+    inserted_by_lang = {"en": [], "el": []}
+
     for link in plan:
         href = f"../{link['target_path']}"
-        en_content = _replace_anchor_once(en_content, link["anchor_en"], href)
-        el_content = _replace_anchor_once(el_content, link["anchor_el"], href)
+
+        # Attempt English insertion
+        new_en, en_inserted = _try_replace_anchor_once(en_content, link["anchor_en"], href)
+        if en_inserted:
+            en_content = new_en
+            inserted_by_lang["en"].append(link)
+            inserted_links.append({
+                "target_path": link["target_path"],
+                "language": "en",
+                "anchor": link["anchor_en"],
+                "href": href,
+            })
+        else:
+            skipped_links.append({
+                "target_path": link["target_path"],
+                "language": "en",
+                "anchor": link["anchor_en"],
+                "reason": "anchor_not_found",
+            })
+
+        # Attempt Greek insertion
+        new_el, el_inserted = _try_replace_anchor_once(el_content, link["anchor_el"], href)
+        if el_inserted:
+            el_content = new_el
+            inserted_by_lang["el"].append(link)
+            inserted_links.append({
+                "target_path": link["target_path"],
+                "language": "el",
+                "anchor": link["anchor_el"],
+                "href": href,
+            })
+        else:
+            skipped_links.append({
+                "target_path": link["target_path"],
+                "language": "el",
+                "anchor": link["anchor_el"],
+                "reason": "anchor_not_found",
+            })
 
     rendered = article[:en_match.start(2)] + en_content + article[en_match.end(2):el_match.start(2)] + el_content
-    report = validate_rendered_links(rendered, plan)
+    report = validate_rendered_links(rendered, plan, inserted_by_lang=inserted_by_lang)
+    report["inserted_links"] = inserted_links
+    report["skipped_links"] = skipped_links
     return rendered, report
 
 
@@ -181,18 +231,19 @@ def _render_markdown(markdown):
     return markdown_library.markdown(markdown)
 
 
-def validate_rendered_links(markdown, plan):
+def validate_rendered_links(markdown, plan, inserted_by_lang=None):
     article, en_match, el_match = _content_sections(markdown + "\n" + PLAN_HEADER) if PLAN_HEADER not in markdown else _content_sections(markdown)
     # render_internal_links passes no plan header in its working article; use sections directly below.
     _ = article
     sections = {"en": en_match.group(2), "el": el_match.group(2)}
-    expected = {f"../{link['target_path']}": link for link in plan}
     report = {"valid": True, "links": {"en": [], "el": []}}
     for language, section in sections.items():
+        expected_links = inserted_by_lang[language] if inserted_by_lang is not None else plan
+        expected = {f"../{link['target_path']}": link for link in expected_links}
         parser = _AnchorCollector()
         parser.feed(_render_markdown(section))
         internal = [link for link in parser.links if link["href"].startswith("../") or "dentplant.gr" in link["href"]]
-        if len(internal) != len(plan):
+        if len(internal) != len(expected_links):
             raise LinkPlanValidationError(f"{language} article does not contain exactly the approved internal link set.")
         for link in internal:
             if link["href"] not in expected:
