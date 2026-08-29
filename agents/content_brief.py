@@ -131,11 +131,11 @@ def _select_related_pages(candidate, content_map, cluster):
 def _anchor_for_page(page, used_anchors):
     english = ENGLISH_ANCHORS.get(page["path"]) or page["path"].replace(".html", "").replace("-", " ")
     greek = _clean_text(" ".join(page.get("h1", []))) or english
-    base_en = english[:90]
-    base_el = greek[:90]
+    base_en = english[:90].rstrip()
+    base_el = greek[:90].rstrip()
     suffix = 2
     while base_en.lower() in used_anchors:
-        base_en = f"{english[:80]} ({suffix})"
+        base_en = f"{english[:80].rstrip()} ({suffix})"
         suffix += 1
     used_anchors.add(base_en.lower())
     return base_en, base_el

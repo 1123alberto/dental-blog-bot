@@ -123,6 +123,78 @@ Dentplant explains maintenance and long-term outcomes. 99% of patients benefit.
             self.assertIn(f"[LINK_{index}_ANCHOR_EN]: {link['anchor_en']}", refined)
             self.assertIn(f"[LINK_{index}_ANCHOR_EL]: {link['anchor_el']}", refined)
 
+    def test_five_links_boundary_space_anchors_roundtrip_qa(self):
+        from internal_links import LinkPlanValidationError, parse_link_plan, validate_link_plan
+
+        cand = candidate(
+            title="Discussing alcohol use with patients",
+            summary="Dentists discuss alcohol consumption with patients regarding oral health risks and periodontal outcomes.",
+            full_text="Dentists discuss alcohol consumption with patients regarding oral health risks and periodontal outcomes.",
+            related_dentplant_pages=[
+                "treatment-periodontology.html",
+                "article/news-2026-06-03.html",
+                "article/news-2026-06-08.html",
+                "article/news-2026-06-29.html",
+                "article/news-2026-06-08-1.html",
+            ],
+        )
+        brief = build_content_brief(cand)
+        links = brief["recommended_internal_links"]
+        self.assertEqual(len(links), 5)
+
+        # 1. Link 3 and Link 4 anchors produced by ContentBrief no longer end in whitespace.
+        for index in (2, 3):
+            self.assertFalse(links[index]["anchor_en"].endswith(" "))
+            self.assertFalse(links[index]["anchor_el"].endswith(" "))
+
+        copywriter = CopywriterAgent(client=object())
+        plan_text = copywriter._link_plan(brief)
+
+        markdown = f"""[SOURCE]: Journal of Clinical Dentistry
+[DATE]: Aug 12, 2026
+[IMAGE_URL]:
+
+--- ENGLISH VERSION ---
+[EN_TITLE]: Discussing alcohol use with patients
+[EN_TEASER]: Guidance
+[EN_CONTENT]:
+Dentists discuss alcohol consumption with patients regarding oral health risks. Dentplant provides evidence-based care.
+
+--- GREEK VERSION ---
+[EL_TITLE]: Συζήτηση για τη χρήση αλκοόλ με τους ασθενείς
+[EL_TEASER]: Ενημέρωση
+[EL_CONTENT]:
+Οι οδοντίατροι συζητούν την κατανάλωση αλκοόλ με τους ασθενείς. Το Dentplant παρέχει φροντίδα.
+
+{plan_text}"""
+
+        # 2, 3, 4, 5. Targets, EN anchors, EL anchors round-trip & parse_link_plan preserves exact values
+        parsed = parse_link_plan(markdown)
+        self.assertEqual(len(parsed), 5)
+        for expected, actual in zip(links, parsed):
+            self.assertEqual(expected["target_path"], actual["target_path"])
+            self.assertEqual(expected["anchor_en"], actual["anchor_en"])
+            self.assertEqual(expected["anchor_el"], actual["anchor_el"])
+
+        # 6. validate_link_plan() accepts them
+        validated = validate_link_plan(parsed, brief)
+        self.assertEqual(len(validated), 5)
+
+        # 7. QAAgent.validate_post() no longer reports anchor mismatch for links 3 and 4
+        qa = QAAgent()
+        compliance_errors = qa._validate_content_brief_compliance(markdown, "Dentplant", "Dentplant", brief)
+        anchor_errors = [e for e in compliance_errors if "Internal-link anchors" in e or "Internal-link target" in e]
+        self.assertEqual(anchor_errors, [])
+
+        # 8. Deliberately altering one anchor still causes exact validation failure
+        tampered_brief = build_content_brief(cand)
+        tampered_brief["recommended_internal_links"][2]["anchor_el"] += " ALTERED"
+        tampered_errors = qa._validate_content_brief_compliance(markdown, "Dentplant", "Dentplant", tampered_brief)
+        self.assertTrue(any("Internal-link anchors 3 are not aligned with the ContentBrief." in e for e in tampered_errors))
+
+        with self.assertRaises(LinkPlanValidationError):
+            validate_link_plan(parsed, tampered_brief)
+
 
 if __name__ == "__main__":
     unittest.main()
