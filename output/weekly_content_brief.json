@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "candidate_title": "Can Artificial Intelligence Match Human Expertise in Long‐Term Periodontal Prognosis? A Comparative Accuracy Study",
+  "source": {
+    "name": "Wiley: Journal of Clinical Periodontology: Table of Contents",
+    "url": "https://onlinelibrary.wiley.com/doi/10.1111/jcpe.70191?af=R",
+    "published_date": "Aug 22, 2026",
+    "original_title": "Can Artificial Intelligence Match Human Expertise in Long‐Term Periodontal Prognosis? A Comparative Accuracy Study"
+  },
+  "article_angle": "Journal of Clinical Periodontology, EarlyView.",
+  "evidence_maturity": "established clinical practice",
+  "primary_patient_intent": "research/innovation",
+  "secondary_patient_intents": [],
+  "primary_cluster": "periodontology",
+  "related_dentplant_pages": [
+    "treatment-periodontology.html",
+    "article/news-2026-07-27.html",
+    "article/news-2026-07-06.html",
+    "article/news-2026-07-20.html",
+    "article/news-2026-05-23.html"
+  ],
+  "recommended_internal_links": [
+    {
+      "target_path": "treatment-periodontology.html",
+      "relationship": "supporting Dentplant page",
+      "anchor_en": "treatment periodontology",
+      "anchor_el": "Περιοδοντική Θεραπεία & Συντήρηση",
+      "reason": "Mapped page is structurally relevant to the planned supporting Dentplant page context."
+    },
+    {
+      "target_path": "article/news-2026-07-27.html",
+      "relationship": "supporting Dentplant page",
+      "anchor_en": "article/news 2026 07 27",
+      "anchor_el": "Understanding Salivary Gland Dysfunction and Down Syndrome Κατανόηση της Δυσλειτουργίας τω",
+      "reason": "Mapped page is structurally relevant to the planned supporting Dentplant page context."
+    },
+    {
+      "target_path": "article/news-2026-07-06.html",
+      "relationship": "supporting Dentplant page",
+      "anchor_en": "article/news 2026 07 06",
+      "anchor_el": "Chronic Oral Inflammation and Fertility: Understanding the New Biological Links Χρόνια Στο",
+      "reason": "Mapped page is structurally relevant to the planned supporting Dentplant page context."
+    },
+    {
+      "target_path": "article/news-2026-07-20.html",
+      "relationship": "supporting Dentplant page",
+      "anchor_en": "article/news 2026 07 20",
+      "anchor_el": "Beyond String Floss: The Clinical Role of Water Flossers Πέρα από το Οδοντικό Νήμα: Ο Κλιν",
+      "reason": "Mapped page is structurally relevant to the planned supporting Dentplant page context."
+    },
+    {
+      "target_path": "article/news-2026-05-23.html",
+      "relationship": "supporting Dentplant page",
+      "anchor_en": "article/news 2026 05 23",
+      "anchor_el": "Study Links Periodontal Disease to Autoimmune Conditions and Higher Mortality Risk Η περιο",
+      "reason": "Mapped page is structurally relevant to the planned supporting Dentplant page context."
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Journal of Clinical Periodontology, EarlyView.",
+      "support": "source",
+      "evidence_excerpt": "Journal of Clinical Periodontology, EarlyView.",
+      "confidence": "medium"
+    }
+  ],
+  "clinical_risk_topic": false,
+  "clinical_risk_notes": [],
+  "duplication_avoidance": [
+    "Do not recreate the broad scope of 'Περιοδοντική Θεραπεία & Συντήρηση' (treatment-periodontology.html); add a narrower source-supported angle.",
+    "Do not recreate the broad scope of 'Understanding Salivary Gland Dysfunction and Down Syndrome' (article/news-2026-07-27.html); add a narrower source-supported angle.",
+    "Do not recreate the broad scope of 'Chronic Oral Inflammation and Fertility: Understanding the New Biological Links' (article/news-2026-07-06.html); add a narrower source-supported angle."
+  ],
+  "editorial_constraints": [
+    "Use only source-supported claims; do not add unsupported statistics or medical facts.",
+    "Do not claim Dentplant offers a technology unless it is supported by existing site content.",
+    "Do not claim superiority, guaranteed outcomes, painless treatment, or lifetime success.",
+    "Use association language for observational oral-systemic evidence; do not convert association into causation.",
+    "Do not describe early, preclinical, or emerging evidence as standard care or a routine clinical protocol.",
+    "Patient education cannot diagnose, replace examination, or determine treatment candidacy.",
+    "Do not invent practitioner credentials; keep Greek professional naming consistent with existing Dentplant conventions.",
+    "Recommended internal links are planning guidance only; do not insert HTML links in this milestone."
+  ],
+  "recent_publication_titles_considered": [
+    "Navigating Alcohol Awareness and Prevention in Modern Dental Care",
+    "Managing the Developmental Impact of Prolonged Childhood Thumb Sucking",
+    "Managing the Oral Biofilm: The Clinical Importance of Tongue Cleaning",
+    "Understanding Salivary Gland Dysfunction and Down Syndrome",
+    "Beyond String Floss: The Clinical Role of Water Flossers",
+    "Protecting Tooth Enamel: The Science of Biomimetic Remineralisation",
+    "Chronic Oral Inflammation and Fertility: Understanding the New Biological Links",
+    "Can Diet Influence Gum Health? Emerging Insights into Fasting-Mimicking",
+    "The Adaptable Smile: How Modifiable Composite Veneers Enhance Aesthetic Control",
+    "Issue Information: Advancing Periodontal Care at Dentplant"
+  ]
+}

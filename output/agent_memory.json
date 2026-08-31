@@ -2,6 +2,12 @@
   "lessons": [
     {
       "category": "copywriting",
+      "error": "English content word count is outside 300-500 words limit (current: 299).",
+      "rule": "Do not repeat error: English content word count is outside 300-500 words limit (current: 299).. Adhere strictly to the guidelines.",
+      "timestamp": "2026-08-31T14:41:47.735774"
+    },
+    {
+      "category": "copywriting",
       "error": "The final sentence of the Greek text contains an unauthorized addition that does not exist in the English source: 'βοηθώντας σας να διατηρήσετε όχι μόνο το χαμόγελό σας, αλλά και τη συνολική σας ευεξία.' (helping you maintain not only your smile, but also your overall well-being).",
       "rule": "Do not repeat error: The final sentence of the Greek text contains an unauthorized addition that does not exist in the English source: 'βοηθώντας σας να διατηρήσετε όχι μόνο το χαμόγελό σας, αλλά και τη συνολική σας ευεξία.' (helping you maintain not only your smile, but also your overall well-being).. Adhere strictly to the guidelines.",
       "timestamp": "2026-07-13T10:18:13.090623"
@@ -143,12 +149,6 @@
       "error": "The translation contains grammatical typos for the term 'composite resin' (σύνθετη ρητίνη): 'συνθέτης ρητίνης' should be corrected to 'σύνθετης ρητίνης', and 'με συνθέτη ρητίνη' should be corrected to 'με σύνθετη ρητίνη'.",
       "rule": "Do not repeat error: The translation contains grammatical typos for the term 'composite resin' (σύνθετη ρητίνη): 'συνθέτης ρητίνης' should be corrected to 'σύνθετης ρητίνης', and 'με συνθέτη ρητίνη' should be corrected to 'με σύνθετη ρητίνη'.. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-22T12:48:11.411403"
-    },
-    {
-      "category": "copywriting",
-      "error": "In the second paragraph, the phrase \"αποτελεί ακρογωνιαίο λίχο\" contains a grammatical error. \"λίχο\" should be corrected to \"λίθο\" to reflect the correct accusative case of the masculine noun \"λίθος\" (stone/cornerstone).",
-      "rule": "Do not repeat error: In the second paragraph, the phrase \"αποτελεί ακρογωνιαίο λίχο\" contains a grammatical error. \"λίχο\" should be corrected to \"λίθο\" to reflect the correct accusative case of the masculine noun \"λίθος\" (stone/cornerstone).. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-15T13:04:37.501013"
     }
   ]
 }

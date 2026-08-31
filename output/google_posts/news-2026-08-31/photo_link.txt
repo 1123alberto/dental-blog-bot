@@ -1,0 +1,2 @@
+Original: images/tools_wallpaper.webp
+Localized: images/tools_wallpaper.webp
