@@ -1,37 +1,38 @@
 {
-  "generated_at": "2026-08-31T14:42:19.873181+00:00",
-  "decision": "CREATE_NEW_ARTICLE",
-  "candidate_title": "Can Artificial Intelligence Match Human Expertise in Long‐Term Periodontal Prognosis? A Comparative Accuracy Study",
-  "recommended_target_page": null,
-  "decision_score": 70.2,
+  "generated_at": "2026-09-07T13:08:56.098044+00:00",
+  "decision": "UPDATE_EXISTING_PAGE",
+  "candidate_title": "Diabetes associated with poorer long-term dental implant outcomes",
+  "recommended_target_page": "implants.html",
+  "decision_score": 101.9,
   "reasons": [
-    "The candidate clears editorial, strategic, patient-intent, and content-gap thresholds.",
-    "Cannibalization risk 4.0 is within the new-content limit of 4.",
-    "Search Console demand/opportunity contributes 0.0/0.0."
+    "The topic strongly matches an existing Dentplant service cluster and patient intent.",
+    "Cannibalization risk 7.0 with content gap 3.0 favors improving an existing page.",
+    "Selected mapped target 'implants.html' using related-page and page-type evidence.",
+    "Search Console existing-page opportunity is 0.0."
   ],
   "candidate_snapshot": {
-    "title": "Can Artificial Intelligence Match Human Expertise in Long‐Term Periodontal Prognosis? A Comparative Accuracy Study",
-    "source": "Wiley: Journal of Clinical Periodontology: Table of Contents",
-    "category": "AI with genuine clinical relevance",
-    "editorial_score": 49.0,
+    "title": "Diabetes associated with poorer long-term dental implant outcomes",
+    "source": "Articles – Dental Tribune",
+    "category": "Implantology",
+    "editorial_score": 51.0,
     "strategic_scores": {
       "cluster_contribution": 8.0,
       "service_relevance": 8.0,
-      "patient_intent_fit": 6.0,
-      "content_gap_value": 6.0,
+      "patient_intent_fit": 10.0,
+      "content_gap_value": 3.0,
       "internal_link_opportunity": 10.0,
-      "cannibalization_risk": 4.0
+      "cannibalization_risk": 7.0
     },
-    "strategic_value": 38.0,
-    "final_score": 93.0,
+    "strategic_value": 39.0,
+    "final_score": 98.5,
     "related_dentplant_pages": [
-      "treatment-periodontology.html",
-      "article/news-2026-07-27.html",
-      "article/news-2026-07-06.html",
-      "article/news-2026-07-20.html",
-      "article/news-2026-05-23.html"
+      "implants.html",
+      "implant-all-on-4.html",
+      "implant-full-arch.html",
+      "implant-mini.html",
+      "implant-single-tooth.html"
     ],
-    "clinical_risk_topic": false,
+    "clinical_risk_topic": true,
     "is_promotional": false,
     "is_low_quality": false,
     "is_us_centric": false
@@ -39,16 +40,14 @@
   "candidate_rank": 2,
   "evaluated_candidate_count": 3,
   "action_scores": {
-    "create": 70.2,
-    "update": null
+    "create": null,
+    "update": 101.9
   },
-  "runtime_action": "article_generation_started",
-  "publication_action": "clinical_review_pr",
-  "article_id": "can-artificial-intelligence-match-human-expertise-in-long-term-periodontal-prognosis-a-comparative-accuracy-study",
-  "review_branch": "clinical-review/blog-2026-08-31-can-artificial-intelligence-match-human-expertise-in-long-term-periodont",
-  "review_reasons": [
-    "oral_systemic_association"
-  ],
-  "draft_pr_title": "Clinical review: Can Artificial Intelligence Match Human Expertise in Long‐Term Periodontal Prognosis? A Comparative Accuracy Study",
-  "draft_pr_body": "## Clinical review required\n- Article: Can Artificial Intelligence Match Human Expertise in Long‐Term Periodontal Prognosis? A Comparative Accuracy Study\n- English title: Artificial Intelligence and Human Expertise in Long-Term Periodontal Prognosis\n- Greek title: Τεχνητή Νοημοσύνη και Ανθρώπινη Εμπειρία στη Μακροπρόθεσμη Περιοδοντική Πρόγνωση\n- Source: Wiley: Journal of Clinical Periodontology: Table of Contents (Aug 22, 2026)\n- Dentplant publication target: `master`\n- Review reasons: oral_systemic_association\n- Evidence maturity: established clinical practice\n- Supported claims requiring attention: Journal of Clinical Periodontology, EarlyView.\n- Planned internal links: treatment-periodontology.html, article/news-2026-07-27.html, article/news-2026-07-06.html, article/news-2026-07-20.html, article/news-2026-05-23.html\n- Numeric/statistical claims present: no\n\nMerge this PR only after clinical review is complete."
+  "runtime_action": "existing_page_update_recommended",
+  "publication_action": "none",
+  "article_id": null,
+  "review_branch": null,
+  "review_reasons": [],
+  "draft_pr_title": null,
+  "draft_pr_body": null
 }
