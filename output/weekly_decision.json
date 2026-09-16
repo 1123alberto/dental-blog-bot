@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-09-07T13:08:56.098044+00:00",
+  "generated_at": "2026-09-16T18:19:03.866063+00:00",
   "decision": "UPDATE_EXISTING_PAGE",
-  "candidate_title": "Diabetes associated with poorer long-term dental implant outcomes",
-  "recommended_target_page": "implants.html",
-  "decision_score": 101.9,
+  "candidate_title": "Autonomous robot improves accuracy of socket preparation in tooth autotransplantation",
+  "recommended_target_page": "aesthetics.html",
+  "decision_score": 99.5,
   "reasons": [
     "The topic strongly matches an existing Dentplant service cluster and patient intent.",
     "Cannibalization risk 7.0 with content gap 3.0 favors improving an existing page.",
-    "Selected mapped target 'implants.html' using related-page and page-type evidence.",
+    "Selected mapped target 'aesthetics.html' using related-page and page-type evidence.",
     "Search Console existing-page opportunity is 0.0."
   ],
   "candidate_snapshot": {
-    "title": "Diabetes associated with poorer long-term dental implant outcomes",
+    "title": "Autonomous robot improves accuracy of socket preparation in tooth autotransplantation",
     "source": "Articles – Dental Tribune",
-    "category": "Implantology",
-    "editorial_score": 51.0,
+    "category": "Digital dentistry",
+    "editorial_score": 45.0,
     "strategic_scores": {
       "cluster_contribution": 8.0,
       "service_relevance": 8.0,
@@ -24,15 +24,15 @@
       "cannibalization_risk": 7.0
     },
     "strategic_value": 39.0,
-    "final_score": 98.5,
+    "final_score": 92.5,
     "related_dentplant_pages": [
+      "aesthetics.html",
       "implants.html",
-      "implant-all-on-4.html",
-      "implant-full-arch.html",
-      "implant-mini.html",
-      "implant-single-tooth.html"
+      "implant-single-tooth.html",
+      "oral-surgery.html",
+      "implant-all-on-4.html"
     ],
-    "clinical_risk_topic": true,
+    "clinical_risk_topic": false,
     "is_promotional": false,
     "is_low_quality": false,
     "is_us_centric": false
@@ -41,7 +41,7 @@
   "evaluated_candidate_count": 3,
   "action_scores": {
     "create": null,
-    "update": 101.9
+    "update": 99.5
   },
   "runtime_action": "existing_page_update_recommended",
   "publication_action": "none",
