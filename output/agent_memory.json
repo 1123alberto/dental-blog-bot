@@ -2,6 +2,18 @@
   "lessons": [
     {
       "category": "copywriting",
+      "error": "The phrase 'oral conditions' in the context of oral-systemic associations was translated literally as 'στοματικών συνθηκών' instead of the clinically appropriate 'στοματικών παθήσεων' or 'καταστάσεων της στοματικής υγείας'.",
+      "rule": "Do not repeat error: The phrase 'oral conditions' in the context of oral-systemic associations was translated literally as 'στοματικών συνθηκών' instead of the clinically appropriate 'στοματικών παθήσεων' or 'καταστάσεων της στοματικής υγείας'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-11-16T16:41:17.708983"
+    },
+    {
+      "category": "copywriting",
+      "error": "The phrase 'unmanaged periodontitis' was incorrectly translated as 'μη διαχειρίσιμη περιοδοντίτιδα' (which means 'unmanageable periodontitis'). A clinically accurate translation is 'μη ρυθμισμένη περιοδοντίτιδα' or 'μη ελεγχόμενη περιοδοντίτιδα'.",
+      "rule": "Do not repeat error: The phrase 'unmanaged periodontitis' was incorrectly translated as 'μη διαχειρίσιμη περιοδοντίτιδα' (which means 'unmanageable periodontitis'). A clinically accurate translation is 'μη ρυθμισμένη περιοδοντίτιδα' or 'μη ελεγχόμενη περιοδοντίτιδα'.. Adhere strictly to the guidelines.",
+      "timestamp": "2026-11-16T16:41:17.708208"
+    },
+    {
+      "category": "copywriting",
       "error": "English content word count is outside 300-500 words limit (current: 299).",
       "rule": "Do not repeat error: English content word count is outside 300-500 words limit (current: 299).. Adhere strictly to the guidelines.",
       "timestamp": "2026-08-31T14:41:47.735774"
@@ -137,18 +149,6 @@
       "error": "The verb 'αναπαραστήσουν' (to represent/portray) is clinically inaccurate for replicating natural tooth characteristics; 'αναπαραγάγουν' (to replicate/reproduce) is the correct term.",
       "rule": "Do not repeat error: The verb 'αναπαραστήσουν' (to represent/portray) is clinically inaccurate for replicating natural tooth characteristics; 'αναπαραγάγουν' (to replicate/reproduce) is the correct term.. Adhere strictly to the guidelines.",
       "timestamp": "2026-06-22T12:48:11.412584"
-    },
-    {
-      "category": "copywriting",
-      "error": "The term 'ασθενή-κεντρική φιλοσοφία' is an awkward, literal translation of 'patient-centered philosophy'. The correct and natural Greek medical term is 'ασθενοκεντρική φιλοσοφία' or 'φιλοσοφία με επίκεντρο τον ασθενή'.",
-      "rule": "Do not repeat error: The term 'ασθενή-κεντρική φιλοσοφία' is an awkward, literal translation of 'patient-centered philosophy'. The correct and natural Greek medical term is 'ασθενοκεντρική φιλοσοφία' or 'φιλοσοφία με επίκεντρο τον ασθενή'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-22T12:48:11.412023"
-    },
-    {
-      "category": "copywriting",
-      "error": "The translation contains grammatical typos for the term 'composite resin' (σύνθετη ρητίνη): 'συνθέτης ρητίνης' should be corrected to 'σύνθετης ρητίνης', and 'με συνθέτη ρητίνη' should be corrected to 'με σύνθετη ρητίνη'.",
-      "rule": "Do not repeat error: The translation contains grammatical typos for the term 'composite resin' (σύνθετη ρητίνη): 'συνθέτης ρητίνης' should be corrected to 'σύνθετης ρητίνης', and 'με συνθέτη ρητίνη' should be corrected to 'με σύνθετη ρητίνη'.. Adhere strictly to the guidelines.",
-      "timestamp": "2026-06-22T12:48:11.411403"
     }
   ]
 }

@@ -1,53 +1,55 @@
 {
-  "generated_at": "2026-09-16T18:19:03.866063+00:00",
-  "decision": "UPDATE_EXISTING_PAGE",
-  "candidate_title": "Autonomous robot improves accuracy of socket preparation in tooth autotransplantation",
-  "recommended_target_page": "aesthetics.html",
-  "decision_score": 99.5,
+  "generated_at": "2026-11-16T16:43:39.709511+00:00",
+  "decision": "CREATE_NEW_ARTICLE",
+  "candidate_title": "Periodontitis and diabetes: Research highlights opportunities for early risk identification",
+  "recommended_target_page": null,
+  "decision_score": 73.2,
   "reasons": [
-    "The topic strongly matches an existing Dentplant service cluster and patient intent.",
-    "Cannibalization risk 7.0 with content gap 3.0 favors improving an existing page.",
-    "Selected mapped target 'aesthetics.html' using related-page and page-type evidence.",
-    "Search Console existing-page opportunity is 0.0."
+    "The candidate clears editorial, strategic, patient-intent, and content-gap thresholds.",
+    "Cannibalization risk 4.0 is within the new-content limit of 4.",
+    "Search Console demand/opportunity contributes 0.0/0.0."
   ],
   "candidate_snapshot": {
-    "title": "Autonomous robot improves accuracy of socket preparation in tooth autotransplantation",
+    "title": "Periodontitis and diabetes: Research highlights opportunities for early risk identification",
     "source": "Articles – Dental Tribune",
-    "category": "Digital dentistry",
-    "editorial_score": 45.0,
+    "category": "Oral-systemic health",
+    "editorial_score": 50.0,
     "strategic_scores": {
       "cluster_contribution": 8.0,
       "service_relevance": 8.0,
       "patient_intent_fit": 10.0,
-      "content_gap_value": 3.0,
+      "content_gap_value": 6.0,
       "internal_link_opportunity": 10.0,
-      "cannibalization_risk": 7.0
+      "cannibalization_risk": 4.0
     },
-    "strategic_value": 39.0,
-    "final_score": 92.5,
+    "strategic_value": 42.0,
+    "final_score": 108.0,
     "related_dentplant_pages": [
-      "aesthetics.html",
-      "implants.html",
-      "implant-single-tooth.html",
+      "treatment-prevention.html",
       "oral-surgery.html",
-      "implant-all-on-4.html"
+      "treatment-periodontology.html",
+      "implant-immediate-loading.html",
+      "article/news-2026-05-19-1.html"
     ],
     "clinical_risk_topic": false,
     "is_promotional": false,
     "is_low_quality": false,
     "is_us_centric": false
   },
-  "candidate_rank": 2,
+  "candidate_rank": 1,
   "evaluated_candidate_count": 3,
   "action_scores": {
-    "create": null,
-    "update": 99.5
+    "create": 73.2,
+    "update": null
   },
-  "runtime_action": "existing_page_update_recommended",
-  "publication_action": "none",
-  "article_id": null,
-  "review_branch": null,
-  "review_reasons": [],
-  "draft_pr_title": null,
-  "draft_pr_body": null
+  "runtime_action": "article_generation_started",
+  "publication_action": "clinical_review_pr",
+  "article_id": "periodontitis-and-diabetes-research-highlights-opportunities-for-early-risk-identification",
+  "review_branch": "clinical-review/blog-2026-11-16-periodontitis-and-diabetes-research-highlights-opportunities-for-early-r",
+  "review_reasons": [
+    "clinical_risk_topic",
+    "oral_systemic_association"
+  ],
+  "draft_pr_title": "Clinical review: Periodontitis and diabetes: Research highlights opportunities for early risk identification",
+  "draft_pr_body": "## Clinical review required\n- Article: Periodontitis and diabetes: Research highlights opportunities for early risk identification\n- English title: Periodontitis and Diabetes: Identifying Early Indicators of Metabolic Risk\n- Greek title: Περιοδοντίτιδα και Διαβήτης: Αναγνωρίζοντας Πρώιμους Δείκτες Μεταβολικού Κινδύνου\n- Source: Articles – Dental Tribune (Nov 13, 2026)\n- Dentplant publication target: `master`\n- Review reasons: clinical_risk_topic, oral_systemic_association\n- Evidence maturity: established clinical practice\n- Supported claims requiring attention: World Diabetes Day, observed annually on 14 November, highlights the importance of diabetes prevention, early diagnosis and effective management.; This year’s campaign, held under the theme “Early action on diabetes”, draws attention to the need to identify people at risk of Type 2 diabetes.; In an interview with Dental Tribune International, researcher Dr João Botelho discusses findings from a recent international study suggesting that oral health may provide valuable indicators of metabolic risk.\n- Planned internal links: oral-surgery.html, treatment-prevention.html, treatment-periodontology.html, implant-immediate-loading.html, article/news-2026-05-19-1.html\n- Numeric/statistical claims present: no\n\nMerge this PR only after clinical review is complete."
 }

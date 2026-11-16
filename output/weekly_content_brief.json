@@ -1,25 +1,42 @@
 {
   "schema_version": "1.0",
-  "candidate_title": "Can Artificial Intelligence Match Human Expertise in Long‐Term Periodontal Prognosis? A Comparative Accuracy Study",
+  "candidate_title": "Periodontitis and diabetes: Research highlights opportunities for early risk identification",
   "source": {
-    "name": "Wiley: Journal of Clinical Periodontology: Table of Contents",
-    "url": "https://onlinelibrary.wiley.com/doi/10.1111/jcpe.70191?af=R",
-    "published_date": "Aug 22, 2026",
-    "original_title": "Can Artificial Intelligence Match Human Expertise in Long‐Term Periodontal Prognosis? A Comparative Accuracy Study"
+    "name": "Articles – Dental Tribune",
+    "url": "https://www.dental-tribune.com/news/periodontitis-and-diabetes-research-highlights-opportunities-for-early-risk-identification/",
+    "published_date": "Nov 13, 2026",
+    "original_title": "Periodontitis and diabetes: Research highlights opportunities for early risk identification"
   },
-  "article_angle": "Journal of Clinical Periodontology, EarlyView.",
+  "article_angle": "World Diabetes Day, observed annually on 14 November, highlights the importance of diabetes prevention, early diagnosis and effective management.",
   "evidence_maturity": "established clinical practice",
-  "primary_patient_intent": "research/innovation",
-  "secondary_patient_intents": [],
-  "primary_cluster": "periodontology",
+  "primary_patient_intent": "risks/complications",
+  "secondary_patient_intents": [
+    "prevention",
+    "diagnosis"
+  ],
+  "primary_cluster": "prevention",
   "related_dentplant_pages": [
+    "oral-surgery.html",
+    "treatment-prevention.html",
     "treatment-periodontology.html",
-    "article/news-2026-07-27.html",
-    "article/news-2026-07-06.html",
-    "article/news-2026-07-20.html",
-    "article/news-2026-05-23.html"
+    "implant-immediate-loading.html",
+    "article/news-2026-05-19-1.html"
   ],
   "recommended_internal_links": [
+    {
+      "target_path": "oral-surgery.html",
+      "relationship": "primary treatment hub",
+      "anchor_en": "oral surgery",
+      "anchor_el": "Χειρουργική Στόματος",
+      "reason": "Mapped page is structurally relevant to the planned primary treatment hub context."
+    },
+    {
+      "target_path": "treatment-prevention.html",
+      "relationship": "supporting Dentplant page",
+      "anchor_en": "treatment prevention",
+      "anchor_el": "Προληπτική Οδοντιατρική & Βιομικροβιολογία",
+      "reason": "Mapped page is structurally relevant to the planned supporting Dentplant page context."
+    },
     {
       "target_path": "treatment-periodontology.html",
       "relationship": "supporting Dentplant page",
@@ -28,48 +45,50 @@
       "reason": "Mapped page is structurally relevant to the planned supporting Dentplant page context."
     },
     {
-      "target_path": "article/news-2026-07-27.html",
+      "target_path": "implant-immediate-loading.html",
       "relationship": "supporting Dentplant page",
-      "anchor_en": "article/news 2026 07 27",
-      "anchor_el": "Understanding Salivary Gland Dysfunction and Down Syndrome Κατανόηση της Δυσλειτουργίας τω",
+      "anchor_en": "immediate-loading dental implants",
+      "anchor_el": "Άμεση Φόρτωση Εμφυτευμάτων (Same-Day Implants)",
       "reason": "Mapped page is structurally relevant to the planned supporting Dentplant page context."
     },
     {
-      "target_path": "article/news-2026-07-06.html",
+      "target_path": "article/news-2026-05-19-1.html",
       "relationship": "supporting Dentplant page",
-      "anchor_en": "article/news 2026 07 06",
-      "anchor_el": "Chronic Oral Inflammation and Fertility: Understanding the New Biological Links Χρόνια Στο",
-      "reason": "Mapped page is structurally relevant to the planned supporting Dentplant page context."
-    },
-    {
-      "target_path": "article/news-2026-07-20.html",
-      "relationship": "supporting Dentplant page",
-      "anchor_en": "article/news 2026 07 20",
-      "anchor_el": "Beyond String Floss: The Clinical Role of Water Flossers Πέρα από το Οδοντικό Νήμα: Ο Κλιν",
-      "reason": "Mapped page is structurally relevant to the planned supporting Dentplant page context."
-    },
-    {
-      "target_path": "article/news-2026-05-23.html",
-      "relationship": "supporting Dentplant page",
-      "anchor_en": "article/news 2026 05 23",
-      "anchor_el": "Study Links Periodontal Disease to Autoimmune Conditions and Higher Mortality Risk Η περιο",
+      "anchor_en": "article/news 2026 05 19 1",
+      "anchor_el": "Silent Infections: The Hidden Link Between Dental Health and Blood Sugar Σιωπηλές Λοιμώξει",
       "reason": "Mapped page is structurally relevant to the planned supporting Dentplant page context."
     }
   ],
   "claims": [
     {
-      "claim": "Journal of Clinical Periodontology, EarlyView.",
+      "claim": "World Diabetes Day, observed annually on 14 November, highlights the importance of diabetes prevention, early diagnosis and effective management.",
       "support": "source",
-      "evidence_excerpt": "Journal of Clinical Periodontology, EarlyView.",
-      "confidence": "medium"
+      "evidence_excerpt": "World Diabetes Day, observed annually on 14 November, highlights the importance of diabetes prevention, early diagnosis and effective management.",
+      "confidence": "high"
+    },
+    {
+      "claim": "This year’s campaign, held under the theme “Early action on diabetes”, draws attention to the need to identify people at risk of Type 2 diabetes.",
+      "support": "source",
+      "evidence_excerpt": "This year’s campaign, held under the theme “Early action on diabetes”, draws attention to the need to identify people at risk of Type 2 diabetes.",
+      "confidence": "high"
+    },
+    {
+      "claim": "In an interview with Dental Tribune International, researcher Dr João Botelho discusses findings from a recent international study suggesting that oral health may provide valuable indicators of metabolic risk.",
+      "support": "source",
+      "evidence_excerpt": "In an interview with Dental Tribune International, researcher Dr João Botelho discusses findings from a recent international study suggesting that oral health may provide valuable indicators of metabolic risk.",
+      "confidence": "high"
     }
   ],
-  "clinical_risk_topic": false,
-  "clinical_risk_notes": [],
+  "clinical_risk_topic": true,
+  "clinical_risk_notes": [
+    "Describe risks proportionately; do not present risk as inevitability.",
+    "Distinguish evidence-supported warning signs or prevention from unsupported generalizations.",
+    "Do not imply zero-risk treatment or add unsupported outcome percentages."
+  ],
   "duplication_avoidance": [
-    "Do not recreate the broad scope of 'Περιοδοντική Θεραπεία & Συντήρηση' (treatment-periodontology.html); add a narrower source-supported angle.",
-    "Do not recreate the broad scope of 'Understanding Salivary Gland Dysfunction and Down Syndrome' (article/news-2026-07-27.html); add a narrower source-supported angle.",
-    "Do not recreate the broad scope of 'Chronic Oral Inflammation and Fertility: Understanding the New Biological Links' (article/news-2026-07-06.html); add a narrower source-supported angle."
+    "Do not recreate the broad scope of 'Χειρουργική Στόματος' (oral-surgery.html); add a narrower source-supported angle.",
+    "Do not recreate the broad scope of 'Προληπτική Οδοντιατρική & Βιομικροβιολογία' (treatment-prevention.html); add a narrower source-supported angle.",
+    "Do not recreate the broad scope of 'Περιοδοντική Θεραπεία & Συντήρηση' (treatment-periodontology.html); add a narrower source-supported angle."
   ],
   "editorial_constraints": [
     "Use only source-supported claims; do not add unsupported statistics or medical facts.",
@@ -82,6 +101,7 @@
     "Recommended internal links are planning guidance only; do not insert HTML links in this milestone."
   ],
   "recent_publication_titles_considered": [
+    "Artificial Intelligence and Human Expertise in Long-Term Periodontal Prognosis",
     "Navigating Alcohol Awareness and Prevention in Modern Dental Care",
     "Managing the Developmental Impact of Prolonged Childhood Thumb Sucking",
     "Managing the Oral Biofilm: The Clinical Importance of Tongue Cleaning",
@@ -90,7 +110,6 @@
     "Protecting Tooth Enamel: The Science of Biomimetic Remineralisation",
     "Chronic Oral Inflammation and Fertility: Understanding the New Biological Links",
     "Can Diet Influence Gum Health? Emerging Insights into Fasting-Mimicking",
-    "The Adaptable Smile: How Modifiable Composite Veneers Enhance Aesthetic Control",
-    "Issue Information: Advancing Periodontal Care at Dentplant"
+    "The Adaptable Smile: How Modifiable Composite Veneers Enhance Aesthetic Control"
   ]
 }
